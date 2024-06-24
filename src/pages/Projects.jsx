@@ -75,14 +75,14 @@ const Projects = () => {
               <ChevronLeft onClick={handlePrev}>
                 <img className='width-20' src={`./images/chevron.png`} alt="Previous" />
               </ChevronLeft>
-              <ModalImage   src={`${projects[selectedProjectIndex].images[0]}`}
- alt={projects[selectedProjectIndex].name} />
+              <ModalImage src={`${projects[selectedProjectIndex].images[0]}`}
+                alt={projects[selectedProjectIndex].name} />
               <ChevronRight onClick={handleNext}>
                 <img className='width-20' src={`./images/chevron.png`} alt="Next" />
               </ChevronRight>
               <div className='d-flex flex-column p-4 justify-content-between'>
                 <ModalContent>
-                  <ModalTitle className="mt-4 mb-4">{projects[selectedProjectIndex].name}</ModalTitle>
+                  <ModalTitle className="mb-4">{projects[selectedProjectIndex].name}</ModalTitle>
                   <p>{projects[selectedProjectIndex].description}</p>
                 </ModalContent>
                 <ButtonsContainer>
@@ -233,16 +233,19 @@ const OverlayText = styled.div`
 
 const CustomModal = styled(Modal)`
   .modal-content {
-  max-width:1100px;
+  max-width:1000px;
+  width:95vw;
     border-radius: 0px !important;
     overflow: hidden;
     margin:0 auto;
   }
-     p {min-height:210px;padding:1em 2em;}   
+     p {min-height:210px;padding:0em;}   
 
     @media (min-width: 1200px) {
     .modal-dialog { 
- p {min-height:210px;padding:2em 2.5em;}    }
+ p 
+ {min-height:210px;padding-right:3em;}   
+  }
    
 `;
 
@@ -315,7 +318,9 @@ const ModalContent = styled.div`
 `;
 
 const ModalTitle = styled.h2`
+font-size:31px;
   margin-bottom: 1rem;
+  font-weight:600;
 `;
 
 const ButtonsContainer = styled.div`
