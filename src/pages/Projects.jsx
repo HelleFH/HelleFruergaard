@@ -75,7 +75,8 @@ const Projects = () => {
               <ChevronLeft onClick={handlePrev}>
                 <img className='width-20' src={`my-portfolio/images/chevron.png`} alt="Previous" />
               </ChevronLeft>
-              <ModalImage src={`{projects[selectedProjectIndex].images[0]}`} alt={projects[selectedProjectIndex].name} />
+              <ModalImage   src={`${projects[selectedProjectIndex].images[0]}`}
+ alt={projects[selectedProjectIndex].name} />
               <ChevronRight onClick={handleNext}>
                 <img className='width-20' src={`my-portfolio/images/chevron.png`} alt="Next" />
               </ChevronRight>
@@ -282,10 +283,21 @@ const Chevron = styled.div`
 
 const ChevronLeft = styled(Chevron)`
   left: 10px;
+
+  img {
+  width:20% !important;
+  max-width:5% !important;
+  transform: rotate(-90deg);
+  }
 `;
 
 const ChevronRight = styled(Chevron)`
   right: 10px;
+  img {
+  max-width:5% !important;
+  transform: rotate(90deg);
+  float:right;
+  }
 `;
 
 const ModalContent = styled.div`

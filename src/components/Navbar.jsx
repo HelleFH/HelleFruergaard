@@ -120,7 +120,7 @@ const Navbar = () => {
       <img
         src={isNavOpen || isAnimating 
           ? `images/x_icon.svg`
-          : `images/nav_icon.svg`}
+          : `my-portfolio/images/nav_icon.svg`}
         alt="Toggle navigation"
       />      </ToggleButton>
 
