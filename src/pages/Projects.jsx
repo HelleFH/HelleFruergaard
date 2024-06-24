@@ -80,7 +80,7 @@ const Projects = () => {
               <ChevronRight onClick={handleNext}>
                 <img className='width-20' src={`my-portfolio/images/chevron.png`} alt="Next" />
               </ChevronRight>
-              <div className='d-flex flex-column p-4 space-between'>
+              <div className='d-flex flex-column p-4 justify-content-between'>
                 <ModalContent>
                   <ModalTitle className="mt-4 mb-4">{projects[selectedProjectIndex].name}</ModalTitle>
                   <p>{projects[selectedProjectIndex].description}</p>
@@ -233,9 +233,17 @@ const OverlayText = styled.div`
 
 const CustomModal = styled(Modal)`
   .modal-content {
+  max-width:1100px;
     border-radius: 0px !important;
     overflow: hidden;
+    margin:0 auto;
   }
+     p {min-height:160px;padding:0em 0em;}   
+
+    @media (min-width: 1200px) {
+    .modal-dialog { 
+ p {min-height:210px;padding:2em 2.5em;}    }
+   
 `;
 
 const CustomModalDialog = styled(Modal.Dialog)`
@@ -263,6 +271,7 @@ const ModalBody = styled(Modal.Body)`
 `;
 
 const ModalImage = styled.img`
+max-width:600px;
   width: 100%;
   height: auto;
 `;
@@ -302,6 +311,7 @@ const ChevronRight = styled(Chevron)`
 
 const ModalContent = styled.div`
   padding: 1rem;
+  max-width:500px;
 `;
 
 const ModalTitle = styled.h2`
