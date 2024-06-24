@@ -84,6 +84,11 @@ const CloseButton = styled.button`
   color: black;
   cursor: pointer;
   font-weight:200;
+   
+  @media min-width: 1200px {
+  display:none;
+   
+  }
 `;
 const MenuHeader = styled.h1`
 font-weight:900;
@@ -107,15 +112,15 @@ const Navbar = () => {
   return (
     <StyledNavbar className="navbar navbar-light">
       <Link className="navbar-brand d-flex gap-3 align-items-center justify-content-center" to="/">
-      <NavbarBrand src={`my-portfolio/images/copenhagen.png`} />
+      <NavbarBrand src={`./images/copenhagen.png`} />
       <NavbarName>Helle</NavbarName>
       </Link>
 
       <ToggleButton onClick={toggleNav}>
       <img
         src={isNavOpen || isAnimating 
-          ? `my-portfolio/images/x_icon.svg`
-          : `my-portfolio/images/nav_icon.svg`}
+          ? `images/x_icon.svg`
+          : `images/nav_icon.svg`}
         alt="Toggle navigation"
       />      </ToggleButton>
 
