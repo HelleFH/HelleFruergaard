@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+@media (min-width: 1000px) {
+  .modal {
+    --bs-modal-content: auto; /* Adjust width as needed */
+
+    --bs-modal-width: auto !important; /* Adjust width as needed */
+    --bs-modal-max-width: 1100px !important; /* Adjust width as needed */
+  
+    --bs-modal-padding: 1rem;
+    --bs-modal-margin: 0.5rem;
+    --bs-modal-color: #fff; /* Modal text color */
+  
+    /* Optional: Adjust other modal properties */
+    --bs-modal-background-color: #fff;
+    --bs-modal-border-width: 1px;
+    --bs-modal-border-color: rgba(0, 0, 0, 0.2);
+    --bs-modal-border-radius: 0.3rem;
+    --bs-modal-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+   --bs-modal-width: auto !important;
+        --bs-modal-max-width: 1100px !important;
+        --bs-modal-margin: 0rem !important;
+        
+        
+  }
+}
