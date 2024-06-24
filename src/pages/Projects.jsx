@@ -75,7 +75,7 @@ const Projects = () => {
               <ChevronLeft onClick={handlePrev}>
                 <img className='width-20' src={`my-portfolio/images/chevron.png`} alt="Previous" />
               </ChevronLeft>
-              <ModalImage src={`${process.env.PUBLIC_URL}${projects[selectedProjectIndex].images[0]}`} alt={projects[selectedProjectIndex].name} />
+              <ModalImage src={`{projects[selectedProjectIndex].images[0]}`} alt={projects[selectedProjectIndex].name} />
               <ChevronRight onClick={handleNext}>
                 <img className='width-20' src={`my-portfolio/images/chevron.png`} alt="Next" />
               </ChevronRight>
@@ -117,11 +117,20 @@ const ProjectsContainer = styled.section`
   margin-left: 1em;
   margin-right: 1em;
 
-  @media (min-width: 1000px) {
-    /* Grid view on desktop */
+  @media (min-width: 400px) and (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) and (max-width: 1050px) {
     flex-direction: row;
     flex-wrap: wrap;
-    grid-gap: 20px;
+    justify-content: center;
+  }
+
+  @media (min-width: 1051px) {
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 `;
@@ -132,8 +141,30 @@ const ProjectWrapper = styled.div`
   height: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  @media (min-width: 1000px) {
-    max-width: 300px;
+  @media (min-width: 400px) and (max-width: 767px) {
+    max-width: 100%;
+  }
+
+  @media (min-width: 768px) and (max-width: 1050px) {
+    max-width: 45%;
+  }
+
+  @media (min-width: 1051px) {
+    max-width: 350px;
+
+    &:nth-child(3) {
+      max-width: 500px;
+      min-width: 500px;
+      margin-bottom: 2em;
+    }
+    &:nth-child(2) {
+      max-width: 500px;
+      min-width: 400px;
+      margin-bottom: 2em;
+    }
+  }
+      @media (min-width: 1200px) {
+    max-width: 350px;
 
     &:nth-child(3) {
       max-width: 550px;
@@ -251,22 +282,11 @@ const Chevron = styled.div`
 
 const ChevronLeft = styled(Chevron)`
   left: 10px;
-
-  img {
-  width:20% !important;
-  max-width:5% !important;
-  transform: rotate(-90deg);
-  }
 `;
 
 const ChevronRight = styled(Chevron)`
   right: 10px;
-  img {
-  max-width:5% !important;
-  transform: rotate(90deg);
-  float:right;
-  }`
-;
+`;
 
 const ModalContent = styled.div`
   padding: 1rem;
@@ -282,6 +302,7 @@ const ButtonsContainer = styled.div`
   gap: 0.5em;
   align-items: center;
 `;
+
 
 const ProjectButton = styled.a`
   display: inline-block;
