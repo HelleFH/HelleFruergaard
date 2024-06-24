@@ -73,7 +73,7 @@ const Projects = () => {
             <ModalBody>
               <CloseButton onClick={handleClose}>&times;</CloseButton>
               <ChevronLeft onClick={handlePrev} />
-      <ModalImage src={`${process.env.PUBLIC_URL}${projects[selectedProjectIndex].images[0]}`} alt={projects[selectedProjectIndex].name} />
+      <ModalImage src={`my-portfolio${projects[selectedProjectIndex].images[0]}`} alt={projects[selectedProjectIndex].name} />
       <ChevronRight onClick={handleNext} />
               <div className='d-flex flex-column p-4 space-between'>
                 <ModalContent>
