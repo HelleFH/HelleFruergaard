@@ -105,15 +105,15 @@ const Navbar = () => {
   return (
     <StyledNavbar className="navbar navbar-light">
       <Link className="navbar-brand d-flex gap-3 align-items-center justify-content-center" to="/">
-      <NavbarBrand src={`my-portfolio/images/copenhagen.png`} />
+      <NavbarBrand src={`${process.env.PUBLIC_URL}/images/copenhagen.png`} />
       <NavbarName>Helle Fruergaard</NavbarName>
       </Link>
 
       <ToggleButton onClick={toggleNav}>
       <img
-         src={isNavOpen || isAnimating
-          ? `my-portfolio/images/x_icon.svg`
-          : `my-portfolio/images/nav_icon.svg`}
+        src={isNavOpen || isAnimating 
+          ? `$process.env.PUBLIC_URL}/images/x_icon.svg`
+          : `${process.env.PUBLIC_URL}/images/nav_icon.svg`}
         alt="Toggle navigation"
       />      </ToggleButton>
 
