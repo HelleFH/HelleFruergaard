@@ -73,12 +73,12 @@ const Projects = () => {
             <ModalBody>
               <CloseButton onClick={handleClose}>&times;</CloseButton>
               <ChevronLeft onClick={handlePrev}>
-                <img className='width-20' src={`./images/chevron.png`} alt="Previous" />
+                <img className='width-20' src={`my-portfolio/images/chevron.png`} alt="Previous" />
               </ChevronLeft>
               <ModalImage   src={`${projects[selectedProjectIndex].images[0]}`}
  alt={projects[selectedProjectIndex].name} />
               <ChevronRight onClick={handleNext}>
-                <img className='width-20' src={`./images/chevron.png`} alt="Next" />
+                <img className='width-20' src={`my-portfolio/images/chevron.png`} alt="Next" />
               </ChevronRight>
               <div className='d-flex flex-column p-4 justify-content-between'>
                 <ModalContent>
@@ -238,7 +238,7 @@ const CustomModal = styled(Modal)`
     overflow: hidden;
     margin:0 auto;
   }
-     p {min-height:160px;padding:0em 0em;}   
+     p {min-height:210px;padding:1em 2em;}   
 
     @media (min-width: 1200px) {
     .modal-dialog { 
