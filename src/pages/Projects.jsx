@@ -13,7 +13,7 @@ const Projects = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
 
   useEffect(() => {
-    // Simulating fetching projects data
+
     setProjects(projectsData);
   }, []);
 
@@ -37,7 +37,7 @@ const Projects = () => {
 
   const overlayColors = [
     '#ea766a',
-    ' #a0c4a3',
+    '#a0c4a3',
     '#5dc6aa',
     '#da9567',
     '#cab0a6',
