@@ -15,7 +15,7 @@ const StyledNavbar = styled.nav`
   color:white !important;
   margin: auto;
   margin-left:1em;
-  margin-right:3em;
+  margin-right:1em;
   padding-top:3.5em;
 
 `;
@@ -23,15 +23,16 @@ const StyledNavbar = styled.nav`
 const NavbarBrand = styled.img`
     width: 2.5em;
     height: 2em;  
-    border: solid black 2px;
+    border: solid slategray 2px;
 `;
 
 const NavbarName = styled.div`
   font-weight: 700;
   color: #333 !important;
   font-size: 14px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
+  margin-left:-0.5em;
 `;
 
 const ToggleButton = styled.a`
@@ -40,6 +41,7 @@ const ToggleButton = styled.a`
   img {
     width: 32px;
     height: 32px;
+    margin-right:2em;
   }
 `;
 
@@ -106,13 +108,13 @@ const Navbar = () => {
     <StyledNavbar className="navbar navbar-light">
       <Link className="navbar-brand d-flex gap-3 align-items-center justify-content-center" to="/">
       <NavbarBrand src={`${process.env.PUBLIC_URL}/images/copenhagen.png`} />
-      <NavbarName>Helle Fruergaard</NavbarName>
+      <NavbarName>Helle</NavbarName>
       </Link>
 
       <ToggleButton onClick={toggleNav}>
       <img
         src={isNavOpen || isAnimating 
-          ? `$process.env.PUBLIC_URL}/images/x_icon.svg`
+          ? `${process.env.PUBLIC_URL}/images/x_icon.svg`
           : `${process.env.PUBLIC_URL}/images/nav_icon.svg`}
         alt="Toggle navigation"
       />      </ToggleButton>

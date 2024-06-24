@@ -130,7 +130,7 @@ const ProjectWrapper = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   @media (min-width: 1000px) {
-    max-width: 360px;
+    max-width: 300px;
 
     &:nth-child(3) {
       max-width: 550px;
