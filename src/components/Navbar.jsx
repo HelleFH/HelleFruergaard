@@ -105,13 +105,17 @@ const Navbar = () => {
   return (
     <StyledNavbar className="navbar navbar-light">
       <Link className="navbar-brand d-flex gap-3 align-items-center justify-content-center" to="/">
-        <NavbarBrand src="/images/copenhagen.png" />
-        <NavbarName>Helle Fruergaard</NavbarName>
+      <NavbarBrand src={`${process.env.PUBLIC_URL}/images/copenhagen.png`} />
+      <NavbarName>Helle Fruergaard</NavbarName>
       </Link>
 
       <ToggleButton onClick={toggleNav}>
-        <img src={isNavOpen || isAnimating ? "/images/x_icon.svg" : "/images/nav_icon.svg"} alt="Toggle navigation" />
-      </ToggleButton>
+      <img
+        src={isNavOpen || isAnimating 
+          ? `${process.env.PUBLIC_URL}/images/x_icon.svg`
+          : `${process.env.PUBLIC_URL}/images/nav_icon.svg`}
+        alt="Toggle navigation"
+      />      </ToggleButton>
 
       <NavLinksContainer className={`${isNavOpen ? 'open' : ''} ${isAnimating ? 'close' : ''}`}>
         <MenuHeader className='mt-4'>Menu</MenuHeader>

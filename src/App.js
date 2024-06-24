@@ -16,9 +16,10 @@ const App = () => {
 
         <Navbar />
         <Routes>
+        <Route path="/" element={<Projects />} />
+
           <Route path="/projects" element={<Projects />} />
           <Route path="/aboutme" element={<AboutMe />} />
-          <Route path="/projects/:id" element={<ProjectDetails />} /> {/* Use element instead of component */}
           {/* Add more routes as needed */}
         </Routes>
       </div>

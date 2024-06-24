@@ -7,23 +7,31 @@ import NavbarComponent from '../components/Navbar';
 const AboutMe = () => {
   return (
     <div>
-      <AboutMeWrapper>
+      <AboutMeWrapper >
         <AboutMeContent className='pt-4 mt-4'>
-          <div>
-            <ProfileImage src="/images/420642903_938437470856991_1642067799514294683_n.jpg" alt="Profile" />
-            <ContactInfo>
-              <div className="d-flex flex-direction-row mt-3">
+          <div className='d-flex flex-column justify-center gap-2'>
+            <ProfileImage src={`${process.env.PUBLIC_URL}/images/420642903_938437470856991_1642067799514294683_n.jpg`}
+ alt="Profile" />
+              <div className="d-flex flex-direction-row  gap-2 mt-3">
                 <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
                 <h6 className="font-weight-bold">Hellefruergaardh@gmail.com</h6>
               </div>
-              <div className="d-flex flex-direction-row mt-2">
+              <div className="d-flex flex-direction-row gap-2">
                 <FontAwesomeIcon icon={faPhone} className="mr-2" />
                 <h6 className="font-weight-bold">+45 29664077</h6>
               </div>
-            </ContactInfo>
+              
+            <div className="d-flex mt-2 flex-row gap-4 justify-content-center">
+            <a className="nav-link" href="https://www.linkedin.com/in/your-linkedin-profile/" >
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+            <a className="nav-link" href="https://github.com/your-github-profile/" >
+              <i className="fab fa-github"></i>
+            </a>
+            </div>
           </div>
-          <AboutInfo>
-            <h3 className="mt-4">About Me</h3>
+          <AboutInfo >
+            <h3 >About Me</h3>
             <p>
               Hi, I'm Helle, a web developer based in Copenhagen. I have a passion for building websites and apps,
               especially with Vue.js and React. JavaScript is my main language, and I love diving into new frameworks
@@ -103,13 +111,27 @@ export default AboutMe;
 // Styled Components
 const AboutMeWrapper = styled.div`
   max-width: 1000px;
-  padding: 20px;
   margin: 0 auto;
+  padding:0 1.2em;
+
+   @media (min-width: 1000px) {
+    flex-direction:row;
+    padding:0em;
+
+  }
+
 `;
 
 const AboutMeContent = styled.div`
   display: flex;
   flex-wrap: wrap;
+  flex-direction:column;
+  gap:2em;
+    @media (min-width: 1000px) {
+    flex-direction:row;
+    gap:2em;
+  }
+
 `;
 
 const ProfileImage = styled.img`
@@ -126,7 +148,6 @@ const ContactInfo = styled.div`
 
 const AboutInfo = styled.div`
   flex: 1;
-  padding-left: 20px;
 
   h3 {
     border-bottom: 1px solid #ccc;

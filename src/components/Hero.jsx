@@ -10,7 +10,7 @@ const HeroSection = styled.div`
   text-align: center;
   overflow: hidden;
   height: 400px;
-  background-image: url('/images/bg.png');
+  background-image: url('./images/bg.png');
   background-repeat: no-repeat;
   background-size: cover;
 

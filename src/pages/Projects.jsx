@@ -72,9 +72,9 @@ const Projects = () => {
           <CustomModalDialog>
             <ModalBody>
               <CloseButton onClick={handleClose}>&times;</CloseButton>
-              <ChevronLeft onClick={handlePrev}><img className='width-20' src="/images/chevron.png" /></ChevronLeft>
-              <ModalImage src={projects[selectedProjectIndex].images[0]} alt={projects[selectedProjectIndex].name} />
-              <ChevronRight onClick={handleNext}><img className='width-20' src="/images/chevron.png" /></ChevronRight>
+              <ChevronLeft onClick={handlePrev} />
+      <ModalImage src={`${process.env.PUBLIC_URL}${projects[selectedProjectIndex].images[0]}`} alt={projects[selectedProjectIndex].name} />
+      <ChevronRight onClick={handleNext} />
               <div className='d-flex flex-column p-4 space-between'>
                 <ModalContent>
                   <ModalTitle className="mt-4 mb-4">{projects[selectedProjectIndex].name}</ModalTitle>
@@ -170,7 +170,7 @@ const ImageWrapper = styled.div`
 const Image = styled.img`
   width: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease; 
+  transition: transform 0.8s ease; 
  
   }
 `;
@@ -202,7 +202,7 @@ const OverlayText = styled.div`
   text-align: center;
   letter-spacing: 5px;
   
-  transition: opacity 0.5s ease;
+  transition: opacity 0.6s ease;
 `;
 
 const CustomModal = styled(Modal)`
