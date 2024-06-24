@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import projects from '../projects'; // Assuming projects data is correctly imported
+import projects from '../projects'; 
 import Hero from '../components/Hero';
 
 const ProjectDetails = () => {
@@ -12,7 +12,7 @@ const ProjectDetails = () => {
   useEffect(() => {
     const fetchProjectDetails = async () => {
       try {
-        // Simulate fetching project details
+
         const foundProject = projects.find(proj => proj.id.toString() === id);
 
         if (foundProject) {

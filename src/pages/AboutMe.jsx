@@ -10,7 +10,7 @@ const AboutMe = () => {
       <AboutMeWrapper >
         <AboutMeContent className='pt-4 mt-4'>
           <div className='d-flex flex-column justify-center gap-2'>
-            <ProfileImage src={`my-portfolio/images/420642903_938437470856991_1642067799514294683_n.jpg`}
+            <ProfileImage src={`./images/420642903_938437470856991_1642067799514294683_n.jpg`}
  alt="Profile" />
               <div className="d-flex flex-direction-row  gap-2 mt-3">
                 <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
@@ -21,7 +21,7 @@ const AboutMe = () => {
                 <h6 className="font-weight-bold">+45 29664077</h6>
               </div>
               
-            <div className="d-flex mt-2 flex-row gap-4 justify-content-center">
+            <div className="d-flex mt-2 flex-row gap-4">
             <a className="nav-link" href="https://www.linkedin.com/in/your-linkedin-profile/" >
               <i className="fab fa-linkedin-in"></i>
             </a>
@@ -108,7 +108,6 @@ const AboutMe = () => {
 
 export default AboutMe;
 
-// Styled Components
 const AboutMeWrapper = styled.div`
   max-width: 1000px;
   margin: 0 auto;
