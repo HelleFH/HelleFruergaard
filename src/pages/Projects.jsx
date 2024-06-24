@@ -72,9 +72,13 @@ const Projects = () => {
           <CustomModalDialog>
             <ModalBody>
               <CloseButton onClick={handleClose}>&times;</CloseButton>
-              <ChevronLeft onClick={handlePrev} />
-      <ModalImage src={`my-portfolio${projects[selectedProjectIndex].images[0]}`} alt={projects[selectedProjectIndex].name} />
-      <ChevronRight onClick={handleNext} />
+              <ChevronLeft onClick={handlePrev}>
+                <img className='width-20' src={`my-portfolio/images/chevron.png`} alt="Previous" />
+              </ChevronLeft>
+              <ModalImage src={`${process.env.PUBLIC_URL}${projects[selectedProjectIndex].images[0]}`} alt={projects[selectedProjectIndex].name} />
+              <ChevronRight onClick={handleNext}>
+                <img className='width-20' src={`my-portfolio/images/chevron.png`} alt="Next" />
+              </ChevronRight>
               <div className='d-flex flex-column p-4 space-between'>
                 <ModalContent>
                   <ModalTitle className="mt-4 mb-4">{projects[selectedProjectIndex].name}</ModalTitle>
@@ -98,7 +102,6 @@ const Projects = () => {
                 </ButtonsContainer>
               </div>
             </ModalBody>
-
           </CustomModalDialog>
         </CustomModal>
       )}
@@ -136,21 +139,11 @@ const ProjectWrapper = styled.div`
       max-width: 550px;
       min-width: 500px;
       margin-bottom: 2em;
-        min-height:400px !important;
-      flex: 1 1 100px;
-
-      img {        
-      min-height:400px !important;
-}
     }
     &:nth-child(2) {
-      flex: 100px 1 1;
       max-width: 550px;
       min-width: 400px;
-        min-height:400px !important;
       margin-bottom: 2em;
-          img {        min-height:400px !important;
-}
     }
   }
 `;
@@ -170,8 +163,10 @@ const ImageWrapper = styled.div`
 const Image = styled.img`
   width: 100%;
   object-fit: cover;
-  transition: transform 0.8s ease; 
- 
+  transition: transform 0.8s ease;
+
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 
@@ -201,7 +196,6 @@ const OverlayText = styled.div`
   font-weight: bold;
   text-align: center;
   letter-spacing: 5px;
-  
   transition: opacity 0.6s ease;
 `;
 
@@ -209,32 +203,6 @@ const CustomModal = styled(Modal)`
   .modal-content {
     border-radius: 0px !important;
     overflow: hidden;
-    margin:0 auto;
-    border:none;
-    width:fit-content;
-
-p    {
-    
-    min-height:145px;}
-    }
-  
-
-    img{
-    max-width:500px;
-    max-height:auto;
-    object-fit:cover;
-    }
-   @media (min-width: 1200px) {
-
-   .modal-content
-    p
-    {padding-left:2em; 
-    padding-right:2em;
-    min-height:150px;}
-    }
-      
-  }
-   
   }
 `;
 
@@ -255,8 +223,6 @@ const ModalBody = styled(Modal.Body)`
   border-radius: 0px !important;
   position: relative;
 
-
-
   @media (min-width: 1000px) {
     display: flex;
     flex-direction: row;
@@ -267,8 +233,6 @@ const ModalBody = styled(Modal.Body)`
 const ModalImage = styled.img`
   width: 100%;
   height: auto;
-
-
 `;
 
 const Chevron = styled.div`
@@ -301,26 +265,15 @@ const ChevronRight = styled(Chevron)`
   max-width:5% !important;
   transform: rotate(90deg);
   float:right;
-  }
-`;
+  }`
+;
+
 const ModalContent = styled.div`
   padding: 1rem;
-  border-radius: 0px !important;
-  border:none;
-
-  @media (min-width: 1000px) {
-    margin: 0 auto !important;
-    max-width:400px;
-    max-height:400px;
-  }
 `;
 
 const ModalTitle = styled.h2`
   margin-bottom: 1rem;
-`;
-
-const ModalFooter = styled(Modal.Footer)`
-  border-top: none;
 `;
 
 const ButtonsContainer = styled.div`
@@ -328,11 +281,9 @@ const ButtonsContainer = styled.div`
   justify-content: flex-end;
   gap: 0.5em;
   align-items: center;
-  padding:0 1em 1em 1em;
 `;
 
 const ProjectButton = styled.a`
-  position: relative;
   display: inline-block;
   background-color: #fff;
   color: #333 !important;
