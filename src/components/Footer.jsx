@@ -9,7 +9,7 @@ const Footer = () => {
       <FooterItem>Developed by Helle Fruergaard</FooterItem>
       <FooterItem>&copy; 2024 </FooterItem>
       <FooterItem>
-        <ContactInfo className='d-flex gap-3 flex-column mb-3'>
+        <ContactInfo className='d-flex gap-3 flex-column'>
           <h3>Contact Info</h3>
           <div>
             <span>Call:</span> +45 29664077
@@ -99,7 +99,7 @@ const ContactInfo = styled.div`
 
 const SocialLinks = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
 
@@ -118,6 +118,11 @@ svg {
   }
 
   
+    @media (min-width: 1000px)  {
+
+    justify-content: flex-start;
+  
+}
 `;
 
 export default Footer;

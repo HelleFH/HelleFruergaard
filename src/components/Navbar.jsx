@@ -70,7 +70,7 @@ const NavLinksContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 2em;
-  padding-top:4em;
+  padding-top:2em;
   z-index: 1000;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
@@ -134,9 +134,9 @@ const Navbar = () => {
       />      </ToggleButton>
 
       <NavLinksContainer className={`${isNavOpen ? 'open' : ''} ${isAnimating ? 'close' : ''}`}>
-        <MenuHeader className='mt-4'>Menu</MenuHeader>
+        <MenuHeader className='mt-4 mb-4'>Menu</MenuHeader>
         {isNavOpen && <CloseButton onClick={toggleNav}>&times;</CloseButton>}
-        <ul className="navbar-nav ml-auto">
+        <ul className="navbar-nav ml-auto d-flex gap-3">
           <li className="nav-item text-light">
             <Link className="nav-link" to="my-portfolio/aboutme" onClick={toggleNav}>About Me</Link>
           </li>
