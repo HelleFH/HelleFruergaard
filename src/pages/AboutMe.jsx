@@ -12,6 +12,14 @@ const AboutMe = () => {
           <div className='d-flex flex-column justify-center gap-2'>
             <ProfileImage src={`./images/420642903_938437470856991_1642067799514294683_n.jpg`}
  alt="Profile" />
+     <div className="d-flex mt-2 flex-row justify-content-center gap-4">
+            <a className="nav-link" href="https://www.linkedin.com/in/your-linkedin-profile/" >
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+            <a className="nav-link" href="https://github.com/your-github-profile/" >
+              <i className="fab fa-github"></i>
+            </a>
+            </div>
               <div className="d-flex flex-direction-row  gap-2 mt-3">
                 <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
                 <h6 className="font-weight-bold">Hellefruergaardh@gmail.com</h6>
@@ -21,14 +29,7 @@ const AboutMe = () => {
                 <h6 className="font-weight-bold">+45 29664077</h6>
               </div>
               
-            <div className="d-flex mt-2 flex-row gap-4">
-            <a className="nav-link" href="https://www.linkedin.com/in/your-linkedin-profile/" >
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-            <a className="nav-link" href="https://github.com/your-github-profile/" >
-              <i className="fab fa-github"></i>
-            </a>
-            </div>
+        
           </div>
           <AboutInfo >
             <h3 >About Me</h3>
