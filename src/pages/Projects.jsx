@@ -186,8 +186,11 @@ const ProjectsContainer = styled.section`
   align-items: center;
   gap: 1em;
   max-width:1175px;
+ margin-left:1em;
+  margin-right:1em;  
   margin:0 auto;
   margin-bottom:2em;
+ 
 
   @media (min-width: 400px) and (max-width: 767px) {
     flex-direction: column;
