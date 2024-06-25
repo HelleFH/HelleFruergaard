@@ -86,6 +86,11 @@ const NavLinksContainer = styled.div`
   &.close {
     transform: translateX(100%);
   }
+
+     @media (min-width: 1200px) {
+    max-width:400px;
+
+  }
 `;
 
 const CloseButton = styled.button`
