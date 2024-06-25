@@ -237,6 +237,7 @@ const CustomModal = styled(Modal)`
   width:95vw;
     border-radius: 0px !important;
     overflow: hidden;
+    border:none !important;
     margin:0 auto;
   }
      p {min-height:210px;padding:0em;}   
