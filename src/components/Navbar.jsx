@@ -17,6 +17,8 @@ const StyledNavbar = styled.nav`
   margin-left:1em;
   margin-right:1em;
   padding-top:3.5em;
+  max-width:1175px;
+  margin:0 auto;
   
 
 
