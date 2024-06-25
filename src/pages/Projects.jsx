@@ -185,12 +185,12 @@ const ProjectsContainer = styled.section`
   flex-direction: column;
   align-items: center;
   gap: 1em;
-  max-width:1175px;
- margin-left:1em;
-  margin-right:1em;  
-  margin:0 auto;
-  margin-bottom:2em;
  
+  margin-bottom:2em;
+  margin-left:1em;
+  margin-right:1em; 
+  
+
 
   @media (min-width: 400px) and (max-width: 767px) {
     flex-direction: column;
@@ -201,12 +201,14 @@ const ProjectsContainer = styled.section`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+
   }
 
   @media (min-width: 1051px) {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+
   }
 `;
 
