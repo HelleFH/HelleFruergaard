@@ -234,7 +234,6 @@ const OverlayText = styled.div`
 const CustomModal = styled(Modal)`
   .modal-content {
   max-width:1000px;
-  width:95vw;
     border-radius: 0px !important;
     overflow: hidden;
     border:none !important;
