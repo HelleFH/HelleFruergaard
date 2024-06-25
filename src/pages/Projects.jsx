@@ -98,7 +98,7 @@ const Projects = () => {
                 <ModalContent>
                   <ModalTitle className="mb-4">{projects[selectedProjectIndex].name}</ModalTitle>
                   <h5>{projects[selectedProjectIndex].descriptionHeader}</h5>
-                  <p>{projects[selectedProjectIndex].description}</p>
+                  <ProjectDescription>{projects[selectedProjectIndex].description}</ProjectDescription>
                 </ModalContent>
                 {projects[selectedProjectIndex].username && (
                   <>
@@ -150,17 +150,27 @@ const Projects = () => {
 export default Projects;
 
 const LoginButton = styled.a`
-margin-bottom:1em;
-  color: #333;
-  border: none;
-  cursor: pointer;
-  font-weight:500;
-  font-size:14px;
+
+position: absolute;
+margin-bottom: 1em;
+color: #333;
+border: none;
+cursor: pointer;
+font-weight: 500;
+font-size: 14px;
+bottom: 60px;
+
 
   &:hover {
     transform:scale(1.02);
   }
+
+    @media (min-width: 1050px) {
+    position:relative;
+    bottom:0;
+  }
 `;
+
 
 const LoginDetailsContainer = styled.div`
 
@@ -274,6 +284,8 @@ const Image = styled.img`
   }
 `;
 
+
+
 const Overlay = styled.div`
   position: absolute;
   top: 0;
@@ -334,7 +346,7 @@ const CustomModalDialog = styled(Modal.Dialog)`
 
   @media (min-width: 1200px) {
     .modal-dialog { 
-      max-width: 1000px !important; /* Adjust max-width for larger screens */
+      max-width: 1000px !important; 
     }
   }
 `;
@@ -355,6 +367,14 @@ const ModalImage = styled.img`
   max-width: 600px;
   width: 100%;
   height: auto;
+`;
+
+const ProjectDescription = styled.p`
+  height:180px;
+
+    @media (min-width: 1050px) {
+    height:fit-content;
+  }
 `;
 
 const Chevron = styled.div`

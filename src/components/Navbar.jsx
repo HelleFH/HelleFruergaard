@@ -96,10 +96,7 @@ const CloseButton = styled.button`
   color: black;
   cursor: pointer;
   font-weight:200;
-      @media (min-width: 1000px) {
-  display:none;
-
-  }
+   
 
 `;
 const MenuHeader = styled.h1`
