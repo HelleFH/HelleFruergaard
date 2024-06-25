@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
 import projectsData from '../projects'; 
 import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,7 +8,6 @@ import Footer from '../components/Footer';
 
 
 const Projects = () => {
-  const navigate = useNavigate();
 
   const [projects, setProjects] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -188,7 +186,7 @@ const ProjectsContainer = styled.section`
   gap: 1em;
   max-width:1175px;
   margin:0 auto;
-  margin-bottom:2em;
+  margin-bottom:4em;
  
 
   @media (min-width: 400px) and (max-width: 767px) {

@@ -42,10 +42,18 @@ const NavbarName = styled.div`
 const ToggleButton = styled.a`
   margin-left: auto;
   cursor: pointer;
+  &:hover {
+      transform:scale(1.1)
+    }
+
+
   img {
     width: 32px;
     height: 32px;
     margin-right:2em;
+
+
+
   }
 `;
 
