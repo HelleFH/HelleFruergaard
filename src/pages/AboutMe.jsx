@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
-import NavbarComponent from '../components/Navbar';
-
+import Footer from '../components/Footer';
 const AboutMe = () => {
   return (
     <div>
@@ -103,6 +102,8 @@ const AboutMe = () => {
           </AboutInfo>
         </AboutMeContent>
       </AboutMeWrapper>
+      <Footer />
+
     </div>
   );
 };

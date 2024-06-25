@@ -61,6 +61,7 @@ const Projects = () => {
   return (
     <>
       <ProjectsContainer className="projects">
+        
         <ProjectIntro className="font-weight-bold lh-base mt-5">
           I'm a web developer based in Copenhagen,
           driven by curiosity and passionate about creating engaging websites and apps.
@@ -184,8 +185,9 @@ const ProjectsContainer = styled.section`
   flex-direction: column;
   align-items: center;
   gap: 1em;
-  margin-left: 1em;
-  margin-right: 1em;
+  max-width:1175px;
+  margin:0 auto;
+  margin-bottom:2em;
 
   @media (min-width: 400px) and (max-width: 767px) {
     flex-direction: column;
