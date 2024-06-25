@@ -12,6 +12,7 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
+  const [showLoginDetails, setShowLoginDetails] = useState(false);
 
   useEffect(() => {
     setProjects(projectsData);
@@ -25,16 +26,18 @@ const Projects = () => {
   const handleClose = () => {
     setShowModal(false);
     setSelectedProjectIndex(null);
+    setShowLoginDetails(false);
   };
 
   const handleNext = () => {
     setSelectedProjectIndex((prevIndex) => (prevIndex + 1) % projects.length);
+    setShowLoginDetails(false);
   };
 
   const handlePrev = () => {
     setSelectedProjectIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
+    setShowLoginDetails(false);
   };
-
 
   const handlers = useSwipeable({
     onSwipedLeft: () => handleNext(),
@@ -96,16 +99,25 @@ const Projects = () => {
                   <p>{projects[selectedProjectIndex].description}</p>
                 </ModalContent>
                 {projects[selectedProjectIndex].username && (
-                  <LoginDetails>
-                    <strong>User:</strong> {projects[selectedProjectIndex].username}<br />
-                    <strong>Password:</strong> {projects[selectedProjectIndex].password}
-                  </LoginDetails>
-                )}
-                {projects[selectedProjectIndex].adminUsername && (
-                  <AdminLoginDetails>
-                    <strong>Admin:</strong> {projects[selectedProjectIndex].adminUsername}<br />
-                    <strong>Password:</strong> {projects[selectedProjectIndex].adminPassword}
-                  </AdminLoginDetails>
+                  <>
+                    <LoginButton onClick={() => setShowLoginDetails(!showLoginDetails)}>
+                      {showLoginDetails ? 'Hide Login Details' : 'Show Login Details'}
+                    </LoginButton>
+                    {showLoginDetails && (
+                      <LoginDetailsContainer>
+                        <LoginDetails>
+                          <strong>User:</strong> {projects[selectedProjectIndex].username}<br />
+                          <strong>Password:</strong> {projects[selectedProjectIndex].password}
+                        </LoginDetails>
+                        {projects[selectedProjectIndex].adminUsername && (
+                          <AdminLoginDetails>
+                            <strong>Admin:</strong> {projects[selectedProjectIndex].adminUsername}<br />
+                            <strong>Password:</strong> {projects[selectedProjectIndex].adminPassword}
+                          </AdminLoginDetails>
+                        )}
+                      </LoginDetailsContainer>
+                    )}
+                  </>
                 )}
                 <ButtonsContainer>
                   <ProjectButton
@@ -131,6 +143,37 @@ const Projects = () => {
     </>
   );
 };
+
+
+export default Projects;
+
+const LoginButton = styled.a`
+margin-bottom:1em;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  font-weight:500;
+  font-size:14px;
+
+  &:hover {
+    transform:scale(1.02);
+  }
+`;
+
+const LoginDetailsContainer = styled.div`
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  margin-top: 1em;
+  display:flex;
+  flex-direction:column;
+  position:absolute;
+  bottom:25%;
+  background-color:white;
+  border:1px solid slategray;
+padding:0.5em;
+  gap:0.5em;
+  border-radius:3px;
+  align-items:flex-start;
+`;
 
 
 const ProjectsContainer = styled.section`
@@ -262,14 +305,12 @@ const CustomModal = styled(Modal)`
     margin: 0 auto;
   }
   p {
-    min-height: 250px;
     padding: 0em;
   }   
 
   @media (min-width: 1200px) {
     .modal-dialog { 
       p {
-        min-height: 260px;
         padding-right: 3em;
       }   
     }
@@ -342,7 +383,6 @@ const ChevronRight = styled(Chevron)`
 `;
 
 const ModalContent = styled.div`
-  padding: 1rem;
   max-width: 500px;
   position: relative;
 `;
@@ -354,21 +394,18 @@ const ModalTitle = styled.h2`
 `;
 
 const LoginDetails = styled.div
-`padding-left:1em;
-
-  position: absolute;
-  bottom: 80px;
+`
   font-size: 0.8em;
   color: #333;
+  z-index:9999;
 `;
 
 const AdminLoginDetails = styled.div`
-padding-left:1em;
-  position: absolute;
-  bottom: 130px;
  
   font-size: 0.8em;
   color: #333;
+    z-index:9999;
+
 `;
 
 const ButtonsContainer = styled.div`
@@ -470,4 +507,3 @@ const GithubButton = styled.a`
   }
 `;
 
-export default Projects;
