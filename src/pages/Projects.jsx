@@ -165,6 +165,7 @@ margin-bottom:1em;
 `;
 
 const LoginDetailsContainer = styled.div`
+
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
   margin-top: 1em;
   display:flex;
@@ -305,6 +306,8 @@ const OverlayText = styled.div`
 `;
 
 const CustomModal = styled(Modal)`
+    transition: transform 0.3s ease-out; 
+
   .modal-content {
     max-width: 1000px;
     border-radius: 0px !important;
@@ -325,8 +328,10 @@ const CustomModal = styled(Modal)`
 `;
 
 const CustomModalDialog = styled(Modal.Dialog)`
+    transition: transform 0.3s ease-out; 
+
   .modal-dialog {
-    max-width: 800px !important; /* Set a custom max-width */
+    max-width: 800px !important; 
   }
 
   @media (min-width: 1200px) {

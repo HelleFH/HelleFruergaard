@@ -27,7 +27,7 @@ const StyledNavbar = styled.nav`
 const NavbarBrand = styled.img`
     width: 2.5em;
     height: 2em;  
-    border: solid slategray 2px;
+    border: solid #4D4D4D 3px;
 `;
 
 const NavbarName = styled.div`
