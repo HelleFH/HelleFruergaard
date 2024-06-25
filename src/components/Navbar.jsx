@@ -19,6 +19,9 @@ const StyledNavbar = styled.nav`
   padding-top:3.5em;
   
 
+
+   
+  }
 `;
 
 const NavbarBrand = styled.img`
@@ -85,11 +88,11 @@ const CloseButton = styled.button`
   color: black;
   cursor: pointer;
   font-weight:200;
-   
-  @media min-width: 1200px {
-  display:none !important;
-   
+      @media (min-width: 1000px) {
+  display:none;
+
   }
+
 `;
 const MenuHeader = styled.h1`
 font-weight:900;
