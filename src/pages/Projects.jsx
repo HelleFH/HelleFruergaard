@@ -55,6 +55,10 @@ const Projects = () => {
   return (
     <>
       <ProjectsContainer className="projects">
+      <ProjectIntro className="font-weight-bold lh-base mt-5">
+      I'm a dedicated web developer with a 
+      passion for crafting dynamic and user-friendly websites and applications. 
+        </ProjectIntro>
         {/* Render project thumbnails */}
         {projects.map((project, index) => (
           <ProjectWrapper key={project.id} large={(index === 0 || index === 1)}>
@@ -247,6 +251,12 @@ const ModalBody = styled(Modal.Body)`
     width: 100% !important;
   }
 `;
+const ProjectIntro = styled.h5`
+  font-weight: 700 !important;
+  margin-bottom: 2.5em;
+  max-width: 900px;
+`;
+
 
 const ModalImage = styled.img`
   max-width: 600px;
