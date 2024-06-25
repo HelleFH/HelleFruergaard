@@ -255,6 +255,7 @@ const ProjectWrapper = styled.div`
 const ProjectIntro = styled.h5`
   font-weight: 700 !important;
   margin-bottom: 2.5em;
+  padding-left:0.5em;
   max-width: 900px;
 `;
 
