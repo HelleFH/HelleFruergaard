@@ -13,10 +13,10 @@ const AboutMe = () => {
             <ProfileImage src={`./images/420642903_938437470856991_1642067799514294683_n.jpg`}
  alt="Profile" />
      <div className="d-flex mt-2 flex-row justify-content-center gap-3">
-            <a className="nav-link" href="https://www.linkedin.com/in/your-linkedin-profile/" >
+            <a className="nav-link" href="https://www.linkedin.com/in/helle-fruergaard-577763112/" >
               <i className="fab fa-linkedin-in"></i>
             </a>
-            <a className="nav-link" href="https://github.com/your-github-profile/" >
+            <a className="nav-link" href="https://github.com/HelleFH/" >
               <i className="fab fa-github"></i>
             </a>
             </div>

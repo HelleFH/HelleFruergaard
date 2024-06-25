@@ -139,12 +139,12 @@ const Navbar = () => {
             <Link className="nav-link" to="my-portfolio/projects" onClick={toggleNav}>Projects</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="https://www.linkedin.com/in/your-linkedin-profile/" onClick={toggleNav}>
-              <i className="fab fa-linkedin-in"></i>
+          <a className="nav-link" href="https://www.linkedin.com/in/helle-fruergaard-577763112/" >
+          <i className="fab fa-linkedin-in"></i>
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="https://github.com/your-github-profile/" onClick={toggleNav}>
+            <a className="nav-link" href="https://github.com/HelleFH/" onClick={toggleNav}>
               <i className="fab fa-github"></i>
             </a>
           </li>

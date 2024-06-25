@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import projectsData from '../projects'; // Assuming projects data is imported from a file
 import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useSwipeable } from 'react-swipeable'; // Import useSwipeable hook
 
 const Projects = () => {
   const navigate = useNavigate();
@@ -34,6 +35,11 @@ const Projects = () => {
     setSelectedProjectIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
   };
 
+  // Swipe gestures setup
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrev(),
+  });
   const overlayColors = [
     '#ea766a',
     '#a0c4a3',
@@ -45,19 +51,14 @@ const Projects = () => {
     '#ddd173',
     '#9a99e3',
   ];
-
   return (
     <>
       <ProjectsContainer className="projects">
-        <ProjectIntro className="font-weight-bold lh-base mt-5">
-          I'm a web developer based in Copenhagen,
-          driven by curiosity and passionate about creating engaging websites and apps.
-        </ProjectIntro>
-
+        {/* Render project thumbnails */}
         {projects.map((project, index) => (
           <ProjectWrapper key={project.id} large={(index === 0 || index === 1)}>
             <ImageWrapper onClick={() => handleImageClick(index)}>
-              <Image src={project.images[0]} alt={project.name} />
+              <Image src={project.images[0]} alt={project.name} {...handlers} />
               <Overlay className="overlay" color={overlayColors[index % overlayColors.length]}>
                 <OverlayText className="text-uppercase">{project.name}</OverlayText>
               </Overlay>
@@ -66,6 +67,7 @@ const Projects = () => {
         ))}
       </ProjectsContainer>
 
+      {/* Modal to display full project details */}
       {selectedProjectIndex !== null && (
         <CustomModal show={showModal} onHide={handleClose} centered>
           <CustomModalDialog>
@@ -74,8 +76,11 @@ const Projects = () => {
               <ChevronLeft onClick={handlePrev}>
                 <img className='width-20' src={`./images/chevron.png`} alt="Previous" />
               </ChevronLeft>
-              <ModalImage src={`${projects[selectedProjectIndex].images[0]}`}
-                alt={projects[selectedProjectIndex].name} />
+              <ModalImage
+                src={`${projects[selectedProjectIndex].images[0]}`}
+                alt={projects[selectedProjectIndex].name}
+                {...handlers}
+              />
               <ChevronRight onClick={handleNext}>
                 <img className='width-20' src={`./images/chevron.png`} alt="Next" />
               </ChevronRight>
@@ -121,6 +126,8 @@ const Projects = () => {
     </>
   );
 };
+
+
 
 const ProjectsContainer = styled.section`
   display: flex;
@@ -246,20 +253,19 @@ const OverlayText = styled.div`
 const CustomModal = styled(Modal)`
   .modal-content {
     max-width: 1000px;
-    width: 95vw;
     border-radius: 0px !important;
     overflow: hidden;
     margin: 0 auto;
   }
   p {
-    min-height: 210px;
+    min-height: 250px;
     padding: 0em;
   }   
 
   @media (min-width: 1200px) {
     .modal-dialog { 
       p {
-        min-height: 210px;
+        min-height: 260px;
         padding-right: 3em;
       }   
     }
@@ -301,8 +307,13 @@ const Chevron = styled.div`
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  width: 40px;
+  width: 20px;
+  height: 20px;
+
+    @media (min-width: 1050px) {
+    width: 40px;
   height: 40px;
+  }
 
   img {
     max-width: 100%;
@@ -313,7 +324,6 @@ const Chevron = styled.div`
 const ChevronLeft = styled(Chevron)`
   left: 10px;
   img {
-    max-width: 5% !important;
     transform: rotate(-90deg);
     float: left;
   }
@@ -322,7 +332,6 @@ const ChevronLeft = styled(Chevron)`
 const ChevronRight = styled(Chevron)`
   right: 10px;
   img {
-    max-width: 5% !important;
     transform: rotate(90deg);
     float: right;
   }
