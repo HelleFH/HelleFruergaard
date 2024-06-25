@@ -9,10 +9,10 @@ const AboutMe = () => {
     <div>
       <AboutMeWrapper >
         <AboutMeContent className='pt-4 mt-4'>
-          <div className='d-flex flex-column justify-center gap-2'>
+          <div className='d-flex flex-column align-items-center gap-2'>
             <ProfileImage src={`./images/420642903_938437470856991_1642067799514294683_n.jpg`}
  alt="Profile" />
-     <div className="d-flex mt-2 flex-row justify-content-center gap-4">
+     <div className="d-flex mt-2 flex-row justify-content-center gap-3">
             <a className="nav-link" href="https://www.linkedin.com/in/your-linkedin-profile/" >
               <i className="fab fa-linkedin-in"></i>
             </a>

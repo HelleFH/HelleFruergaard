@@ -17,6 +17,7 @@ const StyledNavbar = styled.nav`
   margin-left:1em;
   margin-right:1em;
   padding-top:3.5em;
+  
 
 `;
 
@@ -86,7 +87,7 @@ const CloseButton = styled.button`
   font-weight:200;
    
   @media min-width: 1200px {
-  display:none;
+  display:none !important;
    
   }
 `;
