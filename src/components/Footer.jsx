@@ -5,11 +5,11 @@ import { ReactComponent as GitHubIcon } from '../asssets/github.svg'; // Replace
 
 const Footer = () => {
   return (
-    <FooterContainer>
+    <FooterContainer className='pb-2'>
       <FooterItem>Developed by Helle Fruergaard</FooterItem>
       <FooterItem>&copy; 2024 </FooterItem>
       <FooterItem>
-        <ContactInfo className='d-flex gap-3 flex-column mb-5'>
+        <ContactInfo className='d-flex gap-3 flex-column mb-3'>
           <h3>Contact Info</h3>
           <div>
             <span>Call:</span> +45 29664077
@@ -93,6 +93,7 @@ const FooterItem = styled.div`
 `;
 
 const ContactInfo = styled.div`
+
 
 `;
 

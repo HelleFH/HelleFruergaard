@@ -185,12 +185,10 @@ const ProjectsContainer = styled.section`
   flex-direction: column;
   align-items: center;
   gap: 1em;
- 
+  max-width:1175px;
+  margin:0 auto;
   margin-bottom:2em;
-  margin-left:1em;
-  margin-right:1em; 
-  
-
+ 
 
   @media (min-width: 400px) and (max-width: 767px) {
     flex-direction: column;
@@ -201,22 +199,20 @@ const ProjectsContainer = styled.section`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-
   }
 
   @media (min-width: 1051px) {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-
   }
 `;
 
 const ProjectWrapper = styled.div`
   position: relative;
-  width: 100%;
   height: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width:95vw;
 
   @media (min-width: 400px) and (max-width: 767px) {
     max-width: 100%;
