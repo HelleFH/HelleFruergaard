@@ -13,16 +13,16 @@ const StyledNavbar = styled.nav`
   align-items: flex-start;
   position: relative;
   color:white !important;
-  margin: auto;
-  margin-left:1em;
-  margin-right:1em;
+
   padding-top:3.5em;
   max-width:1175px;
-  margin:0 auto;
-  
+    margin-left:1em;
+  margin-right:1em;
 
 
-   
+  @media (min-width: 1200px) {
+    margin:0 auto;
+  }   
   }
 `;
 
@@ -48,13 +48,10 @@ const ToggleButton = styled.a`
       transform:scale(1.1)
     }
 
-
   img {
     width: 32px;
     height: 32px;
     margin-right:2em;
-
-
 
   }
 `;
@@ -75,6 +72,7 @@ const NavLinksContainer = styled.div`
   padding-top:2em;
   z-index: 1000;
   transform: translateX(100%);
+
   transition: transform 0.3s ease-in-out;
 
   li a {color:white !important; font-weight:600;}
