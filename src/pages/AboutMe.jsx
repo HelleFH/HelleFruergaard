@@ -113,6 +113,7 @@ const AboutMeWrapper = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   padding:0 1.2em;
+  margin-bottom:5em;
 
    @media (min-width: 1000px) {
     flex-direction:row;

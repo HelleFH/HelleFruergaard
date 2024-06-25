@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import projectsData from '../projects'; // Assuming projects data is imported from a file
+import projectsData from '../projects'; 
 import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useSwipeable } from 'react-swipeable'; // Import useSwipeable hook
+import { useSwipeable } from 'react-swipeable';
+import Footer from '../components/Footer'; 
+
 
 const Projects = () => {
   const navigate = useNavigate();
@@ -75,6 +77,7 @@ const Projects = () => {
           </ProjectWrapper>
         ))}
       </ProjectsContainer>
+      <Footer />
 
       {selectedProjectIndex !== null && (
         <CustomModal show={showModal} onHide={handleClose} centered>
@@ -349,6 +352,7 @@ const ModalImage = styled.img`
 
 const Chevron = styled.div`
   position: absolute;
+  z-index:9999;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
