@@ -13,7 +13,6 @@ const Projects = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
 
   useEffect(() => {
-
     setProjects(projectsData);
   }, []);
 
@@ -83,22 +82,35 @@ const Projects = () => {
               <div className='d-flex flex-column p-4 justify-content-between'>
                 <ModalContent>
                   <ModalTitle className="mb-4">{projects[selectedProjectIndex].name}</ModalTitle>
+                  <h5>{projects[selectedProjectIndex].descriptionHeader}</h5>
                   <p>{projects[selectedProjectIndex].description}</p>
                 </ModalContent>
+                {projects[selectedProjectIndex].username && (
+                  <LoginDetails>
+                    <strong>User:</strong> {projects[selectedProjectIndex].username}<br />
+                    <strong>Password:</strong> {projects[selectedProjectIndex].password}
+                  </LoginDetails>
+                )}
+                {projects[selectedProjectIndex].adminUsername && (
+                  <AdminLoginDetails>
+                    <strong>Admin:</strong> {projects[selectedProjectIndex].adminUsername}<br />
+                    <strong>Password:</strong> {projects[selectedProjectIndex].adminPassword}
+                  </AdminLoginDetails>
+                )}
                 <ButtonsContainer>
                   <ProjectButton
                     href={projects[selectedProjectIndex].projectLink}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    View Project
+                    {projects[selectedProjectIndex].buttonText}
                   </ProjectButton>
                   <GithubButton
                     href={projects[selectedProjectIndex].githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    GitHub
+                    {projects[selectedProjectIndex].githubButtonText}
                   </GithubButton>
                 </ButtonsContainer>
               </div>
@@ -164,7 +176,7 @@ const ProjectWrapper = styled.div`
       margin-bottom: 2em;
     }
   }
-      @media (min-width: 1200px) {
+  @media (min-width: 1200px) {
     max-width: 350px;
 
     &:nth-child(3) {
@@ -233,20 +245,25 @@ const OverlayText = styled.div`
 
 const CustomModal = styled(Modal)`
   .modal-content {
-  max-width:1000px;
+    max-width: 1000px;
+    width: 95vw;
     border-radius: 0px !important;
     overflow: hidden;
-    border:none !important;
-    margin:0 auto;
+    margin: 0 auto;
   }
-     p {min-height:210px;padding:0em;}   
+  p {
+    min-height: 210px;
+    padding: 0em;
+  }   
 
-    @media (min-width: 1200px) {
+  @media (min-width: 1200px) {
     .modal-dialog { 
- p 
- {min-height:210px;padding-right:3em;}   
+      p {
+        min-height: 210px;
+        padding-right: 3em;
+      }   
+    }
   }
-   
 `;
 
 const CustomModalDialog = styled(Modal.Dialog)`
@@ -274,7 +291,7 @@ const ModalBody = styled(Modal.Body)`
 `;
 
 const ModalImage = styled.img`
-max-width:600px;
+  max-width: 600px;
   width: 100%;
   height: auto;
 `;
@@ -283,53 +300,71 @@ const Chevron = styled.div`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 2rem;
-  color: #333;
   cursor: pointer;
-  z-index: 10;
+  width: 40px;
+  height: 40px;
 
-  @media (min-width: 1000px) {
-    font-size: 3rem;
+  img {
+    max-width: 100%;
+    max-height: 100%;
   }
 `;
 
 const ChevronLeft = styled(Chevron)`
   left: 10px;
-
   img {
-  width:20% !important;
-  max-width:5% !important;
-  transform: rotate(-90deg);
+    max-width: 5% !important;
+    transform: rotate(-90deg);
+    float: left;
   }
 `;
 
 const ChevronRight = styled(Chevron)`
   right: 10px;
   img {
-  max-width:5% !important;
-  transform: rotate(90deg);
-  float:right;
+    max-width: 5% !important;
+    transform: rotate(90deg);
+    float: right;
   }
 `;
 
 const ModalContent = styled.div`
   padding: 1rem;
-  max-width:500px;
+  max-width: 500px;
+  position: relative;
 `;
 
 const ModalTitle = styled.h2`
-font-size:31px;
+  font-size: 31px;
   margin-bottom: 1rem;
-  font-weight:600;
+  font-weight: 600;
+`;
+
+const LoginDetails = styled.div
+`padding-left:1em;
+
+  position: absolute;
+  bottom: 80px;
+  font-size: 0.8em;
+  color: #333;
+`;
+
+const AdminLoginDetails = styled.div`
+padding-left:1em;
+  position: absolute;
+  bottom: 130px;
+ 
+  font-size: 0.8em;
+  color: #333;
 `;
 
 const ButtonsContainer = styled.div`
+
   display: flex;
   justify-content: flex-end;
   gap: 0.5em;
   align-items: center;
 `;
-
 
 const ProjectButton = styled.a`
   display: inline-block;
@@ -380,8 +415,8 @@ const CloseButton = styled(Button)`
   padding: 0;
   line-height: 1;
   right: 20px;
-  top: 20px;`
-  ;
+  top: 20px;
+`;
 
 const GithubButton = styled.a`
   position: relative;
@@ -419,9 +454,7 @@ const GithubButton = styled.a`
 
   &:hover::after {
     width: calc(100% + 30px);
-  }`
-  ;
-
-
+  }
+`;
 
 export default Projects;
