@@ -84,7 +84,7 @@ const Projects = () => {
             <ModalBody  {...handlers} >
               <CloseButton onClick={handleClose}>&times;</CloseButton>
               <ChevronLeft onClick={handlePrev}>
-                <img className='width-20' src={`./images/chevron.png`} alt="Previous" />
+                <img className='width-20' src={`/images/chevron.png`} alt="Previous" />
               </ChevronLeft>
               <ModalImage
                 src={`${projects[selectedProjectIndex].images[0]}`}
@@ -92,7 +92,7 @@ const Projects = () => {
                 {...handlers}
               />
               <ChevronRight onClick={handleNext}>
-                <img className='width-20' src={`./images/chevron.png`} alt="Next" />
+                <img className='width-20' src={`/images/chevron.png`} alt="Next" />
               </ChevronRight>
               <div className='d-flex flex-column p-4 justify-content-between'>
                 <ModalContent>

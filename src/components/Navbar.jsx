@@ -125,7 +125,7 @@ const Navbar = () => {
 
   return (
     <StyledNavbar className="navbar navbar-light">
-      <Link className="navbar-brand d-flex gap-3 align-items-center justify-content-center" to="my-portfolio/">
+      <Link className="navbar-brand d-flex gap-3 align-items-center justify-content-center" to="/">
       <NavbarBrand src={`./images/copenhagen.png`} />
       <NavbarName>Helle</NavbarName>
       </Link>
@@ -134,7 +134,7 @@ const Navbar = () => {
       <img
         src={isNavOpen || isAnimating 
           ? `images/x_icon.svg`
-          : `./images/nav_icon.svg`}
+          : `/images/nav_icon.svg`}
         alt="Toggle navigation"
       />      </ToggleButton>
 
@@ -143,10 +143,10 @@ const Navbar = () => {
         {isNavOpen && <CloseButton onClick={toggleNav}>&times;</CloseButton>}
         <ul className="navbar-nav ml-auto d-flex gap-3">
           <li className="nav-item text-light">
-            <Link className="nav-link" to="my-portfolio/aboutme" onClick={toggleNav}>About Me</Link>
+            <Link className="nav-link" to="/aboutme" onClick={toggleNav}>About Me</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="my-portfolio/projects" onClick={toggleNav}>Projects</Link>
+            <Link className="nav-link" to="/projects" onClick={toggleNav}>Projects</Link>
           </li>
           <li className="nav-item">
           <a className="nav-link" href="https://www.linkedin.com/in/helle-fruergaard-577763112/" >
