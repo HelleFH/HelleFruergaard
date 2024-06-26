@@ -45,7 +45,7 @@ const projects = [
         id: 4,
         name: "Cloudinary Manage",
         technologies: "MongoDB, Express, Vue, Node.js",
-        images: ["/images/aimages-screen.png"],
+        images: ["/images/aiimages-screen.png"],
         projectLink: "https://cloudinary-upload-delete-fe.onrender.com/",
         githubLink: "https://github.com/HelleFH/cloudinary-upload-delete",
         buttonText: "View Project",
