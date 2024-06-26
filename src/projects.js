@@ -4,7 +4,7 @@ const projects = [
         name: "React eCommerce",
         technologies: "React, Firebase",
         images: ["./images/ecommerce-screen.png"],
-        projectLink: "https://react-ecommerce-48zb.onrender.com/",
+        projectLink: "https://react-ecommerce-5s23.onrender.com",
         githubLink: "https://github.com/HelleFH/React-store",
         buttonText: "View Project",
         githubButtonText: "GitHub",
