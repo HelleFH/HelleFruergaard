@@ -6,20 +6,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSwipeable } from 'react-swipeable';
 import Footer from '../components/Footer'; 
 
-
 const Projects = () => {
-
   const [projects, setProjects] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
+  const [selectedColor, setSelectedColor] = useState('');
   const [showLoginDetails, setShowLoginDetails] = useState(false);
 
   useEffect(() => {
     setProjects(projectsData);
   }, []);
 
-  const handleImageClick = (index) => {
+  const handleImageClick = (index, color) => {
     setSelectedProjectIndex(index);
+    setSelectedColor(color);
     setShowModal(true);
   };
 
@@ -32,11 +32,13 @@ const Projects = () => {
   const handleNext = () => {
     setSelectedProjectIndex((prevIndex) => (prevIndex + 1) % projects.length);
     setShowLoginDetails(false);
+    setSelectedColor(overlayColors[(selectedProjectIndex + 1) % projects.length]);
   };
 
   const handlePrev = () => {
     setSelectedProjectIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
     setShowLoginDetails(false);
+    setSelectedColor(overlayColors[(selectedProjectIndex - 1 + projects.length) % projects.length]);
   };
 
   const handlers = useSwipeable({
@@ -49,17 +51,18 @@ const Projects = () => {
     '#a0c4a3',
     '#5dc6aa',
     '#da9567',
-    '#cab0a6',
+    ' #7b68a0',
     '#da9dd9',
     '#6da178',
     '#ddd173',
     '#9a99e3',
+    '#cab0a6',
+
   ];
 
   return (
     <>
       <ProjectsContainer className="projects">
-        
         <ProjectIntro className="font-weight-bold lh-base mt-5">
           I'm a web developer based in Copenhagen,
           driven by curiosity and passionate about creating engaging websites and apps.
@@ -67,8 +70,8 @@ const Projects = () => {
 
         {projects.map((project, index) => (
           <ProjectWrapper key={project.id} large={(index === 0 || index === 1)}>
-            <ImageWrapper onClick={() => handleImageClick(index)}>
-              <Image src={project.images[0]} alt={project.name}/>
+            <ImageWrapper onClick={() => handleImageClick(index, overlayColors[index % overlayColors.length])}>
+              <Image src={project.images[0]} alt={project.name} />
               <Overlay className="overlay" color={overlayColors[index % overlayColors.length]}>
                 <OverlayText className="text-uppercase">{project.name}</OverlayText>
               </Overlay>
@@ -79,9 +82,10 @@ const Projects = () => {
       <Footer />
 
       {selectedProjectIndex !== null && (
-        <CustomModal show={showModal} onHide={handleClose} centered>
+        <CustomModal show={showModal} onHide={handleClose} centered               
+>
           <CustomModalDialog>
-            <ModalBody  {...handlers} >
+            <ModalBody {...handlers} >
               <CloseButton onClick={handleClose}>&times;</CloseButton>
               <ChevronLeft onClick={handlePrev}>
                 <img className='width-20' src={`/images/chevron.png`} alt="Previous" />
@@ -90,6 +94,8 @@ const Projects = () => {
                 src={`${projects[selectedProjectIndex].images[0]}`}
                 alt={projects[selectedProjectIndex].name}
                 {...handlers}
+                backdropColor={selectedColor}
+
               />
               <ChevronRight onClick={handleNext}>
                 <img className='width-20' src={`/images/chevron.png`} alt="Next" />
@@ -146,34 +152,29 @@ const Projects = () => {
   );
 };
 
-
 export default Projects;
 
 const LoginButton = styled.a`
-
-position: absolute;
-margin-bottom: 1em;
-color: #333;
-border: none;
-cursor: pointer;
-font-weight: 500;
-font-size: 14px;
-bottom: 60px;
-
+  position: absolute;
+  margin-bottom: 1em;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  bottom: 60px;
 
   &:hover {
     transform:scale(1.02);
   }
 
-    @media (min-width: 1050px) {
+  @media (min-width: 1050px) {
     position:relative;
     bottom:0;
   }
 `;
 
-
 const LoginDetailsContainer = styled.div`
-
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
   margin-top: 1em;
   display:flex;
@@ -182,12 +183,11 @@ const LoginDetailsContainer = styled.div`
   bottom:25%;
   background-color:white;
   border:1px solid slategray;
-padding:0.5em;
+  padding:0.5em;
   gap:0.5em;
   border-radius:3px;
   align-items:flex-start;
 `;
-
 
 const ProjectsContainer = styled.section`
   display: flex;
@@ -198,7 +198,6 @@ const ProjectsContainer = styled.section`
   margin:0 auto;
   margin-bottom:4em;
  
-
   @media (min-width: 400px) and (max-width: 767px) {
     flex-direction: column;
     align-items: center;
@@ -245,6 +244,7 @@ const ProjectWrapper = styled.div`
       margin-bottom: 2em;
     }
   }
+
   @media (min-width: 1200px) {
     max-width: 350px;
 
@@ -284,8 +284,6 @@ const Image = styled.img`
   }
 `;
 
-
-
 const Overlay = styled.div`
   position: absolute;
   top: 0;
@@ -316,14 +314,19 @@ const OverlayText = styled.div`
 `;
 
 const CustomModal = styled(Modal)`
-    transition: transform 0.3s ease-out; 
+  transition: transform 0.3s ease-out; 
 
   .modal-content {
-    max-width: 1000px;
-    border-radius: 0px !important;
+  border:none !important;
+    height:400px;
+
+  
+
+    max-width: fit-content;
     overflow: hidden;
     margin: 0 auto;
   }
+  
   p {
     padding: 0em;
   }   
@@ -338,10 +341,11 @@ const CustomModal = styled(Modal)`
 `;
 
 const CustomModalDialog = styled(Modal.Dialog)`
-    transition: transform 0.3s ease-out; 
 
+  transition: transform 0.3s ease-out; 
   .modal-dialog {
     max-width: 800px !important; 
+
   }
 
   @media (min-width: 1200px) {
@@ -356,23 +360,28 @@ const ModalBody = styled(Modal.Body)`
   border-radius: 0px !important;
   position: relative;
 
+
   @media (min-width: 1000px) {
     display: flex;
     flex-direction: row;
     width: 100% !important;
+
   }
 `;
 
 const ModalImage = styled.img`
-  max-width: 600px;
-  width: 100%;
+padding:0.5em;
+  max-width: 400px;
+  object-fit:contain;
   height: auto;
+      background-color: ${(props) => props.backdropColor}; /* Use the backdropColor prop */
+
 `;
 
 const ProjectDescription = styled.p`
   height:180px;
 
-    @media (min-width: 1050px) {
+  @media (min-width: 1050px) {
     height:fit-content;
   }
 `;
@@ -386,9 +395,9 @@ const Chevron = styled.div`
   width: 20px;
   height: 20px;
 
-    @media (min-width: 1050px) {
+  @media (min-width: 1050px) {
     width: 40px;
-  height: 40px;
+    height: 40px;
   }
 
   img {
@@ -414,7 +423,7 @@ const ChevronRight = styled(Chevron)`
 `;
 
 const ModalContent = styled.div`
-  max-width: 500px;
+  max-width: 400px;
   position: relative;
 `;
 
@@ -424,23 +433,19 @@ const ModalTitle = styled.h2`
   font-weight: 600;
 `;
 
-const LoginDetails = styled.div
-`
+const LoginDetails = styled.div`
   font-size: 0.8em;
   color: #333;
   z-index:9999;
 `;
 
 const AdminLoginDetails = styled.div`
- 
   font-size: 0.8em;
   color: #333;
-    z-index:9999;
-
+  z-index:9999;
 `;
 
 const ButtonsContainer = styled.div`
-
   display: flex;
   justify-content: flex-end;
   gap: 0.5em;
@@ -537,4 +542,3 @@ const GithubButton = styled.a`
     width: calc(100% + 30px);
   }
 `;
-
