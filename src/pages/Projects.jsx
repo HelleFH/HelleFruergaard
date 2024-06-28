@@ -1,10 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import projectsData from '../projects'; 
 import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSwipeable } from 'react-swipeable';
 import Footer from '../components/Footer'; 
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+`;
+
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -22,6 +45,7 @@ const Projects = () => {
     setSelectedColor(color);
     setShowModal(true);
   };
+  
 
   const handleClose = () => {
     setShowModal(false);
@@ -45,6 +69,28 @@ const Projects = () => {
     onSwipedLeft: () => handleNext(),
     onSwipedRight: () => handlePrev(),
   });
+  const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+`;
+
 
   const overlayColors = [
     '#ea766a',
@@ -341,6 +387,12 @@ const CustomModal = styled(Modal)`
 `;
 
 const CustomModalDialog = styled(Modal.Dialog)`
+animation: ${fadeIn} 0.3s ease-out;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+
+  &.fade-exit-active {
+    animation: ${fadeOut} 0.3s ease-out;
+  }
 
   transition: transform 0.3s ease-out; 
   .modal-dialog {
@@ -394,6 +446,7 @@ const Chevron = styled.div`
   cursor: pointer;
   width: 20px;
   height: 20px;
+
 
   @media (min-width: 1050px) {
     width: 40px;
@@ -502,6 +555,7 @@ const CloseButton = styled(Button)`
   line-height: 1;
   right: 20px;
   top: 20px;
+      z-index: 9999;
 `;
 
 const GithubButton = styled.a`
