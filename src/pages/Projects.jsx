@@ -169,7 +169,7 @@ const Projects = () => {
             </CustomModalDialog>
           </CustomModal>
         )}
-  <Modal show={showLoginDetails} onHide={handleCloseLoginDetails}>
+   <Modal show={showLoginDetails} onHide={handleCloseLoginDetails} centered>
         <Modal.Header closeButton>
           <Modal.Title>Login Details</Modal.Title>
         </Modal.Header>
@@ -210,7 +210,9 @@ const Projects = () => {
           )}
         </Modal.Body>
         <Modal.Footer>
-      
+          <Button variant="secondary" onClick={handleCloseLoginDetails}>
+            Close
+          </Button>
           <Button variant="primary" onClick={handleCloseLoginDetails}>
             OK
           </Button>
@@ -224,10 +226,47 @@ const Projects = () => {
 export default Projects;
 
 const CopyIcon = styled(FontAwesomeIcon)`
-  margin-left: 15px;
+  margin-left: 20px;
   cursor: pointer;
-  
+
+  &:hover {
+    &:before {
+      content: attr(title);
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 12px;
+      white-space: nowrap;
+      z-index: 999;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid rgba(0, 0, 0, 0.8);
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    &:hover:before,
+    &:hover:after {
+      opacity: 1;
+    }
+  }
 `;
+
 
 const ProjectsContainer = styled.section`
   display: flex;
