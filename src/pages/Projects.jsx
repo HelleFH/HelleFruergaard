@@ -6,10 +6,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSwipeable } from 'react-swipeable';
 import Footer from '../components/Footer'; 
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesomeIcon
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'; // Import specific icons
+
+
 const fadeIn = keyframes`
   from {
     opacity: 0;
-    transform: translateY(-50px);
+    transform: translateY(bac-50px);
   }
   to {
     opacity: 1;
@@ -108,11 +112,14 @@ const fadeOut = keyframes`
 
   return (
     <>
-      <ProjectsContainer className="projects">
-        <ProjectIntro className="font-weight-bold lh-base mt-5">
+
+    <div id="container">
+       <ProjectIntro className="font-weight-bold lh-base mt-5">
           I'm a web developer based in Copenhagen,
           driven by curiosity and passionate about creating engaging websites and apps.
         </ProjectIntro>
+      <ProjectsContainer className="projects">
+     
 
         {projects.map((project, index) => (
           <ProjectWrapper key={project.id} large={(index === 0 || index === 1)}>
@@ -130,21 +137,22 @@ const fadeOut = keyframes`
       {selectedProjectIndex !== null && (
         <CustomModal show={showModal} onHide={handleClose} centered               
 >
-          <CustomModalDialog>
+          <CustomModalDialog >
             <ModalBody {...handlers} >
               <CloseButton onClick={handleClose}>&times;</CloseButton>
               <ChevronLeft onClick={handlePrev}>
-                <img className='width-20' src={`/images/chevron.png`} alt="Previous" />
+                <FontAwesomeIcon icon={faChevronLeft} size="2x" />
               </ChevronLeft>
+              <ModalImageContainer backdropColor={selectedColor}>
               <ModalImage
                 src={`${projects[selectedProjectIndex].images[0]}`}
                 alt={projects[selectedProjectIndex].name}
                 {...handlers}
                 backdropColor={selectedColor}
-
               />
-              <ChevronRight onClick={handleNext}>
-                <img className='width-20' src={`/images/chevron.png`} alt="Next" />
+              </ModalImageContainer>
+            <ChevronRight onClick={handleNext}>
+                <FontAwesomeIcon icon={faChevronRight} size="2x" />
               </ChevronRight>
               <div className='d-flex flex-column p-4 justify-content-between'>
                 <ModalContent>
@@ -194,7 +202,9 @@ const fadeOut = keyframes`
           </CustomModalDialog>
         </CustomModal>
       )}
+      </div>
     </>
+    
   );
 };
 
@@ -236,75 +246,29 @@ const LoginDetailsContainer = styled.div`
 `;
 
 const ProjectsContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1em;
-  max-width:1175px;
-  margin:0 auto;
-  margin-bottom:4em;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    width:100%;
+    gap:1em;
  
-  @media (min-width: 400px) and (max-width: 767px) {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  @media (min-width: 768px) and (max-width: 1050px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  @media (min-width: 1051px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
 `;
 
 const ProjectWrapper = styled.div`
   position: relative;
   height: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width:95vw;
+  max-width:96vw;
+  margin:0 auto;
 
-  @media (min-width: 400px) and (max-width: 767px) {
-    max-width: 100%;
+
+
+  @media (min-width: 1050px) {
+     max-width:375px;
+     }
   }
 
-  @media (min-width: 768px) and (max-width: 1050px) {
-    max-width: 45%;
-  }
 
-  @media (min-width: 1051px) {
-    max-width: 350px;
-
-    &:nth-child(3) {
-      max-width: 500px;
-      min-width: 500px;
-      margin-bottom: 2em;
-    }
-    &:nth-child(2) {
-      max-width: 500px;
-      min-width: 400px;
-      margin-bottom: 2em;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    max-width: 350px;
-
-    &:nth-child(3) {
-      max-width: 550px;
-      min-width: 500px;
-      margin-bottom: 2em;
-    }
-    &:nth-child(2) {
-      max-width: 550px;
-      min-width: 400px;
-      margin-bottom: 2em;
-    }
-  }
 `;
 
 const ProjectIntro = styled.h5`
@@ -364,9 +328,7 @@ const CustomModal = styled(Modal)`
 
   .modal-content {
   border:none !important;
-    height:400px;
 
-  
 
     max-width: fit-content;
     overflow: hidden;
@@ -377,7 +339,9 @@ const CustomModal = styled(Modal)`
     padding: 0em;
   }   
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1200px)     height:400px;
+
+
     .modal-dialog { 
       p {
         padding-right: 3em;
@@ -387,6 +351,8 @@ const CustomModal = styled(Modal)`
 `;
 
 const CustomModalDialog = styled(Modal.Dialog)`
+
+ 
 animation: ${fadeIn} 0.3s ease-out;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 
@@ -421,12 +387,44 @@ const ModalBody = styled(Modal.Body)`
   }
 `;
 
-const ModalImage = styled.img`
-padding:0.5em;
-  max-width: 400px;
+const ModalImageContainer = styled.div`
+
+padding:2em;
+width:100%;
+max-width:500px;
   object-fit:contain;
   height: auto;
-      background-color: ${(props) => props.backdropColor}; /* Use the backdropColor prop */
+  display:flex;
+  justify-content:center; 
+  align-items:center;
+
+  @media (min-width: 1000px) {
+    display: flex;
+    flex-direction: row;
+    width: 100% !important;
+      height:400px !important;
+
+
+  }
+           
+`;
+
+
+const ModalImage = styled.img`
+max-width:95%;
+object-fit:contain;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:  ${(props) => props.backdropColor};
+    z-index: 999;
+    opacity:0.1;
+  }
+
 
 `;
 
@@ -555,7 +553,7 @@ const CloseButton = styled(Button)`
   line-height: 1;
   right: 20px;
   top: 20px;
-      z-index: 9999;
+  z-index: 9999;
 `;
 
 const GithubButton = styled.a`
