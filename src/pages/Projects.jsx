@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-import projectsData from '../projects'; 
+import projectsData from '../projects';
 import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSwipeable } from 'react-swipeable';
-import Footer from '../components/Footer'; 
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesomeIcon
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'; // Import specific icons
-
+import Footer from '../components/Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const fadeIn = keyframes`
   from {
     opacity: 0;
-    transform: translateY(bac-50px);
+    transform: translateY(-50px);
   }
   to {
     opacity: 1;
@@ -32,7 +30,6 @@ const fadeOut = keyframes`
   }
 `;
 
-
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -44,18 +41,26 @@ const Projects = () => {
     setProjects(projectsData);
   }, []);
 
+  const handleClose = () => {
+    setShowModal(false);
+    setSelectedProjectIndex(null);
+    setShowLoginDetails(false);
+  };
+
+  const handleShowLoginDetails = () => {
+    setShowLoginDetails(true);
+  };
+
+  const handleCloseLoginDetails = () => {
+    setShowLoginDetails(false);
+  };
+
   const handleImageClick = (index, color) => {
     setSelectedProjectIndex(index);
     setSelectedColor(color);
     setShowModal(true);
   };
   
-
-  const handleClose = () => {
-    setShowModal(false);
-    setSelectedProjectIndex(null);
-    setShowLoginDetails(false);
-  };
 
   const handleNext = () => {
     setSelectedProjectIndex((prevIndex) => (prevIndex + 1) % projects.length);
@@ -73,28 +78,6 @@ const Projects = () => {
     onSwipedLeft: () => handleNext(),
     onSwipedRight: () => handlePrev(),
   });
-  const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const fadeOut = keyframes`
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-`;
-
 
   const overlayColors = [
     '#ea766a',
@@ -107,108 +90,135 @@ const fadeOut = keyframes`
     '#ddd173',
     '#9a99e3',
     '#cab0a6',
-
   ];
 
   return (
     <>
-
-    <div id="container">
-       <ProjectIntro className="font-weight-bold lh-base mt-5">
+      <div id="container">
+        <ProjectIntro className="font-weight-bold lh-base mt-5">
           I'm a web developer based in Copenhagen,
           driven by curiosity and passionate about creating engaging websites and apps.
         </ProjectIntro>
-      <ProjectsContainer className="projects">
-     
+        <ProjectsContainer className="projects">
+          {projects.map((project, index) => (
+            <ProjectWrapper key={project.id} large={(index === 0 || index === 1)}>
+              <ImageWrapper onClick={() => handleImageClick(index, overlayColors[index % overlayColors.length])}>
+                <Image src={project.images[0]} alt={project.name} />
+                <Overlay className="overlay" color={overlayColors[index % overlayColors.length]}>
+                  <OverlayText className="text-uppercase">{project.name}</OverlayText>
+                </Overlay>
+              </ImageWrapper>
+            </ProjectWrapper>
+          ))}
+        </ProjectsContainer>
+        <Footer />
 
-        {projects.map((project, index) => (
-          <ProjectWrapper key={project.id} large={(index === 0 || index === 1)}>
-            <ImageWrapper onClick={() => handleImageClick(index, overlayColors[index % overlayColors.length])}>
-              <Image src={project.images[0]} alt={project.name} />
-              <Overlay className="overlay" color={overlayColors[index % overlayColors.length]}>
-                <OverlayText className="text-uppercase">{project.name}</OverlayText>
-              </Overlay>
-            </ImageWrapper>
-          </ProjectWrapper>
-        ))}
-      </ProjectsContainer>
-      <Footer />
-
-      {selectedProjectIndex !== null && (
-        <CustomModal show={showModal} onHide={handleClose} centered               
->
-          <CustomModalDialog >
-            <ModalBody {...handlers} >
-              <CloseButton onClick={handleClose}>&times;</CloseButton>
-              <ChevronLeft onClick={handlePrev}>
-                <FontAwesomeIcon icon={faChevronLeft} size="2x" />
-              </ChevronLeft>
-              <ModalImageContainer backdropColor={selectedColor}>
-              <ModalImage
-                src={`${projects[selectedProjectIndex].images[0]}`}
-                alt={projects[selectedProjectIndex].name}
-                {...handlers}
-                backdropColor={selectedColor}
-              />
-              </ModalImageContainer>
-            <ChevronRight onClick={handleNext}>
-                <FontAwesomeIcon icon={faChevronRight} size="2x" />
-              </ChevronRight>
-              <div className='d-flex flex-column p-4 justify-content-between'>
-                <ModalContent>
-                  <ModalTitle className="mb-4">{projects[selectedProjectIndex].name}</ModalTitle>
-                  <h5>{projects[selectedProjectIndex].descriptionHeader}</h5>
-                  <ProjectDescription>{projects[selectedProjectIndex].description}</ProjectDescription>
-                </ModalContent>
-                {projects[selectedProjectIndex].username && (
-                  <>
-                    <LoginButton onClick={() => setShowLoginDetails(!showLoginDetails)}>
-                      {showLoginDetails ? 'Hide Login Details' : 'Show Login Details'}
+        {selectedProjectIndex !== null && (
+          <CustomModal show={showModal} onHide={handleClose} centered>
+            <CustomModalDialog>
+              <ModalBody {...handlers}>
+                <CloseButton onClick={handleClose}>&times;</CloseButton>
+                <ChevronLeft onClick={handlePrev}>
+                  <FontAwesomeIcon icon={faChevronLeft} size="2x" />
+                </ChevronLeft>
+                <ModalImageContainer backdropColor={selectedColor}>
+                  <ModalImage
+                    src={`${projects[selectedProjectIndex].images[0]}`}
+                    alt={projects[selectedProjectIndex].name}
+                    {...handlers}
+                    backdropColor={selectedColor}
+                  />
+                </ModalImageContainer>
+                <ChevronRight onClick={handleNext}>
+                  <FontAwesomeIcon icon={faChevronRight} size="2x" />
+                </ChevronRight>
+                <div className='d-flex flex-column p-4 justify-content-between'>
+                  <ModalContent>
+                    <ModalTitle className="mb-4">{projects[selectedProjectIndex].name}</ModalTitle>
+                    <h5>{projects[selectedProjectIndex].descriptionHeader}</h5>
+                    <ProjectDescription>{projects[selectedProjectIndex].description}</ProjectDescription>
+                  </ModalContent>
+                  {projects[selectedProjectIndex].username && (
+                    <LoginButton onClick={handleShowLoginDetails}>
+                      Show Login Details
                     </LoginButton>
-                    {showLoginDetails && (
-                      <LoginDetailsContainer>
-                        <LoginDetails>
-                          <strong>User:</strong> {projects[selectedProjectIndex].username}<br />
-                          <strong>Password:</strong> {projects[selectedProjectIndex].password}
-                        </LoginDetails>
-                        {projects[selectedProjectIndex].adminUsername && (
-                          <AdminLoginDetails>
-                            <strong>Admin:</strong> {projects[selectedProjectIndex].adminUsername}<br />
-                            <strong>Password:</strong> {projects[selectedProjectIndex].adminPassword}
-                          </AdminLoginDetails>
-                        )}
-                      </LoginDetailsContainer>
-                    )}
-                  </>
-                )}
-                <ButtonsContainer>
-                  <ProjectButton
-                    href={projects[selectedProjectIndex].projectLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {projects[selectedProjectIndex].buttonText}
-                  </ProjectButton>
-                  <GithubButton
-                    href={projects[selectedProjectIndex].githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {projects[selectedProjectIndex].githubButtonText}
-                  </GithubButton>
-                </ButtonsContainer>
+                  )}
+                  <ButtonsContainer>
+                    <ProjectButton
+                      href={projects[selectedProjectIndex].projectLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {projects[selectedProjectIndex].buttonText}
+                    </ProjectButton>
+                    <GithubButton
+                      href={projects[selectedProjectIndex].githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {projects[selectedProjectIndex].githubButtonText}
+                    </GithubButton>
+                  </ButtonsContainer>
+                </div>
+              </ModalBody>
+            </CustomModalDialog>
+          </CustomModal>
+        )}
+
+        <Modal show={showLoginDetails} onHide={handleCloseLoginDetails}>
+          <Modal.Header closeButton>
+            <Modal.Title>Login Details</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {projects[selectedProjectIndex]?.username && (
+              <div>
+                <strong>User:</strong> {projects[selectedProjectIndex].username}<br />
+                <strong>Password:</strong> {projects[selectedProjectIndex].password}
               </div>
-            </ModalBody>
-          </CustomModalDialog>
-        </CustomModal>
-      )}
+            )}
+            {projects[selectedProjectIndex]?.adminUsername && (
+              <div>
+                <strong>Admin:</strong> {projects[selectedProjectIndex].adminUsername}<br />
+                <strong>Password:</strong> {projects[selectedProjectIndex].adminPassword}
+              </div>
+            )}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseLoginDetails}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleCloseLoginDetails}>
+              OK
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </>
-    
   );
 };
 
 export default Projects;
+
+const ProjectsContainer = styled.section`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1em;
+  margin-bottom: 3em;
+`;
+
+const ProjectWrapper = styled.div`
+  position: relative;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 96vw;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    max-width: 375px;
+  }
+`;
 
 const LoginButton = styled.a`
   position: absolute;
@@ -221,61 +231,19 @@ const LoginButton = styled.a`
   bottom: 60px;
 
   &:hover {
-    transform:scale(1.02);
+    transform: scale(1.02);
   }
 
   @media (min-width: 1050px) {
-    position:relative;
-    bottom:0;
+    position: relative;
+    bottom: 0;
   }
-`;
-
-const LoginDetailsContainer = styled.div`
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
-  margin-top: 1em;
-  display:flex;
-  flex-direction:column;
-  position:absolute;
-  bottom:25%;
-  background-color:white;
-  border:1px solid slategray;
-  padding:0.5em;
-  gap:0.5em;
-  border-radius:3px;
-  align-items:flex-start;
-`;
-
-const ProjectsContainer = styled.section`
-    display:flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-    width:100%;
-    gap:1em;
-    margin-bottom:3em;
- 
-`;
-
-const ProjectWrapper = styled.div`
-  position: relative;
-  height: auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width:96vw;
-  margin:0 auto;
-
-
-
-  @media (min-width: 768px) {
-     max-width:375px;
-     }
-  }
-
-
 `;
 
 const ProjectIntro = styled.h5`
   font-weight: 700 !important;
   margin-bottom: 2.5em;
-  padding-left:0.5em;
+  padding-left: 0.5em;
   max-width: 900px;
 `;
 
@@ -325,51 +293,48 @@ const OverlayText = styled.div`
 `;
 
 const CustomModal = styled(Modal)`
-  transition: transform 0.3s ease-out; 
+  transition: transform 0.3s ease-out;
 
   .modal-content {
-  border:none !important;
-
+    border: none !important;
 
     max-width: fit-content;
     overflow: hidden;
     margin: 0 auto;
   }
-  
+
   p {
     padding: 0em;
-  }   
+  }
 
-  @media (min-width: 1200px)     height:400px;
+  @media (min-width: 1200px) {
+    height: 400px;
 
-
-    .modal-dialog { 
+    .modal-dialog {
       p {
         padding-right: 3em;
-      }   
+      }
     }
   }
 `;
 
 const CustomModalDialog = styled(Modal.Dialog)`
-
- 
-animation: ${fadeIn} 0.3s ease-out;
+  animation: ${fadeIn} 0.3s ease-out;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 
   &.fade-exit-active {
     animation: ${fadeOut} 0.3s ease-out;
   }
 
-  transition: transform 0.3s ease-out; 
-  .modal-dialog {
-    max-width: 800px !important; 
+  transition: transform 0.3s ease-out;
 
+  .modal-dialog {
+    max-width: 800px !important;
   }
 
   @media (min-width: 1200px) {
-    .modal-dialog { 
-      max-width: 1000px !important; 
+    .modal-dialog {
+      max-width: 1000px !important;
     }
   }
 `;
@@ -379,41 +344,35 @@ const ModalBody = styled(Modal.Body)`
   border-radius: 0px !important;
   position: relative;
 
-
   @media (min-width: 1000px) {
     display: flex;
     flex-direction: row;
     width: 100% !important;
-
   }
 `;
 
 const ModalImageContainer = styled.div`
-
-padding:2em;
-width:100%;
-max-width:500px;
-  object-fit:contain;
+  padding: 2em;
+  width: 100%;
+  max-width: 500px;
+  object-fit: contain;
   height: auto;
-  display:flex;
-  justify-content:center; 
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media (min-width: 1000px) {
     display: flex;
     flex-direction: row;
     width: 100% !important;
-      height:400px !important;
-
-
+    height: 400px !important;
   }
-           
 `;
 
-
 const ModalImage = styled.img`
-max-width:95%;
-object-fit:contain;
+  max-width: 95%;
+  object-fit: contain;
+
   &::after {
     content: '';
     position: absolute;
@@ -421,31 +380,28 @@ object-fit:contain;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color:  ${(props) => props.backdropColor};
+    background-color: ${(props) => props.backdropColor};
     z-index: 999;
-    opacity:0.1;
+    opacity: 0.1;
   }
-
-
 `;
 
 const ProjectDescription = styled.p`
-  height:180px;
+  height: 180px;
 
   @media (min-width: 1050px) {
-    height:fit-content;
+    height: fit-content;
   }
 `;
 
 const Chevron = styled.div`
   position: absolute;
-  z-index:9999;
+  z-index: 9999;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
   width: 20px;
   height: 20px;
-
 
   @media (min-width: 1050px) {
     width: 40px;
@@ -483,18 +439,6 @@ const ModalTitle = styled.h2`
   font-size: 31px;
   margin-bottom: 1rem;
   font-weight: 600;
-`;
-
-const LoginDetails = styled.div`
-  font-size: 0.8em;
-  color: #333;
-  z-index:9999;
-`;
-
-const AdminLoginDetails = styled.div`
-  font-size: 0.8em;
-  color: #333;
-  z-index:9999;
 `;
 
 const ButtonsContainer = styled.div`
