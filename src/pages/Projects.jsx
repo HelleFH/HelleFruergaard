@@ -251,6 +251,7 @@ const ProjectsContainer = styled.section`
     flex-wrap:wrap;
     width:100%;
     gap:1em;
+    margin-bottom:3em;
  
 `;
 
@@ -263,7 +264,7 @@ const ProjectWrapper = styled.div`
 
 
 
-  @media (min-width: 1050px) {
+  @media (min-width: 768px) {
      max-width:375px;
      }
   }
