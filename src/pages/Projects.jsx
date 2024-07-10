@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSwipeable } from 'react-swipeable';
 import Footer from '../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faCopy } from '@fortawesome/free-solid-svg-icons';
 
 const fadeIn = keyframes`
   from {
@@ -49,6 +49,11 @@ const Projects = () => {
 
   const handleShowLoginDetails = () => {
     setShowLoginDetails(true);
+  };
+
+  const handleCopyToClipboard = (text) => {
+    navigator.clipboard.writeText(text);
+    alert(`${text} copied to clipboard!`);
   };
 
   const handleCloseLoginDetails = () => {
@@ -164,40 +169,65 @@ const Projects = () => {
             </CustomModalDialog>
           </CustomModal>
         )}
-
-        <Modal show={showLoginDetails} onHide={handleCloseLoginDetails}>
-          <Modal.Header closeButton>
-            <Modal.Title>Login Details</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            {projects[selectedProjectIndex]?.username && (
-              <div>
-                <strong>User:</strong> {projects[selectedProjectIndex].username}<br />
-                <strong>Password:</strong> {projects[selectedProjectIndex].password}
-              </div>
-            )}
-            {projects[selectedProjectIndex]?.adminUsername && (
-              <div>
-                <strong>Admin:</strong> {projects[selectedProjectIndex].adminUsername}<br />
-                <strong>Password:</strong> {projects[selectedProjectIndex].adminPassword}
-              </div>
-            )}
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseLoginDetails}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleCloseLoginDetails}>
-              OK
-            </Button>
-          </Modal.Footer>
-        </Modal>
+  <Modal show={showLoginDetails} onHide={handleCloseLoginDetails}>
+        <Modal.Header closeButton>
+          <Modal.Title>Login Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {projects[selectedProjectIndex]?.username && (
+            <div>
+              <strong>User:</strong> {projects[selectedProjectIndex].username}
+              <CopyIcon
+                icon={faCopy}
+                onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].username)}
+                title="Copy Username to Clipboard"
+              />
+              <br />
+              <strong>Password:</strong> {projects[selectedProjectIndex].password}
+              <CopyIcon
+                icon={faCopy}
+                onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].password)}
+                title="Copy Password to Clipboard"
+              />
+            </div>
+          )}
+          {projects[selectedProjectIndex]?.adminUsername && (
+            <div>
+              <strong>Admin:</strong> {projects[selectedProjectIndex].adminUsername}
+              <CopyIcon
+                icon={faCopy}
+                onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].adminUsername)}
+                title="Copy Admin Username to Clipboard"
+              />
+              <br />
+              <strong>Password:</strong> {projects[selectedProjectIndex].adminPassword}
+              <CopyIcon
+                icon={faCopy}
+                onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].adminPassword)}
+                title="Copy Admin Password to Clipboard"
+              />
+            </div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+      
+          <Button variant="primary" onClick={handleCloseLoginDetails}>
+            OK
+          </Button>
+        </Modal.Footer>
+      </Modal>
       </div>
     </>
   );
 };
 
 export default Projects;
+
+const CopyIcon = styled(FontAwesomeIcon)`
+  margin-left: 15px;
+  cursor: pointer;
+  
+`;
 
 const ProjectsContainer = styled.section`
   display: flex;
