@@ -100,11 +100,12 @@ const Projects = () => {
   return (
     <>
       <div id="container">
+    
+        <ProjectsContainer className="projects">
         <ProjectIntro className="font-weight-bold lh-base mt-5">
           I'm a web developer based in Copenhagen,
           driven by curiosity and passionate about creating engaging websites and apps.
         </ProjectIntro>
-        <ProjectsContainer className="projects">
           {projects.map((project, index) => (
             <ProjectWrapper key={project.id} large={(index === 0 || index === 1)}>
               <ImageWrapper onClick={() => handleImageClick(index, overlayColors[index % overlayColors.length])}>
@@ -229,48 +230,6 @@ const Projects = () => {
 
 export default Projects;
 
-const CopyIcon = styled(FontAwesomeIcon)`
-  margin-left: 20px;
-  cursor: pointer;
-
-  &:hover {
-    &:before {
-      content: attr(title);
-      position: absolute;
-      background-color: rgba(0, 0, 0, 0.8);
-      color: white;
-      padding: 5px;
-      border-radius: 5px;
-      font-size: 12px;
-      white-space: nowrap;
-      z-index: 999;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    &:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid rgba(0, 0, 0, 0.8);
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    &:hover:before,
-    &:hover:after {
-      opacity: 1;
-    }
-  }
-`;
-
 
 const ProjectsContainer = styled.section`
   display: flex;
@@ -279,6 +238,8 @@ const ProjectsContainer = styled.section`
   width: 100%;
   gap: 1em;
   margin-bottom: 3em;
+  max-width:1175px;
+  margin:0 auto 5em;
 `;
 
 const ProjectWrapper = styled.div`
@@ -612,3 +573,47 @@ const GithubButton = styled.a`
     width: calc(100% + 30px);
   }
 `;
+
+
+const CopyIcon = styled(FontAwesomeIcon)`
+  margin-left: 20px;
+  cursor: pointer;
+
+  &:hover {
+    &:before {
+      content: attr(title);
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 12px;
+      white-space: nowrap;
+      z-index: 999;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid rgba(0, 0, 0, 0.8);
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    &:hover:before,
+    &:hover:after {
+      opacity: 1;
+    }
+  }
+`;
+
