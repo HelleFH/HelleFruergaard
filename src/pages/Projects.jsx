@@ -8,6 +8,8 @@ import Footer from '../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faCopy } from '@fortawesome/free-solid-svg-icons';
 
+
+
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -103,8 +105,7 @@ const Projects = () => {
     
         <ProjectsContainer className="projects">
         <ProjectIntro className="font-weight-bold lh-base mt-5">
-          I'm a web developer based in Copenhagen,
-          driven by curiosity and passionate about creating engaging websites and apps.
+        Hi there! I'm a web developer from Copenhagen. I love creating user-friendly websites and apps that make a difference.
         </ProjectIntro>
           {projects.map((project, index) => (
             <ProjectWrapper key={project.id} large={(index === 0 || index === 1)}>
@@ -120,12 +121,13 @@ const Projects = () => {
         <Footer />
 
         {selectedProjectIndex !== null && (
-          <CustomModal show={showModal} onHide={handleClose} centered>
+          <CustomModal show={showModal} onHide={handleClose} centered                 overlayColor={overlayColors[selectedProjectIndex % overlayColors.length]} // Pass overlayColor to CustomModal based on selectedProjectIndex
+          >
             <CustomModalDialog>
               <ModalBody {...handlers}>
                 <CloseButton onClick={handleClose}>&times;</CloseButton>
                 <ChevronLeft onClick={handlePrev}>
-                  <FontAwesomeIcon icon={faChevronLeft} size="2x" />
+                  <FontAwesomeIcon icon={faChevronLeft} size="s" />
                 </ChevronLeft>
                 <ModalImageContainer backdropColor={selectedColor}>
                   <ModalImage
@@ -136,7 +138,7 @@ const Projects = () => {
                   />
                 </ModalImageContainer>
                 <ChevronRight onClick={handleNext}>
-                  <FontAwesomeIcon icon={faChevronRight} size="2x" />
+                  <FontAwesomeIcon icon={faChevronRight} size="s" />
                 </ChevronRight>
                 <div className='d-flex flex-column p-4 justify-content-between'>
                   <ModalContent>
@@ -171,14 +173,20 @@ const Projects = () => {
           </CustomModal>
         )}
       <Modal
+
       show={showLoginDetails}
       onHide={handleCloseLoginDetails}
       centered
       dialogClassName="custom-modal"
       backdropClassName="custom-backdrop"
+      overlayColor={overlayColors[selectedProjectIndex % overlayColors.length]} 
+
     >
-      <Modal.Header closeButton>
-        <Modal.Title>Login Details</Modal.Title>
+
+<div className="custom-modal-content">
+
+          <Modal.Header style={{ backgroundColor: overlayColors[selectedProjectIndex % overlayColors.length] }} closeButton>
+          <Modal.Title>Login Details</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {projects[selectedProjectIndex]?.username && (
@@ -222,7 +230,8 @@ const Projects = () => {
           OK
         </Button>
       </Modal.Footer>
-    </Modal>
+      </div>
+      </Modal>
       </div>
     </>
   );
@@ -571,6 +580,20 @@ const GithubButton = styled.a`
 
   &:hover::after {
     width: calc(100% + 30px);
+  }
+`;
+
+const LoginModalDialog = styled(Modal.Dialog)`
+  animation: ${fadeIn} 0.3s ease-out;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+
+  &.fade-exit-active {
+    animation: ${fadeOut} 0.3s ease-out;
+  }
+
+  .modal-content {
+    width:100%;
+    margin: 0 auto; 
   }
 `;
 

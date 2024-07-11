@@ -10,7 +10,10 @@ body {
 #container {margin:0 auto;
 }
 
-
+.custom-modal .modal-content {
+  width: 95%;
+  margin: 0 auto;
+}
 #root {
 
   margin: 0 auto;
