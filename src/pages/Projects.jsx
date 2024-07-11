@@ -169,55 +169,59 @@ const Projects = () => {
             </CustomModalDialog>
           </CustomModal>
         )}
-   <Modal show={showLoginDetails} onHide={handleCloseLoginDetails} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Login Details</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {projects[selectedProjectIndex]?.username && (
-            <div>
-              <strong>User:</strong> {projects[selectedProjectIndex].username}
-              <CopyIcon
-                icon={faCopy}
-                onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].username)}
-                title="Copy Username to Clipboard"
-              />
-              <br />
-              <strong>Password:</strong> {projects[selectedProjectIndex].password}
-              <CopyIcon
-                icon={faCopy}
-                onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].password)}
-                title="Copy Password to Clipboard"
-              />
-            </div>
-          )}
-          {projects[selectedProjectIndex]?.adminUsername && (
-            <div>
-              <strong>Admin:</strong> {projects[selectedProjectIndex].adminUsername}
-              <CopyIcon
-                icon={faCopy}
-                onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].adminUsername)}
-                title="Copy Admin Username to Clipboard"
-              />
-              <br />
-              <strong>Password:</strong> {projects[selectedProjectIndex].adminPassword}
-              <CopyIcon
-                icon={faCopy}
-                onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].adminPassword)}
-                title="Copy Admin Password to Clipboard"
-              />
-            </div>
-          )}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseLoginDetails}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleCloseLoginDetails}>
-            OK
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <Modal
+      show={showLoginDetails}
+      onHide={handleCloseLoginDetails}
+      centered
+      dialogClassName="custom-modal"
+      backdropClassName="custom-backdrop"
+    >
+      <Modal.Header closeButton>
+        <Modal.Title>Login Details</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        {projects[selectedProjectIndex]?.username && (
+          <div>
+            <strong>User:</strong> {projects[selectedProjectIndex].username}
+            <CopyIcon
+              icon={faCopy}
+              onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].username)}
+              title="Copy Username to Clipboard"
+            />
+            <br />
+            <strong>Password:</strong> {projects[selectedProjectIndex].password}
+            <CopyIcon
+              icon={faCopy}
+              onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].password)}
+              title="Copy Password to Clipboard"
+            />
+          </div>
+        )}
+        {projects[selectedProjectIndex]?.adminUsername && (
+          <div>
+            <strong>Admin:</strong> {projects[selectedProjectIndex].adminUsername}
+            <CopyIcon
+              icon={faCopy}
+              onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].adminUsername)}
+              title="Copy Admin Username to Clipboard"
+            />
+            <br />
+            <strong>Password:</strong> {projects[selectedProjectIndex].adminPassword}
+            <CopyIcon
+              icon={faCopy}
+              onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].adminPassword)}
+              title="Copy Admin Password to Clipboard"
+            />
+          </div>
+        )}
+      </Modal.Body>
+      <Modal.Footer>
+      
+        <Button variant="primary" onClick={handleCloseLoginDetails}>
+          OK
+        </Button>
+      </Modal.Footer>
+    </Modal>
       </div>
     </>
   );
