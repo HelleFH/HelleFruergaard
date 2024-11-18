@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
 import Navbar from './components/Navbar';
-import AboutMe from './pages/AboutMe';
+import AboutMe from './components/AboutMe';
 import Projects from './pages/Projects';
 
 const App = () => {

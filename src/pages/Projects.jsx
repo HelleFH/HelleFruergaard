@@ -7,7 +7,7 @@ import { useSwipeable } from 'react-swipeable';
 import Footer from '../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faCopy } from '@fortawesome/free-solid-svg-icons';
-
+import AboutMe from '../components/AboutMe';
 
 
 const fadeIn = keyframes`
@@ -31,7 +31,6 @@ const fadeOut = keyframes`
     transform: translateY(-50px);
   }
 `;
-
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -67,7 +66,6 @@ const Projects = () => {
     setSelectedColor(color);
     setShowModal(true);
   };
-  
 
   const handleNext = () => {
     setSelectedProjectIndex((prevIndex) => (prevIndex + 1) % projects.length);
@@ -87,60 +85,140 @@ const Projects = () => {
   });
 
   const overlayColors = [
-    '#ea766a',
-    '#a0c4a3',
-    '#5dc6aa',
-    '#da9567',
-    ' #7b68a0',
-    '#da9dd9',
-    '#6da178',
-    '#ddd173',
-    '#9a99e3',
-    '#cab0a6',
+    ' #757576',
+    '#62645c',
+    '#343434',
+    '#222524',
+    ' #252425',
+    '#3b4040',
+    '#545c5b',
+    '#222524',
+    '#545c5b',
+    '#62645c',
   ];
 
   return (
     <>
+      <HeroSection>
+        <BannerImageWrapper>
+          <BannerImage src="images/tree.png" alt="Banner" />
+        </BannerImageWrapper>
+        <Heading3>
+          Hi, my name is Helle, I'm a web developer based in Copenhagen. 
+          <span>Welcome to</span>  </Heading3>
+        <Heading1>
+          <span>my</span> portfolio
+        </Heading1>
+      </HeroSection>
       <div id="container">
-    
-        <ProjectsContainer className="projects">
-        <ProjectIntro className="font-weight-bold lh-base mt-5">
-        Hi there! I'm a web developer from Copenhagen. I love creating user-friendly websites and apps that make a difference.
-        </ProjectIntro>
-          {projects.map((project, index) => (
-            <ProjectWrapper key={project.id} large={(index === 0 || index === 1)}>
-              <ImageWrapper onClick={() => handleImageClick(index, overlayColors[index % overlayColors.length])}>
-                <Image src={project.images[0]} alt={project.name} />
-                <Overlay className="overlay" color={overlayColors[index % overlayColors.length]}>
-                  <OverlayText className="text-uppercase">{project.name}</OverlayText>
-                </Overlay>
-              </ImageWrapper>
-            </ProjectWrapper>
-          ))}
-        </ProjectsContainer>
+        <MainContent>
+          <MainContentAbout>
+            <Section>
+              <AboutHeader>Things That I Do</AboutHeader>
+              <Line />
+
+              <Section>
+                <SectionHeader>Frontend Development</SectionHeader>
+                <SectionImage src="images/coding.png" alt="Frontend Development" />
+                <div>                <p>I enjoy making code from scratch, and enjoy bringing ideas to life in the browser</p>
+                <List>
+                  <h5>Languages that I speak</h5>
+                  <p>HTML, CSS, JavaScript, CSS, Sass, PHP</p>
+                </List>
+                <List>
+                  <h5>Frameworks, Tools and Libraries</h5>
+                  <ListItem>React</ListItem>
+                  <ListItem>Vue</ListItem>
+                  <ListItem>Bootstrap</ListItem>
+                  <ListItem>Tailwind CSS</ListItem>
+                  <ListItem>JQuery</ListItem>
+                </List>
+                </div>
+
+              </Section>
+                <Line />
+              <Section>
+                <SectionHeader>Design</SectionHeader>
+                <SectionImage src="images/design.png" alt="Design" />
+                <p>I value simple content structure, clean design patterns and thoughtful interactions</p>
+                <List>
+                  <h5>Design Tools</h5>
+                  <ListItem>Affinity Designer</ListItem>
+                  <ListItem>Figma</ListItem>
+                  <ListItem>Canva</ListItem>
+                  <ListItem>Pen and Paper</ListItem>
+                </List>
+              </Section>
+              <Line />
+
+              <Section>
+                <SectionHeader>Webmaster and IT Support</SectionHeader>
+                <SectionImage src="images/it.png" alt="Design" />
+                <p> I have lots of experience with IT support, Database Management, and various tools.</p>
+                <List>
+                  <h5>Software</h5>
+                  <ListItem>Azure</ListItem>
+                  <ListItem>AWS</ListItem>
+                  <ListItem>Salesforce</ListItem>
+                  <ListItem>Docker</ListItem>
+                  <ListItem>SQL Server</ListItem>
+                  <ListItem>Oracle</ListItem>
+
+
+                </List>
+              </Section>
+            </Section>
+          </MainContentAbout>
+
+<div>
+  <h2>Projects</h2>
+  <h5>Here are some of my recent projects</h5>
+  <ProjectsContainer  id="projects">
+      {projects.map((project, index) => (
+        <ProjectWrapper
+          key={project.id}
+          firstRow={index < 3} // First row (index 0, 1, 2) will have 3 columns for the first two items
+          index={index}  // To decide if the project should span 2 or 3 columns
+        >
+
+          <ImageWrapper onClick={() => handleImageClick(index, overlayColors[index % overlayColors.length])}>
+            <Image src={project.images[0]} alt={project.name} />
+            <Overlay className="overlay" color={overlayColors[index % overlayColors.length]}>
+            <OverlayText>
+                <ProjectName>{project.name}</ProjectName>
+                <Technologies>{project.technologies}</Technologies>
+              </OverlayText>
+            </Overlay>
+          </ImageWrapper>
+        </ProjectWrapper>
+      ))}
+    </ProjectsContainer>
+    <AboutMe  />
+
+          </div>
+        </MainContent>
         <Footer />
 
+        {/* Add modal logic below */}
         {selectedProjectIndex !== null && (
-          <CustomModal show={showModal} onHide={handleClose} centered                 overlayColor={overlayColors[selectedProjectIndex % overlayColors.length]} // Pass overlayColor to CustomModal based on selectedProjectIndex
-          >
+          <CustomModal show={showModal} onHide={handleClose} centered overlayColor={overlayColors[selectedProjectIndex % overlayColors.length]}>
             <CustomModalDialog>
-              <ModalBody {...handlers}>
+              <ModalBody>
                 <CloseButton onClick={handleClose}>&times;</CloseButton>
                 <ChevronLeft onClick={handlePrev}>
                   <FontAwesomeIcon icon={faChevronLeft} size="s" />
                 </ChevronLeft>
                 <ModalImageContainer backdropColor={selectedColor}>
                   <ModalImage
-                    src={`${projects[selectedProjectIndex].images[0]}`}
+                    src={projects[selectedProjectIndex].images[0]} // Corrected here
                     alt={projects[selectedProjectIndex].name}
-                    {...handlers}
                     backdropColor={selectedColor}
                   />
                 </ModalImageContainer>
                 <ChevronRight onClick={handleNext}>
                   <FontAwesomeIcon icon={faChevronRight} size="s" />
                 </ChevronRight>
-                <div className='d-flex flex-column p-4 justify-content-between'>
+                <div className="d-flex flex-column p-4 justify-content-between">
                   <ModalContent>
                     <ModalTitle className="mb-4">{projects[selectedProjectIndex].name}</ModalTitle>
                     <h5>{projects[selectedProjectIndex].descriptionHeader}</h5>
@@ -172,66 +250,56 @@ const Projects = () => {
             </CustomModalDialog>
           </CustomModal>
         )}
-      <Modal
 
-      show={showLoginDetails}
-      onHide={handleCloseLoginDetails}
-      centered
-      dialogClassName="custom-modal"
-      backdropClassName="custom-backdrop"
-      overlayColor={overlayColors[selectedProjectIndex % overlayColors.length]} 
-
-    >
-
-<div className="custom-modal-content">
-
-          <Modal.Header style={{ backgroundColor: overlayColors[selectedProjectIndex % overlayColors.length] }} closeButton>
-          <Modal.Title>Login Details</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        {projects[selectedProjectIndex]?.username && (
-          <div>
-            <strong>User:</strong> {projects[selectedProjectIndex].username}
-            <CopyIcon
-              icon={faCopy}
-              onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].username)}
-              title="Copy Username to Clipboard"
-            />
-            <br />
-            <strong>Password:</strong> {projects[selectedProjectIndex].password}
-            <CopyIcon
-              icon={faCopy}
-              onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].password)}
-              title="Copy Password to Clipboard"
-            />
+        {/* Login Details Modal */}
+        <Modal show={showLoginDetails} onHide={handleClose} centered dialogClassName="custom-modal" backdropClassName="custom-backdrop">
+          <div className="custom-modal-content">
+            <Modal.Header style={{ backgroundColor: overlayColors[selectedProjectIndex % overlayColors.length] }} closeButton>
+              <Modal.Title>Login Details</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {projects[selectedProjectIndex]?.username && (
+                <div>
+                  <strong>User:</strong> {projects[selectedProjectIndex].username}
+                  <CopyIcon
+                    icon={faCopy}
+                    onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].username)}
+                    title="Copy Username to Clipboard"
+                  />
+                  <br />
+                  <strong>Password:</strong> {projects[selectedProjectIndex].password}
+                  <CopyIcon
+                    icon={faCopy}
+                    onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].password)}
+                    title="Copy Password to Clipboard"
+                  />
+                </div>
+              )}
+              {projects[selectedProjectIndex]?.adminUsername && (
+                <div>
+                  <strong>Admin:</strong> {projects[selectedProjectIndex].adminUsername}
+                  <CopyIcon
+                    icon={faCopy}
+                    onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].adminUsername)}
+                    title="Copy Admin Username to Clipboard"
+                  />
+                  <br />
+                  <strong>Password:</strong> {projects[selectedProjectIndex].adminPassword}
+                  <CopyIcon
+                    icon={faCopy}
+                    onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].adminPassword)}
+                    title="Copy Admin Password to Clipboard"
+                  />
+                </div>
+              )}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="primary" onClick={handleClose}>
+                OK
+              </Button>
+            </Modal.Footer>
           </div>
-        )}
-        {projects[selectedProjectIndex]?.adminUsername && (
-          <div>
-            <strong>Admin:</strong> {projects[selectedProjectIndex].adminUsername}
-            <CopyIcon
-              icon={faCopy}
-              onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].adminUsername)}
-              title="Copy Admin Username to Clipboard"
-            />
-            <br />
-            <strong>Password:</strong> {projects[selectedProjectIndex].adminPassword}
-            <CopyIcon
-              icon={faCopy}
-              onClick={() => handleCopyToClipboard(projects[selectedProjectIndex].adminPassword)}
-              title="Copy Admin Password to Clipboard"
-            />
-          </div>
-        )}
-      </Modal.Body>
-      <Modal.Footer>
-      
-        <Button variant="primary" onClick={handleCloseLoginDetails}>
-          OK
-        </Button>
-      </Modal.Footer>
-      </div>
-      </Modal>
+        </Modal>
       </div>
     </>
   );
@@ -239,27 +307,178 @@ const Projects = () => {
 
 export default Projects;
 
+const MainContent = styled.div`
 
-const ProjectsContainer = styled.section`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: 1em;
-  margin-bottom: 3em;
-  max-width:1175px;
-  margin:0 auto 5em;
-`;
-
-const ProjectWrapper = styled.div`
-  position: relative;
-  height: auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 96vw;
-  margin: 0 auto;
+display:grid; 
+grid-template-columns:1fr;
+width:100%;
+max-width:96vw;
+margin:0 auto;
+gap:4em;
+justify-items:center;
+padding:2em;
+justify-content:center;
 
   @media (min-width: 768px) {
-    max-width: 375px;
+  grid-template-columns:1fr 2fr;
+
+    max-width: 1200px;
+    max-height:max-content;
+  }
+
+`;
+const MainContentAbout = styled.div`
+  background-color: #343434;
+  padding: 2em 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  color: white;
+  border-radius: 10px;
+  height: fit-content;
+  margin-bottom:1em;
+    @media (min-width: 768px) {
+    margin-bottom:4em;
+
+  }
+`;
+
+const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+`;
+
+const SectionImage = styled.img`
+  max-width: 200px;
+  margin: 0 auto;
+`;
+
+const Line = styled.div`
+  border-top: 1px solid #fff;
+  margin: 0.5em 0;
+`;
+
+const AboutHeader = styled.h2`
+  font-size: 1.5rem;
+    font-family:'Roboto' !important;
+
+`;
+
+const SectionHeader = styled.h3`
+  font-size: 1.2rem;
+  color:#d9d9d9;
+    font-family:'Roboto' !important;
+
+`;
+
+const List = styled.ul`
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  text-align:center;
+    font-family:'Roboto' !important;
+
+`;
+
+const ListItem = styled.li`
+  margin-bottom: 0.5em;
+`;
+
+const HeroSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  z-index: 1;
+  position: relative;
+  padding: 1em;
+  margin-bottom:3em;
+    @media (min-width: 768px) {
+  padding: 7em;
+
+  }
+`;
+
+// Wrapper for the banner image
+const BannerImageWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+`;
+
+const BannerImage = styled.img`
+  max-width: 200px;
+`;
+
+// Styled h3 and h1 with span elements
+const Heading3 = styled.h3`
+  font-size: 1.5rem;
+  color: #333;
+  margin:0;
+    padding-top:0.5em;
+    
+
+  
+  span {
+    color: #62645c; /* Style for the span inside h3 */
+  }
+`;
+
+const Heading1 = styled.h1`
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #222;
+  margin:0;
+
+  span {
+    color: #62645c; /* Style for the span inside h1 */
+  }
+`;
+
+const ProjectsContainer = styled.section`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* 6 equal columns */
+  margin: 0 auto 5em;
+  width: 100%;
+  max-width: 1000px;
+
+  /* Responsive layout - adjust the grid for larger screens */
+  @media (min-width: 768px) {
+    gap: 1em;  /* Gap between grid items */
+
+    grid-template-columns: repeat(6, 1fr);  /* 6 equal columns for medium screens */
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(6, 1fr);  /* 6 equal columns for larger screens */
+  }
+`;
+
+// Individual project wrapper in the grid
+const ProjectWrapper = styled.div`
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+    margin-bottom:2em;
+
+
+  /* First two projects span 3 columns each */
+  grid-column: ${(props) => (props.firstRow && props.index < 2 ? "span 3" : "auto")};
+
+  /* Subsequent projects span 2 columns */
+  @media (min-width: 768px) {
+      margin-bottom:0em;
+
+    grid-column: ${(props) =>
+      props.index >= 2 ? "span 2" : props.firstRow && props.index < 2 ? "span 3" : "auto"};
+  }
+
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 
@@ -283,12 +502,6 @@ const LoginButton = styled.a`
   }
 `;
 
-const ProjectIntro = styled.h5`
-  font-weight: 700 !important;
-  margin-bottom: 2.5em;
-  padding-left: 0.5em;
-  max-width: 900px;
-`;
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -328,13 +541,25 @@ const OverlayText = styled.div`
   transform: translate(-50%, -50%);
   opacity: 1;
   color: #ffffff !important;
-  font-size: 1.6em;
   font-weight: bold;
   text-align: center;
   letter-spacing: 5px;
   transition: opacity 0.6s ease;
+  width:100%;
 `;
 
+
+const ProjectName = styled.span`
+  font-size: 1.2rem; /* Larger font size for project name */
+  font-weight: bold;
+`;
+
+const Technologies = styled.span`
+  font-size: 0.8rem; /* Smaller font size for technologies */
+  display: block; /* Forces the technologies to appear on a new line */
+  margin-top: 0.5rem; /* Adds some space between name and technologies */
+  color: #ddd; /* Lighter color for technologies */
+`;
 const CustomModal = styled(Modal)`
   transition: transform 0.3s ease-out;
 

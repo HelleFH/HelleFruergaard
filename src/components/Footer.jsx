@@ -36,7 +36,7 @@ const FooterContainer = styled.footer`
   flex-direction:column-reverse;
   justify-content: center;
   align-items: center;
-  background-color: #f8f8f8;
+  background-color: #e4e4e4;
   width: 100vw !important;
   position: relative;
   bottom: 0;

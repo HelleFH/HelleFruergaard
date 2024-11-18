@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll'; // Use `react-scroll`
 import styled from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -7,29 +7,25 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const StyledNavbar = styled.nav`
   background-color: #fff;
-  border-bottom: 2px solid #f2f2f2;
-  padding-bottom: 2em;
+  padding-bottom: 1em;
   display: flex;
   align-items: flex-start;
-  position: relative;
+  position: fixed;
   color:white !important;
-
-  padding-top:3.5em;
-  max-width:1175px;
-    margin-left:1em;
+  width:100%;
+  z-index:9999;
+  padding-top:1em;
+  margin-left:1em;
   margin-right:1em;
-
 
   @media (min-width: 1200px) {
     margin:0 auto;
   }   
-  }
 `;
 
 const NavbarBrand = styled.img`
-    width: 2.5em;
-    height: 2em;  
-    border: solid #4D4D4D 3px;
+  width: 2.5em;
+  height: 2em;  
 `;
 
 const NavbarName = styled.div`
@@ -45,14 +41,13 @@ const ToggleButton = styled.a`
   margin-left: auto;
   cursor: pointer;
   &:hover {
-      transform:scale(1.1)
-    }
+    transform:scale(1.1)
+  }
 
   img {
     width: 32px;
     height: 32px;
     margin-right:2em;
-
   }
 `;
 
@@ -72,7 +67,6 @@ const NavLinksContainer = styled.div`
   padding-top:2em;
   z-index: 1000;
   transform: translateX(100%);
-
   transition: transform 0.3s ease-in-out;
 
   li a {color:white !important; font-weight:600;}
@@ -85,9 +79,8 @@ const NavLinksContainer = styled.div`
     transform: translateX(100%);
   }
 
-     @media (min-width: 1200px) {
+  @media (min-width: 1200px) {
     max-width:400px;
-
   }
 `;
 
@@ -101,12 +94,12 @@ const CloseButton = styled.button`
   color: black;
   cursor: pointer;
   font-weight:200;
-   
+`;
 
-`;
 const MenuHeader = styled.h1`
-font-weight:900;
+  font-weight:900;
 `;
+
 const Navbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -125,32 +118,43 @@ const Navbar = () => {
 
   return (
     <StyledNavbar className="navbar navbar-light">
-      <Link className="navbar-brand d-flex gap-3 align-items-center justify-content-center" to="/">
-      <NavbarBrand src={`./images/copenhagen.png`} />
-      <NavbarName>Helle</NavbarName>
-      </Link>
-
       <ToggleButton onClick={toggleNav}>
-      <img
-        src={isNavOpen || isAnimating 
-          ? `images/x_icon.svg`
-          : `/images/nav_icon.svg`}
-        alt="Toggle navigation"
-      />      </ToggleButton>
+        <img
+          src={isNavOpen || isAnimating 
+            ? `images/x_icon.svg`
+            : `/images/nav_icon.svg`}
+          alt="Toggle navigation"
+        />
+      </ToggleButton>
 
       <NavLinksContainer className={`${isNavOpen ? 'open' : ''} ${isAnimating ? 'close' : ''}`}>
         <MenuHeader className='mt-4 mb-4'>Menu</MenuHeader>
         {isNavOpen && <CloseButton onClick={toggleNav}>&times;</CloseButton>}
         <ul className="navbar-nav ml-auto d-flex gap-3">
           <li className="nav-item text-light">
-            <Link className="nav-link" to="/aboutme" onClick={toggleNav}>About Me</Link>
+            <ScrollLink 
+              to="about-me" 
+              smooth={true} 
+              duration={500}
+              className="nav-link" 
+              onClick={toggleNav}>
+              About Me
+              
+            </ScrollLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/projects" onClick={toggleNav}>Projects</Link>
+            <ScrollLink 
+              to="projects" 
+              smooth={true} 
+              duration={500}
+              className="nav-link" 
+              onClick={toggleNav}>
+              Projects
+            </ScrollLink>
           </li>
           <li className="nav-item">
-          <a className="nav-link" href="https://www.linkedin.com/in/helle-fruergaard-577763112/" >
-          <i className="fab fa-linkedin-in"></i>
+            <a className="nav-link" href="https://www.linkedin.com/in/helle-fruergaard-577763112/">
+              <i className="fab fa-linkedin-in"></i>
             </a>
           </li>
           <li className="nav-item">
