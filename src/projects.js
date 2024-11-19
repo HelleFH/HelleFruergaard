@@ -64,7 +64,7 @@ const projects = [
         githubButtonText: "GitHub",
         descriptionHeader: "A site where users can read about and play the Monty Hall Game",
         description: "The Monty Hall Problem is a famous counter intuitive statistics problem. 
-            This site has a simulator where users can input and amout of games to simulate using python with Flask and a manual Monty Hall Game made with JQuery.",
+            This site has a simulator where users can input and amout of games to simulate using python with Flask and a manual Monty Hall Game made with JQuery."
     },
             {
         id: 6,
@@ -77,7 +77,7 @@ const projects = [
         githubButtonText: "GitHub",
         descriptionHeader: "A site where users can read about and play the Monty Hall Game",
         description: "The Monty Hall Problem is a famous counter intuitive statistics problem. 
-            This site has a simulator where users can input and amout of games to simulate using python with Flask and a manual Monty Hall Game made with JQuery.",
+            This site has a simulator where users can input and amout of games to simulate using python with Flask and a manual Monty Hall Game made with JQuery."
     },
     {
         id: 7,
