@@ -57,7 +57,7 @@ const projects = [
         id: 5,
         name: "The Monty Hall Problem",
         technologies: "JQuery, Python, Chart.js",
-        images: ["/images/montyhall-screen.png"],
+        images: ["/images/montyhall-screen.svg"],
         projectLink: "https://monty-hall-explained.onrender.com/",
         githubLink: "https://github.com/HelleFH/product-page",
         buttonText: "View Project",
