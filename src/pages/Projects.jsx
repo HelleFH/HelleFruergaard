@@ -104,98 +104,103 @@ const Projects = () => {
           <BannerImage src="images/tree.png" alt="Banner" />
         </BannerImageWrapper>
         <Heading3>
-          Hi, my name is Helle, I'm a web developer based in Copenhagen. 
-          <span>Welcome to</span>  </Heading3>
+        Welcome <span> to</span>  </Heading3>
         <Heading1>
           <span>my</span> portfolio
         </Heading1>
       </HeroSection>
       <div id="container">
         <MainContent>
-          <MainContentAbout>
-            <Section>
-              <AboutHeader>Things That I Do</AboutHeader>
-              <Line />
-
-              <Section>
-                <SectionHeader>Frontend Development</SectionHeader>
-                <SectionImage src="images/coding.png" alt="Frontend Development" />
-                <div>                <p>I enjoy making code from scratch, and enjoy bringing ideas to life in the browser</p>
-                <List>
-                  <h5>Languages that I speak</h5>
-                  <p>HTML, CSS, JavaScript, CSS, Sass, PHP</p>
-                </List>
-                <List>
-                  <h5>Frameworks, Tools and Libraries</h5>
-                  <ListItem>React</ListItem>
-                  <ListItem>Vue</ListItem>
-                  <ListItem>Bootstrap</ListItem>
-                  <ListItem>Tailwind CSS</ListItem>
-                  <ListItem>JQuery</ListItem>
-                </List>
-                </div>
-
-              </Section>
-                <Line />
-              <Section>
-                <SectionHeader>Design</SectionHeader>
-                <SectionImage src="images/design.png" alt="Design" />
-                <p>I value simple content structure, clean design patterns and thoughtful interactions</p>
-                <List>
-                  <h5>Design Tools</h5>
-                  <ListItem>Affinity Designer</ListItem>
-                  <ListItem>Figma</ListItem>
-                  <ListItem>Canva</ListItem>
-                  <ListItem>Pen and Paper</ListItem>
-                </List>
-              </Section>
-              <Line />
-
-              <Section>
-                <SectionHeader>Webmaster and IT Support</SectionHeader>
-                <SectionImage src="images/it.png" alt="Design" />
-                <p> I have lots of experience with IT support, Database Management, and various tools.</p>
-                <List>
-                  <h5>Software</h5>
-                  <ListItem>Azure</ListItem>
-                  <ListItem>AWS</ListItem>
-                  <ListItem>Salesforce</ListItem>
-                  <ListItem>Docker</ListItem>
-                  <ListItem>SQL Server</ListItem>
-                  <ListItem>Oracle</ListItem>
 
 
-                </List>
-              </Section>
-            </Section>
-          </MainContentAbout>
+          <ProjectsContainer>
+            <h2>Projects</h2>
+            <ProjectsSubheader>Here are some of my recent projects</ProjectsSubheader>
+            <ProjectsContent id="projects">
+              {projects.map((project, index) => (
+                <ProjectWrapper
+                  key={project.id}
+                  firstRow={index < 3} // First row (index 0, 1, 2) will have 3 columns for the first two items
+                  index={index}  // To decide if the project should span 2 or 3 columns
+                >
 
-<div>
-  <h2>Projects</h2>
-  <h5>Here are some of my recent projects</h5>
-  <ProjectsContainer  id="projects">
-      {projects.map((project, index) => (
-        <ProjectWrapper
-          key={project.id}
-          firstRow={index < 3} // First row (index 0, 1, 2) will have 3 columns for the first two items
-          index={index}  // To decide if the project should span 2 or 3 columns
-        >
+                  <ImageWrapper onClick={() => handleImageClick(index, overlayColors[index % overlayColors.length])}>
+                    <Image src={project.images[0]} alt={project.name} />
+                    <Overlay className="overlay" color={overlayColors[index % overlayColors.length]}>
+                      <OverlayText>
+                        <ProjectName>{project.name}</ProjectName>
+                        <Technologies>{project.technologies}</Technologies>
+                      </OverlayText>
+                    </Overlay>
+                  </ImageWrapper>
+                </ProjectWrapper>
+              ))}
+            </ProjectsContent>
+            <AboutMe />
 
-          <ImageWrapper onClick={() => handleImageClick(index, overlayColors[index % overlayColors.length])}>
-            <Image src={project.images[0]} alt={project.name} />
-            <Overlay className="overlay" color={overlayColors[index % overlayColors.length]}>
-            <OverlayText>
-                <ProjectName>{project.name}</ProjectName>
-                <Technologies>{project.technologies}</Technologies>
-              </OverlayText>
-            </Overlay>
-          </ImageWrapper>
-        </ProjectWrapper>
-      ))}
-    </ProjectsContainer>
-    <AboutMe  />
+          </ProjectsContainer>
+         
+  <MainContentAbout>
+    <AboutHeader>Things that I do</AboutHeader>
 
-          </div>
+
+    <Section>
+      <SectionHeader>Frontend Development</SectionHeader>
+      <SectionImage src="images/coding.png" alt="Frontend Development" />
+      <div>
+        <p>I enjoy making code from scratch, and enjoy bringing ideas to life in the browser.</p>
+        <ListHeader>Languages that I speak</ListHeader>
+        <List>
+          <ListItem>HTML</ListItem>
+          <ListItem>CSS</ListItem>
+          <ListItem>JavaScript</ListItem>
+          <ListItem>Sass</ListItem>
+          <ListItem>PHP</ListItem>
+        </List>
+
+        <ListHeader>Frameworks, Tools, and Libraries</ListHeader>
+
+        <List>
+          <ListItem>React</ListItem>
+          <ListItem>Vue</ListItem>
+          <ListItem>Bootstrap</ListItem>
+          <ListItem>Tailwind CSS</ListItem>
+          <ListItem>JQuery</ListItem>
+        </List>
+      </div>
+    </Section>
+
+    <Section>
+      <SectionHeader>Design</SectionHeader>
+      <SectionImage src="images/design.png" alt="Design" />
+      <p>I value simple content structure, clean design patterns, and thoughtful interactions.</p>
+      <ListHeader>Design Tools</ListHeader>
+
+      <List>
+        <ListItem>Affinity Designer</ListItem>
+        <ListItem>Figma</ListItem>
+        <ListItem>Canva</ListItem>
+        <ListItem>Pen and Paper</ListItem>
+      </List>
+    </Section>
+
+    <Section>
+      <SectionHeader>Webmaster and IT Support</SectionHeader>
+      <SectionImage src="images/it.png" alt="IT Support" />
+      <p>I have lots of experience with IT support, database management, and various tools.</p>
+      <ListHeader>Software</ListHeader>
+
+      <List>
+        <ListItem>Azure</ListItem>
+        <ListItem>AWS</ListItem>
+        <ListItem>Salesforce</ListItem>
+        <ListItem>Docker</ListItem>
+        <ListItem>SQL Server</ListItem>
+        <ListItem>Oracle</ListItem>
+      </List>
+    </Section>
+  </MainContentAbout>
+
         </MainContent>
         <Footer />
 
@@ -309,8 +314,8 @@ export default Projects;
 
 const MainContent = styled.div`
 
-display:grid; 
-grid-template-columns:1fr;
+display:flex; 
+flex-direction:column-reverse;
 width:100%;
 max-width:96vw;
 margin:0 auto;
@@ -318,9 +323,14 @@ gap:4em;
 justify-items:center;
 padding:2em;
 justify-content:center;
+align-items:center;
 
   @media (min-width: 768px) {
-  grid-template-columns:1fr 2fr;
+  display:grid; 
+  grid-template-columns:1fr;
+
+
+  grid-template-columns:2fr 1fr;
 
     max-width: 1200px;
     max-height:max-content;
@@ -328,15 +338,9 @@ justify-content:center;
 
 `;
 const MainContentAbout = styled.div`
-  background-color: #343434;
-  padding: 2em 1em;
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  color: white;
-  border-radius: 10px;
-  height: fit-content;
-  margin-bottom:1em;
+align-self:flex-start;
+  display:flex;
+  flex-direction:column;
     @media (min-width: 768px) {
     margin-bottom:4em;
 
@@ -346,7 +350,13 @@ const MainContentAbout = styled.div`
 const Section = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 0.5em;
+   background-color: white;
+   color:black;
+  padding: 2em 1em;
+  border-radius: 10px;
+  height: fit-content;
+  margin-bottom:1em;
 `;
 
 const SectionImage = styled.img`
@@ -360,30 +370,51 @@ const Line = styled.div`
 `;
 
 const AboutHeader = styled.h2`
-  font-size: 1.5rem;
-    font-family:'Roboto' !important;
+  font-size: 2rem;
+    font-family:'Istok Web' !important;
 
 `;
 
 const SectionHeader = styled.h3`
-  font-size: 1.2rem;
-  color:#d9d9d9;
+  font-size: 1.5rem;
+  color:#343434;
     font-family:'Roboto' !important;
 
 `;
 
 const List = styled.ul`
+line-height:1em;
   list-style-type: none;
   padding-left: 0;
   margin: 0;
-  text-align:center;
-    font-family:'Roboto' !important;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: 'Roboto', sans-serif;
+  gap: 0.4em; /* Controls the space between items */
+`;
 
+const ListHeader = styled.h5`
+margin-top:1em;
 `;
 
 const ListItem = styled.li`
-  margin-bottom: 0.5em;
+  font-size: 1em;
+  display: inline-block;
+  position: relative;
+
+  /* Add the dot before each item */
+  &::before {
+    content: "•";
+    margin-right: 0.4em;  /* Adds space between the dot and text */
+    font-size: 1em; /* Adjusts size of the dot */
+  }
+
+  &:first-child::before {
+    content: ''; /* Remove the dot before the first item */
+  }
 `;
+
 
 const HeroSection = styled.div`
   display: flex;
@@ -394,10 +425,11 @@ const HeroSection = styled.div`
   background-color: white;
   z-index: 1;
   position: relative;
-  padding: 1em;
-  margin-bottom:3em;
+  padding: 4em;
+  margin-bottom:2em;
     @media (min-width: 768px) {
-  padding: 7em;
+  padding: 10em;
+  padding-top:6em;
 
   }
 `;
@@ -420,41 +452,56 @@ const Heading3 = styled.h3`
   color: #333;
   margin:0;
     padding-top:0.5em;
-    
 
-  
   span {
     color: #62645c; /* Style for the span inside h3 */
   }
 `;
 
 const Heading1 = styled.h1`
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #222;
   margin:0;
-
+word-spacing:-0.2em !important; 
   span {
     color: #62645c; /* Style for the span inside h1 */
+        font-weight:400;
+
   }
 `;
+const ProjectsContainer = styled.div`
+display:flex;
+flex-direction:column;
+height:100%;
+justify-content:flex-start;
+`;
 
-const ProjectsContainer = styled.section`
+
+const ProjectsSubheader = styled.h5`
+text-align:left;
+`;
+
+const ProjectsContent = styled.section`
+padding-top:2em;
+
   display: grid;
-  grid-template-columns: repeat(2, 1fr);  /* 6 equal columns */
-  margin: 0 auto 5em;
+  grid-template-columns: repeat(2, 100fr);  /* 6 equal columns */
+  margin: 0 auto;
   width: 100%;
   max-width: 1000px;
+    justify-content:space-evenly;
+
 
   /* Responsive layout - adjust the grid for larger screens */
   @media (min-width: 768px) {
     gap: 1em;  /* Gap between grid items */
 
-    grid-template-columns: repeat(6, 1fr);  /* 6 equal columns for medium screens */
+    grid-template-columns: repeat(4, 100fr);  /* 6 equal columns for medium screens */
   }
 
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(6, 1fr);  /* 6 equal columns for larger screens */
+    grid-template-columns: repeat(6, 100fr);  /* 6 equal columns for larger screens */
   }
 `;
 
@@ -474,12 +521,18 @@ const ProjectWrapper = styled.div`
       margin-bottom:0em;
 
     grid-column: ${(props) =>
-      props.index >= 2 ? "span 2" : props.firstRow && props.index < 2 ? "span 3" : "auto"};
+    props.index >= 2 ? "span 2" : props.firstRow && props.index < 2 ? "span 4" : "auto"};
   }
 
   &:hover {
     transform: scale(1.1);
   }
+@media (min-width: 1000px) {
+
+grid-column: ${(props) =>
+    props.index >= 2 ? "span 2" : props.firstRow && props.index < 2 ? "span 3" : "auto"};
+}
+
 `;
 
 const LoginButton = styled.a`
@@ -513,13 +566,14 @@ const Image = styled.img`
   width: 100%;
   object-fit: cover;
   transition: transform 0.8s ease;
-
+  border-radius:3px;
   &:hover {
     transform: scale(1.1);
   }
 `;
 
 const Overlay = styled.div`
+  border-radius:3px;
   position: absolute;
   top: 0;
   left: 0;

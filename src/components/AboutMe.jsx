@@ -35,7 +35,7 @@ const AboutMe = () => {
           <h3>About Me</h3>
           <p>
             I was born in the United States but have lived in Denmark and Singapore for most of my life.
-            Currently, I reside in Copenhagen with my husband, our two young children, a cat, and a dog.
+            Currently, I live in Copenhagen with my husband, our two young children, a cat, and a dog.
           </p>
           <p>
             I hold a bachelor's degree in Biology and Chemistry from the University of Southern Denmark, and have recently completed a short course in web development to expand my skill set.
@@ -56,15 +56,18 @@ const AboutMe = () => {
 
 export default AboutMe;
 
+
 const AboutMeWrapper = styled.div`
-  max-width: 1000px;
+display:flex;
+font-weight:500;
   margin: 0 auto;
   padding: 0 1.2em;
-  margin-bottom: 5em;
+  font-family:'Gelasio';
 
   @media (min-width: 1000px) {
     flex-direction: row;
     padding: 0em;
+    margin-top:5em;
   }
 `;
 
@@ -73,8 +76,6 @@ const AboutMeContent = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   gap: 2em;
-    margin-top:8em;
-
 
   @media (min-width: 1000px) {
     flex-direction: row;
@@ -102,7 +103,7 @@ const ProfileImage = styled.img`
 `;
 
 const ContactInfo = styled.div`
-
+font-family:'Roboto';
   .font-weight-bold {
     margin-bottom: 0;
   }
@@ -123,32 +124,3 @@ const AboutInfo = styled.div`
   }
 `;
 
-const SkillsSection = styled.section`
-  h5 {
-    margin-top: 20px;
-  }
-`;
-
-const HorizontalList = styled.ul`
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-
-  li {
-    margin-right: 10px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-right: 1.2em;
-
-    &:not(:last-child)::after {
-      content: "•";
-      font-size: 1.5em;
-      color: midnightblue;
-      position: absolute;
-      right: -15px;
-    }
-  }
-`;

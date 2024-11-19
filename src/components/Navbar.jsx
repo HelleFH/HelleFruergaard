@@ -23,19 +23,6 @@ const StyledNavbar = styled.nav`
   }   
 `;
 
-const NavbarBrand = styled.img`
-  width: 2.5em;
-  height: 2em;  
-`;
-
-const NavbarName = styled.div`
-  font-weight: 700;
-  color: #333 !important;
-  font-size: 14px;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  margin-left:-0.5em;
-`;
 
 const ToggleButton = styled.a`
   margin-left: auto;

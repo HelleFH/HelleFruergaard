@@ -7,8 +7,8 @@ const Container = styled.section`
   justify-content: center;
 `;
 
-const ProjectsContainer = ({ children }) => {
+const ProjectsContent = ({ children }) => {
   return <Container id="projectsContainer">{children}</Container>;
 };
 
-export default ProjectsContainer;
+export default ProjectsContent;

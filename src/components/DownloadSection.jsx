@@ -14,6 +14,7 @@ const DownloadSection = () => {
 const DownloadButton = styled.a`
 font-size:0.8em;
 font-weight:600;
+font-family:'Roboto';
 display: inline-block;
   background-color: #333;
   color: #fff !important;
