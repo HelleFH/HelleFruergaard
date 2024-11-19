@@ -52,7 +52,7 @@ const SkillsSection = () => {
       {/* IT Support Section */}
       <Section>
         <SectionHeader>Webmaster and IT Support</SectionHeader>
-        <SectionImage src="images/it.png" alt="IT Support" />
+        <SectionImage src="images/IT.png" alt="IT Support" />
         <p>I have lots of experience with IT support, database management, and various tools.</p>
         <br />
         <ListHeader>Software</ListHeader>

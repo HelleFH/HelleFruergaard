@@ -69,7 +69,7 @@ const AboutMeWrapper = styled.div`
 display:flex;
 font-weight:500;
   margin: 0 auto;
-  padding: 0 1.2em;
+  padding: 0 0.5em;
   font-family:'Gelasio';
 
   @media (min-width: 1000px) {
