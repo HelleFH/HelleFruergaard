@@ -15,7 +15,12 @@ const projects = [
     username: "Hellefruergaard@plantcalendar.com",
     password: "fruergaard",
     technologiesMore: [
+      "MongoDB",
+      "Express",
+      "React",
+      " Node.js",
       "Axios",
+      "RESTful API",
       "Bcryptjs",
       "Cloudinary",
       "Multer",
@@ -37,7 +42,12 @@ const projects = [
     technologiesMore: [
       "Vite",
       "Bootstrap",
-      "Nodemon"
+      "Nodemon",
+       "MongoDB",
+       "Express",
+       "React",
+       "Node.js",
+       "RESTful API"
     ]
   },
   {
@@ -55,7 +65,10 @@ const projects = [
       "MongoDB",
       "Express",
       "Vue",
-      "Node.js"
+      "Node.js",
+      "Cloudinary",
+      "RESTful API"
+
     ]
   },
   {
@@ -86,8 +99,9 @@ const projects = [
     buttonText: "View Project",
     githubButtonText: "GitHub",
     descriptionHeader: "A site where users can read about and play the Monty Hall Game",
-    description: "A React Portfolio Page featuring an image grid with an overlay. When an image is clicked, a modal opens displaying additional information about the project.",
+    description: "A dynamic React portfolio page showcasing a visually appealing image grid with a sleek overlay. When an image is clicked, a modal window opens, providing detailed information about the corresponding project",
     technologiesMore: [
+      "React",
       "Bootstrap",
       "Styled Components",
       "React Swipable"
@@ -105,6 +119,8 @@ const projects = [
     descriptionHeader: "Frontend for React-based Dating Application",
     description: "This project is a frontend for a tinder-like dating app developed using React and JavaScript. The application stores user data locally. The app has sections for sign up, user creation, favorites and more. User images are made with Midjourney.",
     technologiesMore: [
+      "React",
+      "JavaScript",
       "Axios",
       "Bootstrap",
       "Cloudinary",
@@ -123,7 +139,7 @@ const projects = [
     githubButtonText: "GitHub",
     descriptionHeader: "Netflix-like streaming platform clone",
     description: "Netflix Clone is a web application that replicates the user interface and functionalities of the Netflix streaming platform using JavaScript.",
-    technologiesMore: []
+    technologiesMore: ["JavaScript"]
   },
   {
     id: 10,
@@ -139,6 +155,11 @@ const projects = [
     username: "hellefruergaard@mevn-shop.com",
     password: "password123",
     technologiesMore: [
+       "MongoDB",
+       "Express",
+       "Vue",
+       "Node.js",
+       "RESTful API",
       "Multer",
       "Zustand",
       "Formik",
@@ -158,7 +179,7 @@ const projects = [
     githubButtonText: "GitHub",
     descriptionHeader: "Interactive image gallery with JQuery",
     description: "A simple site that showcases an interactive image gallery using JQuery showing AI images of dinosaurs. Users can click on thumbnails to view full-size images in a lightbox.",
-    technologiesMore: []
+    technologiesMore: ["JQuery"]
   },
   {
     id: 12,
@@ -171,7 +192,7 @@ const projects = [
     githubButtonText: "GitHub",
     descriptionHeader: "Simple front page for Web Shop using HTML and CSS",
     description: "CSS and HTML for a webshop. It showcases a basic online shop layout with product listings and details.",
-    technologiesMore: []
+    technologiesMore: ["HTML", "CSS"]
   },
   {
     id: 13,
@@ -184,7 +205,7 @@ const projects = [
     githubButtonText: "GitHub",
     descriptionHeader: "Made with Vanilla JS",
     description: "A news website for Copenhagen, built with vanilla JavaScript. The site features a front page, an individual news article with an image slider and Google Maps integration, and a subscription section with a sign-up form.",
-    technologiesMore: []
+    technologiesMore: ["JavaScript"]
   }
 ];
 

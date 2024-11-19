@@ -7,7 +7,7 @@ import DownloadSection from './DownloadSection';
 const AboutMe = () => {
   return (
     <AboutMeWrapper >
-      <AboutMeContent  id="about-me" className="pt-4 mt-6">
+      <AboutMeContent  id="about-me">
         <PersonalInfo className="d-flex flex-column align-items-center gap-3 justify-content-center">
           <ProfileImage src={`/images/helle.jpg`} alt="Profile" />
           <div className="d-flex flex-row justify-content-center gap-3">
@@ -75,7 +75,7 @@ font-weight:500;
   @media (min-width: 1000px) {
     flex-direction: row;
     padding: 0em;
-    margin-top:5em;
+    margin-top:2.5em;
   }
 `;
 
@@ -121,7 +121,7 @@ font-family:'Roboto';
 
 const AboutInfo = styled.div`
   flex: 1;
-
+  margin-bottom:4em;
   h3 {
     padding-bottom: 5px;
     margin-bottom: 10px;
@@ -129,6 +129,10 @@ const AboutInfo = styled.div`
 
   p {
     margin-bottom: 20px;
+  }
+      @media (min-width: 1000px) {
+    margin-bottom:0em;
+
   }
 `;
 

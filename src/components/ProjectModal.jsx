@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import styled, { keyframes } from 'styled-components';
 import { Modal, Button } from 'react-bootstrap';
+import { useSwipeable } from 'react-swipeable';
 
 // Define fade-in and fade-out animations
 const fadeIn = keyframes`
@@ -27,91 +28,104 @@ const fadeOut = keyframes`
     transform: translateY(-50px);
   }
 `;
+
 const ProjectModal = ({
-    show,
-    handleClose,
-    overlayColor,
-    selectedProjectIndex,
-    projects,
-    handlePrev,
-    handleNext,
-    handleShowLoginDetails
-  }) => {
-    if (selectedProjectIndex === null || !projects[selectedProjectIndex]) return null;
-  
-    const project = projects[selectedProjectIndex];
-  
-    // Ensure technologiesMore is a string, if not, fallback to an empty string
-    const technologiesMore = project.technologiesMore || ''; // Default to empty string
-    const technologies = typeof technologiesMore === 'string'
-      ? technologiesMore.split(',').map(tech => tech.trim())
-      : []; // Split only if it's a string
-  
-    return (
-      <CustomModal show={show} onHide={handleClose} centered overlayColor={overlayColor}>
-        <LoginModalDialog>
-          <ModalBody>
-            <CloseButton onClick={handleClose}>&times;</CloseButton>
-            <ChevronLeft onClick={handlePrev}>
-              <FontAwesomeIcon icon={faChevronLeft} size="sm" />
-            </ChevronLeft>
-            <ModalImageContainer backdropColor={overlayColor}>
-              <ModalImage
-                src={project.images[0]}
-                alt={project.name}
-                backdropColor={overlayColor}
-              />
-            </ModalImageContainer>
-            <ChevronRight onClick={handleNext}>
-              <FontAwesomeIcon icon={faChevronRight} size="s" />
-            </ChevronRight>
-            <div className="d-flex flex-column p-5 justify-content-between gap-3">
-              <ModalContent>
-                <ModalTitle className="mb-4">{project.name}</ModalTitle>
-                <ProjectDescription>{project.description}</ProjectDescription>
-  
-                {/* Render technologies as an actual list */}
-                <TechnologiesList>
-                  {technologiesMore.length > 0 ? (
-                    technologiesMore.map((tech, index) => (
-                      <TechItem key={index}>
-                        {tech}
-                      </TechItem>
-                    ))
-                  ) : (
-                    <span></span>
-                  )}
-                </TechnologiesList>
-              </ModalContent>
-              {project.username && (
-                <LoginButton onClick={handleShowLoginDetails}>
-                  Show Login Details
-                </LoginButton>
-              )}
-              <ButtonsContainer>
-                <ProjectButton
-                  href={project.projectLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {project.buttonText}
-                </ProjectButton>
-                <GithubButton
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {project.githubButtonText}
-                </GithubButton>
-              </ButtonsContainer>
-            </div>
-          </ModalBody>
-        </LoginModalDialog>
-      </CustomModal>
-    );
-  };
-  export default ProjectModal;
-  
+  show,
+  handleClose,
+  overlayColor,
+  selectedProjectIndex,
+  projects,
+  handlePrev,
+  handleNext,
+  handleShowLoginDetails
+}) => {
+  // Ensure selectedProjectIndex is valid and projects are available
+  if (selectedProjectIndex === null || !projects[selectedProjectIndex]) {
+    return null;
+  }
+
+  const project = projects[selectedProjectIndex];
+
+  // Now that we know selectedProjectIndex is valid, we can call the hook
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: handleNext,  // When swiped left, go to next project
+    onSwipedRight: handlePrev, // When swiped right, go to previous project
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
+
+  // Ensure technologiesMore is a string, if not, fallback to an empty string
+  const technologiesMore = project.technologiesMore || ''; // Default to empty string
+  const technologies = typeof technologiesMore === 'string'
+    ? technologiesMore.split(',').map(tech => tech.trim())
+    : []; // Split only if it's a string
+
+  return (
+    <CustomModal show={show} onHide={handleClose} centered overlayColor={overlayColor}>
+      <LoginModalDialog>
+        <ModalBody {...swipeHandlers}>
+          <CloseButton onClick={handleClose}>&times;</CloseButton>
+          <ChevronLeft onClick={handlePrev}>
+            <FontAwesomeIcon icon={faChevronLeft} size="sm" />
+          </ChevronLeft>
+          <ModalImageContainer backdropColor={overlayColor}>
+            <ModalImage
+              src={project.images[0]}
+              alt={project.name}
+              backdropColor={overlayColor}
+            />
+          </ModalImageContainer>
+          <ChevronRight onClick={handleNext}>
+            <FontAwesomeIcon icon={faChevronRight} size="sm" />
+          </ChevronRight>
+          <div className="d-flex flex-column justify-content-between gap-2">
+            <ModalContent>
+              <ModalTitle className="mb-0">{project.name}</ModalTitle>
+              <ProjectDescription>{project.description}</ProjectDescription>
+
+              {/* Render technologies as an actual list */}
+              <TechnologiesList>
+                {technologiesMore.length > 0 ? (
+                  technologiesMore.map((tech, index) => (
+                    <TechItem key={index}>{tech}</TechItem>
+                  ))
+                ) : (
+                  <span>No additional technologies listed</span>
+                )}
+              </TechnologiesList>
+            </ModalContent>
+            {project.username && (
+              <LoginButton onClick={handleShowLoginDetails}>
+                Show Login Details
+              </LoginButton>
+            )}
+            <ButtonsContainer>
+              <ProjectButton
+                href={project.projectLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {project.buttonText}
+              </ProjectButton>
+              <GithubButton
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {project.githubButtonText}
+              </GithubButton>
+            </ButtonsContainer>
+          </div>
+        </ModalBody>
+      </LoginModalDialog>
+    </CustomModal>
+  );
+};
+
+export default ProjectModal;
+
+// Styled components
+
   
   const TechnologiesList = styled.ul`
 
@@ -184,11 +198,14 @@ const ModalContent = styled.div`
   display:flex;
   flex-direction:column;
   gap:1.5em;
-        max-width: 600px;
+  padding:0em 2em;
+  max-width: 600px;
+  max-height: 100vh; 
 
 
     @media (min-width: 800px) {
-      max-width: 400px;
+      max-width: 450px;
+  padding:4em 2.5em 1em 1em;
 
     position: relative;
     bottom: 0;
@@ -250,9 +267,14 @@ const CloseButton = styled(Button)`
   cursor: pointer;
   padding: 0;
   line-height: 1;
-  right: 20px;
+  right: 5px;
+  margin-top:-5px;
+   z-index: 9999;
+
+   @media (min-width: 1050px) {
+    right: 20px;
   top: 20px;
-  z-index: 9999;
+  }
 `;
 
 const GithubButton = styled.a`
@@ -314,6 +336,7 @@ const LoginButton = styled.a`
   cursor: pointer;
   font-weight: 500;
   font-size: 14px;
+  padding-left:2em;
 
   &:hover {
     transform: scale(1.02);
@@ -363,7 +386,7 @@ const ModalBody = styled(Modal.Body)`
 `;
 
 const ModalImageContainer = styled.div`
-  padding: 2em;
+  padding: 1em;
   width: 100%;
   max-width: 500px;
   object-fit: contain;
@@ -381,7 +404,7 @@ const ModalImageContainer = styled.div`
 `;
 
 const ModalImage = styled.img`
-  max-width: 95%;
+  max-height: 300px;
   object-fit: contain;
 
   &::after {
@@ -392,7 +415,7 @@ const ModalImage = styled.img`
     width: 100%;
     height: 100%;
     background-color: ${(props) => props.backdropColor};
-    z-index: 999;
+    z-index: 9999;
     opacity: 0.1;
   }
 `;
@@ -405,9 +428,15 @@ const ProjectDescription = styled.p`
 `;
 
 const ButtonsContainer = styled.div`
+margin-top:1em;
   display: flex;
-  justify-content: first-baseline;
   gap: 0.5em;
-  align-items: center;
   align-self:center;
+  padding-bottom:2em;
+    @media (min-width: 1050px) {
+    height: fit-content;
+    align-self:flex-end;
+    padding-right:2em;
+    padding-top:1em;
+  }
 `;

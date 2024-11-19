@@ -4,16 +4,16 @@ import styled from 'styled-components';
 import projects from '../projects';
 
 const ProjectsContent = styled.section`
-  padding-top: 2em;
-  display: grid;
-  grid-template-columns: repeat(2, 100fr);  /* 6 equal columns */
+  display:flex;
   margin: 0 auto;
+flex-direction:column;
   width: 100%;
   max-width: 1000px;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 
-  /* Responsive layout - adjust the grid for larger screens */
   @media (min-width: 768px) {
+  display: grid;
+  grid-template-columns: repeat(2, 100fr);  /* 6 equal columns */
     gap: 1em;  /* Gap between grid items */
     grid-template-columns: repeat(4, 100fr);  /* 4 equal columns for medium screens */
   }

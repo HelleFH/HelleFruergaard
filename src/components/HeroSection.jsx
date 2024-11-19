@@ -32,6 +32,7 @@ const HeroSection = styled.div`
   position: relative;
   padding: 4em;
   margin-bottom:2em;
+  width:100vw;
     @media (min-width: 768px) {
   padding: 10em;
   padding-top:6em;

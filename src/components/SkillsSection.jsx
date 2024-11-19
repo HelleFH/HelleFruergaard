@@ -90,7 +90,7 @@ const Section = styled.div`
   padding: 2em 1em;
   border-radius: 10px;
   height: fit-content;
-  margin-bottom:1em;
+  margin-bottom:3em;
 `;
 
 const SectionImage = styled.img`
@@ -100,7 +100,7 @@ const SectionImage = styled.img`
 `;
 
 
-const AboutHeader = styled.h2`
+const AboutHeader = styled.h3`
   font-size: 2rem;
     font-family:'Istok Web' !important;
 

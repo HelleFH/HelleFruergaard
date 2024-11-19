@@ -13,13 +13,13 @@ const StyledNavbar = styled.nav`
   position: fixed;
   color:white !important;
   width:100%;
-  z-index:9999;
+  z-index:998;
   padding-top:1em;
-  margin-left:1em;
-  margin-right:1em;
 
   @media (min-width: 1200px) {
     margin:0 auto;
+
+
   }   
 `;
 
@@ -52,7 +52,7 @@ const NavLinksContainer = styled.div`
   align-items: flex-start;
   padding: 2em;
   padding-top:2em;
-  z-index: 1000;
+  z-index: 100;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
 
