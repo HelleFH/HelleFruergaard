@@ -9,7 +9,7 @@ body {
 
 * {
   box-shadow: none !important;
-  margin:0;
+  margin: 0;
 }
 
 h1,
@@ -18,15 +18,18 @@ h3,
 h4,
 h5 {
   font-family: 'Istok Web', sans-serif !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
 }
-h4{color:#222222 !important;}
 
-h5
-{
+h4 {
+  color: #222222 !important;
+}
+
+h5 {
 
   text-align: center;
 }
+
 a:hover {
   cursor: pointer;
 }

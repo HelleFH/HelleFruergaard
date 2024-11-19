@@ -104,9 +104,9 @@ const Projects = () => {
           <BannerImage src="images/tree.png" alt="Banner" />
         </BannerImageWrapper>
         <Heading3>
-        Welcome <span> to</span>  </Heading3>
+        Welcome <span>to</span></Heading3>
         <Heading1>
-          <span>my</span> portfolio
+        <span>    my </span>  portfolio
         </Heading1>
       </HeroSection>
       <div id="container">
@@ -448,20 +448,20 @@ const BannerImage = styled.img`
 
 // Styled h3 and h1 with span elements
 const Heading3 = styled.h3`
-  font-size: 1.5rem;
-  color: #333;
+  font-size: 2rem;
   margin:0;
     padding-top:0.5em;
 
+
   span {
+  padding-right:0.2em;
     color: #62645c; /* Style for the span inside h3 */
   }
 `;
 
 const Heading1 = styled.h1`
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: bold;
-  color: #222;
   margin:0;
 word-spacing:-0.2em !important; 
   span {
