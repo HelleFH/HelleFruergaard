@@ -53,7 +53,7 @@ const projects = [
         descriptionHeader: "Image management with Cloudinary API",
         description: "This project is a web application for uploading and deleting images using the Cloudinary API. It is built with MongoDB, Express, Vue, and Node.js."
     },
-        {
+    {
         id: 5,
         name: "The Monty Hall Problem",
         technologies: "JQuery, Python, Chart.js",
@@ -63,10 +63,10 @@ const projects = [
         buttonText: "View Project",
         githubButtonText: "GitHub",
         descriptionHeader: "A site where users can read about and play the Monty Hall Game",
-        description: "The Monty Hall Problem is a famous counter intuitive statistics problem. 
-            This site has a simulator where users can input and amout of games to simulate using python with Flask and a manual Monty Hall Game made with JQuery."
+        description: `The Monty Hall Problem is a famous counter intuitive statistics problem.
+            This site has a simulator where users can input an amount of games to simulate using python with Flask, and a manual Monty Hall Game made with JQuery.`
     },
-            {
+    {
         id: 6,
         name: "A Product Portfolio",
         technologies: "React",
@@ -76,8 +76,8 @@ const projects = [
         buttonText: "View Project",
         githubButtonText: "GitHub",
         descriptionHeader: "A site where users can read about and play the Monty Hall Game",
-        description: "The Monty Hall Problem is a famous counter intuitive statistics problem. 
-            This site has a simulator where users can input and amout of games to simulate using python with Flask and a manual Monty Hall Game made with JQuery."
+        description: `The Monty Hall Problem is a famous counter intuitive statistics problem.
+            This site has a simulator where users can input an amount of games to simulate using python with Flask, and a manual Monty Hall Game made with JQuery.`
     },
     {
         id: 7,
