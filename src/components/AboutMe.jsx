@@ -37,15 +37,23 @@ const AboutMe = () => {
             I was born in the United States but have lived in Denmark and Singapore for most of my life.
             Currently, I live in Copenhagen with my husband, our two young children, a cat, and a dog.
           </p>
+          <br></br>
+
           <p>
             I hold a bachelor's degree in Biology and Chemistry from the University of Southern Denmark, and have recently completed a short course in web development to expand my skill set.
           </p>
+          <br></br>
+
           <p>
             My professional background is diverse, with experience in HR, IT support, and copywriting/translation. This has provided me with a unique combination of strong customer service expertise and technical know-how.
           </p>
+          <br></br>
+
           <p>
             In recent years, I’ve worked as a temporary staff member across various industries, which has helped me stay adaptable and continue growing both professionally and personally.
           </p>
+          <br></br>
+
 
          
         </AboutInfo>

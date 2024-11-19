@@ -149,6 +149,8 @@ const Projects = () => {
       <SectionImage src="images/coding.png" alt="Frontend Development" />
       <div>
         <p>I enjoy making code from scratch, and enjoy bringing ideas to life in the browser.</p>
+        <br></br>
+
         <ListHeader>Languages that I speak</ListHeader>
         <List>
           <ListItem>HTML</ListItem>
@@ -157,7 +159,7 @@ const Projects = () => {
           <ListItem>Sass</ListItem>
           <ListItem>PHP</ListItem>
         </List>
-
+<br></br>
         <ListHeader>Frameworks, Tools, and Libraries</ListHeader>
 
         <List>
@@ -174,6 +176,8 @@ const Projects = () => {
       <SectionHeader>Design</SectionHeader>
       <SectionImage src="images/design.png" alt="Design" />
       <p>I value simple content structure, clean design patterns, and thoughtful interactions.</p>
+      <br></br>
+
       <ListHeader>Design Tools</ListHeader>
 
       <List>
@@ -188,6 +192,8 @@ const Projects = () => {
       <SectionHeader>Webmaster and IT Support</SectionHeader>
       <SectionImage src="images/it.png" alt="IT Support" />
       <p>I have lots of experience with IT support, database management, and various tools.</p>
+      <br></br>
+
       <ListHeader>Software</ListHeader>
 
       <List>
@@ -362,12 +368,9 @@ const Section = styled.div`
 const SectionImage = styled.img`
   max-width: 200px;
   margin: 0 auto;
+  margin-bottom:1em;
 `;
 
-const Line = styled.div`
-  border-top: 1px solid #fff;
-  margin: 0.5em 0;
-`;
 
 const AboutHeader = styled.h2`
   font-size: 2rem;
@@ -392,16 +395,17 @@ line-height:1em;
   flex-wrap: wrap;
   font-family: 'Roboto', sans-serif;
   gap: 0.4em; /* Controls the space between items */
+  font-weight:500;
 `;
 
 const ListHeader = styled.h5`
-margin-top:1em;
 `;
 
 const ListItem = styled.li`
   font-size: 1em;
   display: inline-block;
   position: relative;
+  font-weight:600;
 
   /* Add the dot before each item */
   &::before {
@@ -630,7 +634,6 @@ const CustomModal = styled(Modal)`
   }
 
   @media (min-width: 1200px) {
-    height: 400px;
 
     .modal-dialog {
       p {
