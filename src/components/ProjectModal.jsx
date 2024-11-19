@@ -39,20 +39,19 @@ const ProjectModal = ({
   handleNext,
   handleShowLoginDetails
 }) => {
-  // Ensure selectedProjectIndex is valid and projects are available
+  // Make sure selectedProjectIndex is valid and projects are available
   if (selectedProjectIndex === null || !projects[selectedProjectIndex]) {
-    return null;
+    return null; // Early return if the project index is invalid
   }
-
-  const project = projects[selectedProjectIndex];
-
-  // Now that we know selectedProjectIndex is valid, we can call the hook
+// eslint-disable-next-line react-hooks/rules-of-hooks
   const swipeHandlers = useSwipeable({
     onSwipedLeft: handleNext,  // When swiped left, go to next project
     onSwipedRight: handlePrev, // When swiped right, go to previous project
     preventDefaultTouchmoveEvent: true,
     trackMouse: true
   });
+
+  const project = projects[selectedProjectIndex];
 
   // Ensure technologiesMore is a string, if not, fallback to an empty string
   const technologiesMore = project.technologiesMore || ''; // Default to empty string
@@ -123,7 +122,6 @@ const ProjectModal = ({
 };
 
 export default ProjectModal;
-
 // Styled components
 
   

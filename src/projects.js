@@ -138,7 +138,7 @@ const projects = [
     buttonText: "View Project",
     githubButtonText: "GitHub",
     descriptionHeader: "Netflix-like streaming platform clone",
-    description: "Netflix Clone is a web application that replicates the user interface and functionalities of the Netflix streaming platform using JavaScript.",
+    description: "Netflix Clone is a web application that replicates the user interface and functionalities of the Netflix streaming platform using JavaScript. The site has hover cards like on Netflix, search and filter as well as favorites.",
     technologiesMore: ["JavaScript"]
   },
   {

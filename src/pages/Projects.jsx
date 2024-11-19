@@ -76,6 +76,17 @@ const Projects = () => {
 
   return (
     <>
+     {/* Add project modal logic below */}
+     <ProjectModal
+          show={showModal}
+          handleClose={handleCloseProjectModal} // Close Project Modal only
+          overlayColor={overlayColors[selectedProjectIndex % overlayColors.length]}
+          selectedProjectIndex={selectedProjectIndex}
+          projects={projects}
+          handlePrev={handlePrev}
+          handleNext={handleNext}
+          handleShowLoginDetails={handleShowLoginDetails}
+        />
       <HeroSectionComponent />
       <div id="container">
         <MainContent>
@@ -92,17 +103,7 @@ const Projects = () => {
         </MainContent>
         <Footer />
 
-        {/* Add project modal logic below */}
-        <ProjectModal
-          show={showModal}
-          handleClose={handleCloseProjectModal} // Close Project Modal only
-          overlayColor={overlayColors[selectedProjectIndex % overlayColors.length]}
-          selectedProjectIndex={selectedProjectIndex}
-          projects={projects}
-          handlePrev={handlePrev}
-          handleNext={handleNext}
-          handleShowLoginDetails={handleShowLoginDetails}
-        />
+       
 
         {/* Add login modal logic below */}
         <LoginModal
