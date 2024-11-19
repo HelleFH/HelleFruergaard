@@ -1,20 +1,5 @@
 const projects = [
-    {
-        id: 1,
-        name: "React eCommerce",
-        technologies: "React, Firebase",
-        images: ["/images/ecommerce-screen.png"],
-        projectLink: "https://react-ecommerce-5s23.onrender.com",
-        githubLink: "https://github.com/HelleFH/React-store",
-        buttonText: "View Project",
-        githubButtonText: "GitHub",
-        descriptionHeader: "An ecommerce platform built with React and Firebase",
-        description: "This is a simple ecommerce application developed using React and Firebase. It includes admin CRUD operations, Firebase authentication, account creation and editing, and integration with Firebase Auth Provider.",
-        username: "duser7707@gmail.com",
-        password: "Demopassword123",
-        adminUsername: "dmndmuser@gmail.com",
-        adminPassword: "Demopassword123"
-    },
+
     {
         id: 2,
         name: "MERN Plant Calendar",
@@ -79,18 +64,7 @@ const projects = [
         description: `The Monty Hall Problem is a famous counter intuitive statistics problem.
             This site has a simulator where users can input an amount of games to simulate using python with Flask, and a manual Monty Hall Game made with JQuery.`
     },
-    {
-        id: 7,
-        name: "PHP Shopping Cart",
-        technologies: "PHP, PostgreSQL, Tailwind",
-        images: ["/images/phpcart-screen.png"],
-        projectLink: "https://whispering-lake-58821-4ba82832fa64.herokuapp.com/",
-        githubLink: "https://github.com/HelleFH/PHP-shopping-cart",
-        buttonText: "View Project",
-        githubButtonText: "GitHub",
-        descriptionHeader: "PHP-based shopping cart application",
-        description: "PHP Shopping Cart is an online shopping application developed with PHP, PostgreSQL for the database, and styled with Tailwind CSS."
-    },
+
     {
         id: 8,
         name: "React Dating App",
