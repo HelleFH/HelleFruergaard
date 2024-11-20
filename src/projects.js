@@ -175,7 +175,7 @@ const projects = [
     name: "News Site",
     technologies: "HTML, CSS, JS",
     images: ["/images/news-screen.png"],
-    projectLink: "hhttps://helle-avis-site.onrender.com",
+    projectLink: "https://helle-avis-site.onrender.com/",
     githubLink: "https://github.com/HelleFH/Helle-avis-site/tree/main",
     buttonText: "View Project",
     githubButtonText: "GitHub",
