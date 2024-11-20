@@ -7,10 +7,10 @@ const SkillsSection = () => {
     
     <SkillsSectionContainer>
       <AboutHeader>Skills</AboutHeader>
-<AboutSubHeader>The Things That I Do</AboutSubHeader>
+<AboutSubHeader>The things that I do</AboutSubHeader>
       {/* Frontend Development Section */}
       <Section>
-        <SectionHeader>Frontend Development</SectionHeader>
+        <SectionHeader>Web Development</SectionHeader>
         <SectionImage src="images/coding.png" alt="Frontend Development" />
         <div>
           <p>I enjoy making code from scratch, and enjoy bringing ideas to life in the browser.</p>
@@ -41,7 +41,7 @@ const SkillsSection = () => {
         <SectionImage src="images/design.png" alt="Design" />
         <p>I value simple content structure, clean design patterns, and thoughtful interactions.</p>
         <br />
-        <ListHeader>Design Tools</ListHeader>
+        <ListHeader>Design tools</ListHeader>
         <List>
           <ListItem>Affinity Designer</ListItem>
           <ListItem>Figma</ListItem>

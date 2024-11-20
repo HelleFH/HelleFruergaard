@@ -131,6 +131,8 @@ const ReadMoreButton = styled.button`
       position: absolute;
     bottom: 0;
     margin-bottom: -2em;
+      font-family:'montserrat';
+
 
 
 `;

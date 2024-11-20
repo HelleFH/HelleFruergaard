@@ -92,7 +92,7 @@ const Projects = () => {
         <MainContent>
           <ContentContainer>
             <ProjectsHeader>Projects</ProjectsHeader>
-            <ProjectsSubheader>Check Out Some of My Recent Work</ProjectsSubheader>
+            <ProjectsSubheader>Check out some of my recent work</ProjectsSubheader>
             <ProjectsContentComponent 
               overlayColors={overlayColors} 
               handleImageClick={handleImageClick} 

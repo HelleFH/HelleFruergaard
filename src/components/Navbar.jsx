@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link as ScrollLink } from 'react-scroll'; // Use `react-scroll`
+import { Link as ScrollLink } from 'react-scroll';
 import styled from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
