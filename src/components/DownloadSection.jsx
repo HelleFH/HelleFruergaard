@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const DownloadSection = () => {
   return (
     <div>
-      <DownloadButton href="/images/Resume.pdf" download="Helle_Fruergaard_Resume">
+      <DownloadButton href="/images/Helle-Fruergaard-Resume.pdf" download="Helle_Fruergaard_Resume">
         Download Resume (pdf)
       </DownloadButton>
     </div>
