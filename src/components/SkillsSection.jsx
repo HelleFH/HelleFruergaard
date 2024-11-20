@@ -6,8 +6,8 @@ const SkillsSection = () => {
   return (
     
     <SkillsSectionContainer>
-      <AboutHeader>Things that I do</AboutHeader>
-
+      <AboutHeader>Skills</AboutHeader>
+<AboutSubHeader>The Things That I Do</AboutSubHeader>
       {/* Frontend Development Section */}
       <Section>
         <SectionHeader>Frontend Development</SectionHeader>
@@ -110,7 +110,14 @@ const SectionImage = styled.img`
 const AboutHeader = styled.h3`
   font-size: 2rem;
     font-family:'Istok Web' !important;
+  
 
+`;
+const AboutSubHeader = styled.h5`
+text-align:left;
+font-weight:600 !important;
+margin-bottom:1em;
+border-bottom:1px gray solid;
 `;
 
 const SectionHeader = styled.h3`

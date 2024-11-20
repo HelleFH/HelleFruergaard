@@ -2,33 +2,6 @@ import { isStyledComponent } from "styled-components";
 
 const projects = [
   {
-    id: 2,
-    name: "MERN Plant Calendar",
-    technologies: "MongoDB, Express, React, Node.js",
-    images: ["/images/calendar-screen.png"],
-    projectLink: "https://plant-calendar-1-zhbz.onrender.com",
-    githubLink: "https://github.com/HelleFH/Plant-calendar",
-    buttonText: "View Project",
-    githubButtonText: "GitHub",
-    descriptionHeader: "Plant Calendar and Reminder System with MERN Stack",
-    description: "Work in progress! App made to track and manage plants. Users can add plants either manually or by searching a database using an external API. The calendar has a reminder function and users can add updates to existing plants to track progress over time. The project makes use of state management and component life cycles. User Data and Entries are uploaded to mongoDB.",
-    username: "Hellefruergaard@plantcalendar.com",
-    password: "fruergaard",
-    technologiesMore: [
-      "MongoDB",
-      "Express",
-      "React",
-      " Node.js",
-      "Axios",
-      "RESTful API",
-      "Bcryptjs",
-      "Cloudinary",
-      "Multer",
-      "Vite",
-      "Moment"
-    ]
-  },
-  {
     id: 3,
     name: "MERN Listings",
     technologies: "MongoDB, Express, React, Node.js",
@@ -72,6 +45,19 @@ const projects = [
     ]
   },
   {
+    id: 13,
+    name: "React Snippets",
+    technologies: "React, JavaScript",
+    images: ["/images/snippets-screen.png"],
+    projectLink: "https://hellefh.github.io/react-snippets/",
+    githubLink: "https://github.com/hellefh/react-snippets",
+    buttonText: "View Project",
+    githubButtonText: "GitHub",
+    descriptionHeader: "Various React components",
+    description: "React snippets with a navbar, lightbox gallery, a download button and Tinder-like swipe cards. All elements are fully responsive.",
+    technologiesMore: ["JavaScript"]
+  },
+  {
     id: 5,
     name: "The Monty Hall Problem",
     technologies: "JQuery, Python, Chart.js",
@@ -108,38 +94,31 @@ const projects = [
     ]
   },
   {
-    id: 8,
-    name: "React Dating App",
-    technologies: "React, JavaScript",
-    images: ["/images/datingapp-screen.png"],
-    projectLink: "https://hellefh.github.io/react-app/#findmatches",
-    githubLink: "https://github.com/hellefh/react-app",
+    id: 2,
+    name: "MERN Plant Calendar",
+    technologies: "MongoDB, Express, React, Node.js",
+    images: ["/images/calendar-screen.png"],
+    projectLink: "https://plant-calendar-1-zhbz.onrender.com",
+    githubLink: "https://github.com/HelleFH/Plant-calendar",
     buttonText: "View Project",
     githubButtonText: "GitHub",
-    descriptionHeader: "Frontend for React-based Dating Application",
-    description: "This project is a frontend for a tinder-like dating app developed using React and JavaScript. The application stores user data locally. The app has sections for sign up, user creation, favorites and more. User images are made with Midjourney.",
+    descriptionHeader: "Plant Calendar and Reminder System with MERN Stack",
+    description: "Work in progress! App made to track and manage plants. Users can add plants either manually or by searching a database using an external API. The calendar has a reminder function and users can add updates to existing plants to track progress over time. The project makes use of state management and component life cycles. User Data and Entries are uploaded to mongoDB.",
+    username: "Hellefruergaard@plantcalendar.com",
+    password: "fruergaard",
     technologiesMore: [
+      "MongoDB",
+      "Express",
       "React",
-      "JavaScript",
+      " Node.js",
       "Axios",
-      "Bootstrap",
+      "RESTful API",
+      "Bcryptjs",
       "Cloudinary",
       "Multer",
-      "Babel"
+      "Vite",
+      "Moment"
     ]
-  },
-  {
-    id: 9,
-    name: "Netflix Clone",
-    technologies: "JavaScript",
-    images: ["/images/netflix-screen.png"],
-    projectLink: "https://hellefh.github.io/Netflix-clone-main/",
-    githubLink: "https://github.com/HelleFH/Netflix-clone-main",
-    buttonText: "View Project",
-    githubButtonText: "GitHub",
-    descriptionHeader: "Netflix-like streaming platform clone",
-    description: "Netflix Clone is a web application that replicates the user interface and functionalities of the Netflix streaming platform using JavaScript. The site has hover cards like on Netflix, search and filter as well as favorites.",
-    technologiesMore: ["JavaScript"]
   },
   {
     id: 10,
@@ -168,6 +147,55 @@ const projects = [
       "Jsonwebtoken"
     ]
   },
+ 
+  {
+    id: 8,
+    name: "React Dating App",
+    technologies: "React, JavaScript",
+    images: ["/images/datingapp-screen.png"],
+    projectLink: "https://hellefh.github.io/react-app/#findmatches",
+    githubLink: "https://github.com/hellefh/react-app",
+    buttonText: "View Project",
+    githubButtonText: "GitHub",
+    descriptionHeader: "Frontend for React-based Dating Application",
+    description: "This project is a frontend for a tinder-like dating app developed using React and JavaScript. The application stores user data locally. The app has sections for sign up, user creation, favorites and more. User images are made with Midjourney.",
+    technologiesMore: [
+      "React",
+      "JavaScript",
+      "Axios",
+      "Bootstrap",
+      "Cloudinary",
+      "Multer",
+      "Babel"
+    ]
+  },
+  
+  {
+    id: 14,
+    name: "News Site",
+    technologies: "HTML, CSS, JS",
+    images: ["/images/news-screen.png"],
+    projectLink: "hhttps://helle-avis-site.onrender.com",
+    githubLink: "https://github.com/HelleFH/Helle-avis-site/tree/main",
+    buttonText: "View Project",
+    githubButtonText: "GitHub",
+    descriptionHeader: "Made with Vanilla JS",
+    description: "A news website for Copenhagen, built with vanilla JavaScript. The site features a front page, an individual news article with an image slider and Google Maps integration, and a subscription section with a sign-up form.",
+    technologiesMore: ["JavaScript"]
+  },
+  {
+    id: 9,
+    name: "Netflix Clone",
+    technologies: "JavaScript",
+    images: ["/images/netflix-screen.png"],
+    projectLink: "https://hellefh.github.io/Netflix-clone-main/",
+    githubLink: "https://github.com/HelleFH/Netflix-clone-main",
+    buttonText: "View Project",
+    githubButtonText: "GitHub",
+    descriptionHeader: "Netflix-like streaming platform clone",
+    description: "Netflix Clone is a web application that replicates the user interface and functionalities of the Netflix streaming platform using JavaScript. The site has hover cards like on Netflix, search and filter as well as favorites.",
+    technologiesMore: ["JavaScript"]
+  },
   {
     id: 11,
     name: "Lightbox Gallery",
@@ -193,20 +221,8 @@ const projects = [
     descriptionHeader: "Simple front page for Web Shop using HTML and CSS",
     description: "CSS and HTML for a webshop. It showcases a basic online shop layout with product listings and details.",
     technologiesMore: ["HTML", "CSS"]
-  },
-  {
-    id: 13,
-    name: "News Site",
-    technologies: "HTML, CSS, JS",
-    images: ["/images/news-screen.png"],
-    projectLink: "hhttps://helle-avis-site.onrender.com",
-    githubLink: "https://github.com/HelleFH/Helle-avis-site/tree/main",
-    buttonText: "View Project",
-    githubButtonText: "GitHub",
-    descriptionHeader: "Made with Vanilla JS",
-    description: "A news website for Copenhagen, built with vanilla JavaScript. The site features a front page, an individual news article with an image slider and Google Maps integration, and a subscription section with a sign-up form.",
-    technologiesMore: ["JavaScript"]
   }
+
 ];
 
 export default projects;
