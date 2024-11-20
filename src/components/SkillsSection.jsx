@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const SkillsSection = () => {
   return (
+    
     <SkillsSectionContainer>
       <AboutHeader>Things that I do</AboutHeader>
 
@@ -75,6 +76,8 @@ const SkillsSectionContainer = styled.div`
 align-self:flex-start;
   display:flex;
   flex-direction:column;
+  max-width:80vw;
+  margin:0 auto;
     @media (min-width: 768px) {
     margin-bottom:4em;
 
@@ -90,7 +93,11 @@ const Section = styled.div`
   padding: 2em 1em;
   border-radius: 10px;
   height: fit-content;
-  margin-bottom:3em;
+  margin-bottom:5em;
+      @media (min-width: 768px) {
+    margin-bottom:2em;
+
+  }
 `;
 
 const SectionImage = styled.img`

@@ -75,7 +75,7 @@ font-weight:500;
   @media (min-width: 1000px) {
     flex-direction: row;
     padding: 0em;
-    margin-top:2.5em;
+    margin-top:5em;
   }
 `;
 
@@ -92,11 +92,17 @@ const AboutMeContent = styled.div`
 `;
 
 const PersonalInfo = styled.div`
-
+margin-top:4em;
 background-color:#d9d9d9;
 padding:2em;
 border-radius:10px;
 align-items:center;
+  
+  @media (min-width: 1000px) {
+    flex-direction: row;
+    margin-top:0em !important;
+
+    gap: 2em;
   }
 `;
 

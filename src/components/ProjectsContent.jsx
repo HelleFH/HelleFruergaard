@@ -29,12 +29,17 @@ const ProjectWrapper = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
   margin-bottom: 2em;
+  max-width:96vw;
+  
+
 
   /* First two projects span 3 columns each */
   grid-column: ${(props) => (props.firstRow && props.index < 2 ? 'span 3' : 'auto')};
 
   /* Subsequent projects span 2 columns */
   @media (min-width: 768px) {
+    margin:0.5em 1em;
+
     margin-bottom: 0em;
     grid-column: ${(props) =>
       props.index >= 2 ? 'span 2' : props.firstRow && props.index < 2 ? 'span 4' : 'auto'};

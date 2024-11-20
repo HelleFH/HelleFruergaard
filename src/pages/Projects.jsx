@@ -125,7 +125,6 @@ const MainContent = styled.div`
 display:flex; 
 flex-direction:column-reverse;
 width:100%;
-max-width:96vw;
 margin:0 auto;
 gap:2em;
 justify-items:center;
@@ -149,6 +148,7 @@ display:flex;
 flex-direction:column;
 height:100%;
 justify-content:flex-start;
+max-width:90vw;
 `;
 
 const ProjectsSubheader = styled.h5`
