@@ -5,7 +5,7 @@ const projects = [
     id: 3,
     name: "React Store",
     technologies: "Firebase, React",
-    images: ["/images/listing-screen.png"],
+    images: ["/images/clothes-store-screen.png"],
     projectLink: "https://react-clothes-store.onrender.com/",
     githubLink: "https://github.com/HelleFH/react-clothes-store",
     buttonText: "View Project",

@@ -68,11 +68,12 @@ export default AboutMe;
 const AboutMeWrapper = styled.div`
 display:flex;
 font-weight:500;
-  margin: 0 auto;
+  margin: 4em 0 4em auto;
   padding: 0 0.5em;
   font-family:'Gelasio';
+  margin-top:4em;
 
-  @media (min-width: 1000px) {
+  @media (min-width: 768px) {
     flex-direction: row;
     padding: 0em;
     margin-top:5em;

@@ -40,7 +40,7 @@ const HeroSection = styled.div`
   background-color: white;
   z-index: 1;
   position: relative;
-  padding: 4em;
+  padding: 5em;
   margin-bottom:4em;
   width:100vw;
     @media (min-width: 768px) {

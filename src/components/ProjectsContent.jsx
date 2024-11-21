@@ -13,13 +13,13 @@ const ProjectsContent = styled.section`
 
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: repeat(2, 100fr);
+    grid-template-columns: repeat(2, 110px);
     gap: 1em;
-    grid-template-columns: repeat(4, 100fr);
+    grid-template-columns: repeat(4, 110px);
   }
 
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(6, 100fr);
+    grid-template-columns: repeat(6, 110px);
   }
 `;
 
