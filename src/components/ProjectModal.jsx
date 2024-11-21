@@ -348,6 +348,7 @@ const LoginButton = styled.a`
 
 const CustomModal = styled(Modal)`
   transition: transform 0.3s ease-out;
+  margin-top:5em;
 
   .modal-content {
     border: none !important;
@@ -362,6 +363,8 @@ const CustomModal = styled(Modal)`
   }
 
   @media (min-width: 1200px) {
+    margin-top:0em;
+
 
     .modal-dialog {
       p {
@@ -375,6 +378,7 @@ const ModalBody = styled(Modal.Body)`
   padding: 0;
   border-radius: 0px !important;
   position: relative;
+  width: 95vw;
 
   @media (min-width: 700px) {
     display: flex;

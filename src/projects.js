@@ -20,7 +20,11 @@ const projects = [
        "Redux",
        "Enzyme"
 
-    ]
+    ],
+    username: "duser7707@gmail.com",
+    password: "Demopassword123",
+    adminUsername: "dmndmuser@gmail.com",
+    adminPassword: "Demopassword123"
   },
   {
     id: 3,
