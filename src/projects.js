@@ -3,6 +3,27 @@ import { isStyledComponent } from "styled-components";
 const projects = [
   {
     id: 3,
+    name: "React Store",
+    technologies: "Firebase, React",
+    images: ["/images/listing-screen.png"],
+    projectLink: "https://react-clothes-store.onrender.com/",
+    githubLink: "https://github.com/HelleFH/react-clothes-store",
+    buttonText: "View Project",
+    githubButtonText: "GitHub",
+    descriptionHeader: "React webshop",
+    description: "React store that uses firebase database, storage and authentication. The project has an admin panel that allows CRUD operations and account creating and editing.",
+    technologiesMore: [
+      "Vite",
+      "Formik",
+      "Moment",
+       "Yup",
+       "Redux",
+       "Enzyme"
+
+    ]
+  },
+  {
+    id: 3,
     name: "MERN Listings",
     technologies: "MongoDB, Express, React, Node.js",
     images: ["/images/listing-screen.png"],
