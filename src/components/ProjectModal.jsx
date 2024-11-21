@@ -348,7 +348,6 @@ const LoginButton = styled.a`
 
 const CustomModal = styled(Modal)`
   transition: transform 0.3s ease-out;
-  margin-top:1em;
 
   .modal-content {
     border: none !important;
