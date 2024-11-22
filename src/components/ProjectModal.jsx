@@ -462,6 +462,8 @@ margin-top:1em;
   display: flex;
   gap: 0.5em;
   align-self:center;
+  place-self:flex-end;
+  padding-right:1em;
   padding-bottom:1em;
     @media (min-width: 1000px) {
     height: fit-content;

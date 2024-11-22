@@ -1,26 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import projectsData from '../projects';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from '../components/Footer';
-import AboutMe from '../components/AboutMe';
-import HeroSectionComponent from '../components/HeroSection';
-import ProjectsContentComponent from '../components/ProjectsContent';
-import SkillsSection from '../components/SkillsSection';
-import ProjectModal from '../components/ProjectModal';
-import styled from 'styled-components';
-import LoginModal from '../components/LoginModal';
-
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import projectsData from "../projects";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Footer from "../components/Footer";
+import AboutMe from "../components/AboutMe";
+import HeroSectionComponent from "../components/HeroSection";
+import ProjectsContentComponent from "../components/ProjectsContent";
+import SkillsSection from "../components/SkillsSection";
+import ProjectModal from "../components/ProjectModal";
+import styled from "styled-components";
+import LoginModal from "../components/LoginModal";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [showModal, setShowModal] = useState(false); // Project Modal state
   const [showLoginDetails, setShowLoginDetails] = useState(false); // Login Modal state
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
-  const [selectedColor, setSelectedColor] = useState('');
+  const [selectedColor, setSelectedColor] = useState("");
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Fetch projects data
   useEffect(() => {
     setProjects(projectsData);
-  }, []);
+
+    // Check if navigation state exists
+    const navState = location.state || {};
+    if (navState.showModal && typeof navState.selectedProjectIndex === "number") {
+      setSelectedProjectIndex(navState.selectedProjectIndex);
+      setSelectedColor(overlayColors[navState.selectedProjectIndex % overlayColors.length]);
+      setShowModal(true); // Reopen the modal
+    }
+  }, [location.state]);
 
   // Close the Project Modal
   const handleCloseProjectModal = () => {
@@ -60,33 +72,41 @@ const Projects = () => {
     setSelectedColor(overlayColors[(selectedProjectIndex - 1 + projects.length) % projects.length]);
   };
 
+  // Navigate to detail page, passing modal state
+  const navigateToDetail = () => {
+    navigate(`/project/${projects[selectedProjectIndex]?.id}`, {
+      state: { showModal: true, selectedProjectIndex },
+    });
+    setShowModal(false); // Close modal before navigating
+  };
 
   const overlayColors = [
-    ' #757576',
-    '#62645c',
-    '#343434',
-    '#222524',
-    ' #252425',
-    '#3b4040',
-    '#545c5b',
-    '#222524',
-    '#545c5b',
-    '#62645c',
+    " #757576",
+    "#62645c",
+    "#343434",
+    "#222524",
+    " #252425",
+    "#3b4040",
+    "#545c5b",
+    "#222524",
+    "#545c5b",
+    "#62645c",
   ];
 
   return (
     <>
-     {/* Add project modal logic below */}
-     <ProjectModal
-          show={showModal}
-          handleClose={handleCloseProjectModal} // Close Project Modal only
-          overlayColor={overlayColors[selectedProjectIndex % overlayColors.length]}
-          selectedProjectIndex={selectedProjectIndex}
-          projects={projects}
-          handlePrev={handlePrev}
-          handleNext={handleNext}
-          handleShowLoginDetails={handleShowLoginDetails}
-        />
+      {/* Project Modal */}
+      <ProjectModal
+        show={showModal}
+        handleClose={handleCloseProjectModal} // Close Project Modal only
+        overlayColor={overlayColors[selectedProjectIndex % overlayColors.length]}
+        selectedProjectIndex={selectedProjectIndex}
+        projects={projects}
+        handlePrev={handlePrev}
+        handleNext={handleNext}
+        handleShowLoginDetails={handleShowLoginDetails}
+        navigateToDetail={navigateToDetail} // Navigate to detail page
+      />
       <HeroSectionComponent />
       <div id="container">
         <MainContent>

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'; // To get the project ID from the URL
-import projects from '../projects'; // Import your projects data
-import styled, { keyframes } from 'styled-components';
-import { Modal, Button } from 'react-bootstrap';
-import LoginModal from './LoginModal';
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom"; // Add useNavigate for navigation
+import projects from "../projects";
+import styled, { keyframes } from "styled-components";
+import { Modal, Link } from "react-bootstrap";
+import LoginModal from "./LoginModal";
 
-
+// Keyframe animations for modal transitions
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -29,87 +29,100 @@ const fadeOut = keyframes`
 `;
 
 const ProjectDetail = () => {
-    const [showLoginDetails, setShowLoginDetails] = useState(false); // Login Modal state
+  const { id } = useParams(); // Get the project ID from the URL
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const { id } = useParams(); // Extract the project ID from the URL
   const [project, setProject] = useState(null);
+  const [showLoginDetails, setShowLoginDetails] = useState(false); // Login Modal state
 
   useEffect(() => {
-    // Find the project based on the id
-    const selectedProject = projects.find((project) => project.id === parseInt(id));
-    setProject(selectedProject); // Set the selected project in state
-  }, [id]); // Re-run when the id changes
+    // Find the project based on the ID from the URL
+    const selectedProject = projects.find((proj) => proj.id === parseInt(id, 10));
+    setProject(selectedProject);
+
+    // Check navigation state to determine modal state
+    const navState = location.state || {};
+    if (navState.showLoginModal) {
+      setShowLoginDetails(true);
+    }
+  }, [id, location.state]);
 
   if (!project) {
-    return <p>Loading...</p>; // Show a loading state until the project is found
+    return <p>Loading...</p>; // Fallback for when the project is not yet loaded
   }
-  
+
+  // Handle Login Modal opening
   const handleShowLoginDetails = () => {
     setShowLoginDetails(true);
   };
+
+  // Handle Login Modal closing
   const handleCloseLoginModal = () => {
     setShowLoginDetails(false);
   };
 
-
+  // Copy text to clipboard
   const handleCopyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
     alert(`${text} copied to clipboard!`);
   };
 
+  // Navigate back to projects overview
+  const navigateBackToProjects = () => {
+    navigate("/projects", {
+      state: { showModal: true, selectedProjectIndex: parseInt(id, 10) }, // Ensure modal opens
+    });
+  };
+
   return (
-    <div>    <ProductDetailsContainer>
-         <LoginModalDialog></LoginModalDialog>
-      <img          src={project.images[0]} />
-      <h3>{project.name}</h3>
+    <div>
+      <ProductDetailsContainer>
+      <BackButton onClick={navigateBackToProjects}>Back to Projects</BackButton>
 
-      
+        <img src={project.images[0]} alt={project.name} />
+        <h3>{project.name}</h3>
+        <h5>{project.descriptionHeader}</h5>
+        <p>{project.description}</p>
+        <h4>Technologies Used</h4>
+        <TechnologiesList>
+          {project.technologies.split(",").map((tech, index) => (
+            <TechItem key={index}>{tech.trim()}</TechItem>
+          ))}
+          {project.technologiesMore &&
+            project.technologiesMore.map((tech, index) => (
+              <TechItem key={index}>{tech}</TechItem>
+            ))}
+        </TechnologiesList>
+        <ButtonsContainer>
+          <LoginButton onClick={handleShowLoginDetails}>
+            Show Login Details
+          </LoginButton>
+          <ProjectButton href={project.projectLink} target="_blank" rel="noopener noreferrer">
+            {project.buttonText || "Visit Project"}
+          </ProjectButton>
+          <GithubButton href={project.githubLink} target="_blank" rel="noopener noreferrer">
+            {project.githubButtonText || "View on GitHub"}
+          </GithubButton>
+        </ButtonsContainer>
+      </ProductDetailsContainer>
 
-<h5>{project.descriptionHeader}</h5>
-
-      <p>{project.description}</p>
-      <h4>Technologies Used</h4>
-      <TechnologiesList>
-        {project.technologies.split(',').map((tech, index) => (
-          <TechItem key={index}>{tech.trim()}</TechItem>
-        ))}
-     
-        {project.technologiesMore && project.technologiesMore.length > 0 ? (
-          project.technologiesMore.map((tech, index) => (
-            <TechItem key={index}>{tech}</TechItem>
-          ))
-        ) : (
-          <li></li>
-        )}
-      </TechnologiesList>
-
-      <ButtonsContainer>
-      <LoginButton onClick={handleShowLoginDetails}>
-                Show Login Details
-              </LoginButton>
-        <ProjectButton href={project.projectLink} target="_blank" rel="noopener noreferrer">
-          {project.buttonText || "Visit Project"}
-        </ProjectButton>
-    
-        <GithubButton href={project.githubLink} target="_blank" rel="noopener noreferrer">
-          {project.githubButtonText || "View on GitHub"}
-        </GithubButton>
-        
-      </ButtonsContainer>
-   
-    </ProductDetailsContainer>
-            <LoginModal
-          show={showLoginDetails}
-          onHide={handleCloseLoginModal} // Close Login Modal only
-          project={project} 
-          handleCopyToClipboard={handleCopyToClipboard}
-        />
+      {/* Login Modal */}
+      <LoginModal
+        show={showLoginDetails}
+        onHide={handleCloseLoginModal}
+        project={project}
+        handleCopyToClipboard={handleCopyToClipboard}
+      />
     </div>
-
   );
 };
 
 export default ProjectDetail;
+
+const BackButton = styled.a`
+  cursor: pointer;
+`;
 
 const ProductDetailsContainer = styled.div`
 padding:1em;
@@ -119,8 +132,9 @@ max-width:1000px;
 margin:0 auto;
 display:flex;
 flex-direction:column;
-justify-content:center;
-align-items:center;
+justify-content:flex-start;
+align-items:flex-start;
+text-align:left;
 gap:1em;
 top:7em;
 margin-bottom:10em;
@@ -183,11 +197,12 @@ margin-top:1em;
 `;
 
 const GithubButton = styled.a`
+font-size:11px;
   position: relative;
   display: inline-block;
   background-color: #333;
   color: #fff !important;
-  padding: 7px 15px;
+  padding: 10px;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
@@ -255,6 +270,7 @@ const LoginButton = styled.a`
 
 const ProjectButton = styled.a`
 white-space:nowrap;
+font-size:11px;
   display: inline-block;
   background-color: #fff;
   color: #333 !important;
