@@ -10,8 +10,8 @@ const projects = [
     githubLink: "https://github.com/HelleFH/react-clothes-store",
     buttonText: "View Project",
     githubButtonText: "GitHub",
-    descriptionHeader: "React webshop",
-    description: "React store that uses firebase database, storage and authentication. The project has an admin panel that allows CRUD operations and account creating and editing.",
+    descriptionHeader: "A React shop with a Firebase backend",
+    description: "A React-based e-commerce store integrated with Firebase for database, storage, and authentication. Features include product size and color selection, a shopping basket, and a signup-required checkout. The admin panel allows for full CRUD operations, as well as account creation and editing.",
     technologiesMore: [
       "Vite",
       "Formik",
@@ -25,6 +25,37 @@ const projects = [
     password: "Demopassword123",
     adminUsername: "dmndmuser@gmail.com",
     adminPassword: "Demopassword123"
+  },
+  {
+    id: 4,
+    name: "React Snippets",
+    technologies: "React, JavaScript",
+    images: ["/images/snippets-screen.png"],
+    projectLink: "https://hellefh.github.io/react-snippets/",
+    githubLink: "https://github.com/hellefh/react-snippets",
+    buttonText: "View Project",
+    githubButtonText: "GitHub",
+    descriptionHeader: "Various React components",
+    description: "React snippets with a navbar, lightbox gallery, a download button and Tinder-like swipe cards. All elements are fully responsive.",
+    technologiesMore: ["JavaScript"]
+  },
+  {
+    id: 6,
+    name: "A Product Portfolio",
+    technologies: "React",
+    images: ["/images/portfolio-screen.png"],
+    projectLink: "https://product-page-b2ed.onrender.com/",
+    githubLink: "https://github.com/HelleFH/Monty-Hall-Explained",
+    buttonText: "View Project",
+    githubButtonText: "GitHub",
+    descriptionHeader: "A site where users can read about and play the Monty Hall Game",
+    description: "A dynamic React portfolio page showcasing a visually appealing image grid with a sleek overlay. When an image is clicked, a modal window opens, providing detailed information about the corresponding project",
+    technologiesMore: [
+      "React",
+      "Bootstrap",
+      "Styled Components",
+      "React Swipable"
+    ]
   },
   {
     id: 2,
@@ -69,19 +100,7 @@ const projects = [
 
     ]
   },
-  {
-    id: 4,
-    name: "React Snippets",
-    technologies: "React, JavaScript",
-    images: ["/images/snippets-screen.png"],
-    projectLink: "https://hellefh.github.io/react-snippets/",
-    githubLink: "https://github.com/hellefh/react-snippets",
-    buttonText: "View Project",
-    githubButtonText: "GitHub",
-    descriptionHeader: "Various React components",
-    description: "React snippets with a navbar, lightbox gallery, a download button and Tinder-like swipe cards. All elements are fully responsive.",
-    technologiesMore: ["JavaScript"]
-  },
+
   {
     id: 5,
     name: "The Monty Hall Problem",
@@ -100,24 +119,7 @@ const projects = [
       "Chart.js"
     ]
   },
-  {
-    id: 6,
-    name: "A Product Portfolio",
-    technologies: "React",
-    images: ["/images/portfolio-screen.png"],
-    projectLink: "https://product-page-b2ed.onrender.com/",
-    githubLink: "https://github.com/HelleFH/Monty-Hall-Explained",
-    buttonText: "View Project",
-    githubButtonText: "GitHub",
-    descriptionHeader: "A site where users can read about and play the Monty Hall Game",
-    description: "A dynamic React portfolio page showcasing a visually appealing image grid with a sleek overlay. When an image is clicked, a modal window opens, providing detailed information about the corresponding project",
-    technologiesMore: [
-      "React",
-      "Bootstrap",
-      "Styled Components",
-      "React Swipable"
-    ]
-  },
+
   {
     id: 7,
     name: "MERN Plant Calendar",

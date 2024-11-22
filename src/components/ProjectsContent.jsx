@@ -19,7 +19,7 @@ const ProjectsContent = styled.section`
   }
 
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(6, 110px);
+    grid-template-columns: repeat(6, 120px);
   }
 `;
 
@@ -69,6 +69,7 @@ const Image = styled.img`
   object-fit: cover;
   transition: transform 0.8s ease;
   border-radius: 3px;
+  min-width:230px;
 
   &:hover {
     transform: scale(1.1);

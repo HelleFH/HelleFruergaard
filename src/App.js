@@ -6,7 +6,7 @@ import './index.css';
 import Navbar from './components/Navbar';
 import AboutMe from './components/AboutMe';
 import Projects from './pages/Projects';
-import ProjectDetail from './components/ProjectDetails';
+import ProjectDetail from './pages/ProjectDetails';
 
 const App = () => {
   return (

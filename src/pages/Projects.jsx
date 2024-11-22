@@ -153,7 +153,7 @@ align-items:center;
 
   @media (min-width: 768px) {
   gap:4em;
-  padding:2em;
+  padding:4em;
   display:grid; 
   grid-template-columns:1fr;
   grid-template-columns:2fr 1fr;

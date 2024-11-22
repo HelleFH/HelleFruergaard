@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom"; // Add useNavigate for navigation
 import projects from "../projects";
 import styled, { keyframes } from "styled-components";
-import { Modal, Link } from "react-bootstrap";
-import LoginModal from "./LoginModal";
+import LoginModal from "../components/LoginModal";
+import Footer from "../components/Footer";
 
 // Keyframe animations for modal transitions
 const fadeIn = keyframes`
@@ -52,36 +52,50 @@ const ProjectDetail = () => {
     return <p>Loading...</p>; // Fallback for when the project is not yet loaded
   }
 
-  // Handle Login Modal opening
-  const handleShowLoginDetails = () => {
-    setShowLoginDetails(true);
+  const currentIndex = projects.findIndex((proj) => proj.id === parseInt(id, 10));
+  const isFirst = currentIndex === 0;
+  const isLast = currentIndex === projects.length - 1;
+
+  const navigateToProject = (newIndex) => {
+    const newProject = projects[newIndex];
+    if (newProject) {
+      navigate(`/project/${newProject.id}`, {
+        state: { showModal: true, selectedProjectIndex: newIndex },
+      });
+    }
   };
 
-  // Handle Login Modal closing
-  const handleCloseLoginModal = () => {
-    setShowLoginDetails(false);
+  const navigateBackToProjects = () => {
+    navigate("/projects", {
+      state: { showModal: true, selectedProjectIndex: currentIndex }, // Ensure modal opens
+    });
   };
 
-  // Copy text to clipboard
+  const handleShowLoginDetails = () => setShowLoginDetails(true);
+  const handleCloseLoginModal = () => setShowLoginDetails(false);
   const handleCopyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
     alert(`${text} copied to clipboard!`);
   };
 
-  // Navigate back to projects overview
-  const navigateBackToProjects = () => {
-    navigate("/projects", {
-      state: { showModal: true, selectedProjectIndex: parseInt(id, 10) }, // Ensure modal opens
-    });
-  };
-
   return (
     <div>
-      <ProductDetailsContainer>
+      
+      <ProjectDetailsContainer>
       <BackButton onClick={navigateBackToProjects}>Back to Projects</BackButton>
 
-        <img src={project.images[0]} alt={project.name} />
+        
+        {/* Chevron Navigation */}
+        <ChevronContainer>
+          {!isFirst && (
+            <ChevronButton onClick={() => navigateToProject(currentIndex - 1)}>&lt;</ChevronButton>
+          )}
+          {!isLast && (
+            <ChevronButton onClick={() => navigateToProject(currentIndex + 1)}>&gt;</ChevronButton>
+          )}
+        </ChevronContainer>
         <h3>{project.name}</h3>
+        <img src={project.images[0]} alt={project.name} />
         <h5>{project.descriptionHeader}</h5>
         <p>{project.description}</p>
         <h4>Technologies Used</h4>
@@ -95,9 +109,11 @@ const ProjectDetail = () => {
             ))}
         </TechnologiesList>
         <ButtonsContainer>
-          <LoginButton onClick={handleShowLoginDetails}>
-            Show Login Details
-          </LoginButton>
+        {project.username && (
+              <LoginButton onClick={handleShowLoginDetails}>
+                Show Login Details
+              </LoginButton>
+            )}
           <ProjectButton href={project.projectLink} target="_blank" rel="noopener noreferrer">
             {project.buttonText || "Visit Project"}
           </ProjectButton>
@@ -105,7 +121,8 @@ const ProjectDetail = () => {
             {project.githubButtonText || "View on GitHub"}
           </GithubButton>
         </ButtonsContainer>
-      </ProductDetailsContainer>
+
+      </ProjectDetailsContainer>
 
       {/* Login Modal */}
       <LoginModal
@@ -114,17 +131,57 @@ const ProjectDetail = () => {
         project={project}
         handleCopyToClipboard={handleCopyToClipboard}
       />
+      <Footer />
     </div>
   );
 };
 
+
 export default ProjectDetail;
+
+const ChevronContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  width:100%;
+    position:relative;
+
+  justify-content:space-between;
+  align-items:center;
+  margin:0 auto;
+  place-self:center;
+  align-self:center;
+    
+   @media (min-width: 1000px) {
+  position:absolute;
+
+  }
+
+`;
+
+const ChevronButton = styled.button`
+  background: none;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #555;
+  }
+
+  &:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+  }
+`;
 
 const BackButton = styled.a`
   cursor: pointer;
 `;
 
-const ProductDetailsContainer = styled.div`
+const ProjectDetailsContainer = styled.div`
 padding:1em;
 background-color:white; 
 width:100%;
@@ -132,8 +189,8 @@ max-width:1000px;
 margin:0 auto;
 display:flex;
 flex-direction:column;
-justify-content:flex-start;
-align-items:flex-start;
+justify-content:center;
+align-items:center;
 text-align:left;
 gap:1em;
 top:7em;
@@ -142,8 +199,10 @@ position:relative;
  img{max-width:300px;} 
   
    @media (min-width: 1000px) {
+   align-items:flex-start;
+
    padding:5em;
-   img{max-width:600px;} 
+   img{max-width:400px;} 
   }
   }
 `;
@@ -197,7 +256,7 @@ margin-top:1em;
 `;
 
 const GithubButton = styled.a`
-font-size:11px;
+font-size:16px;
   position: relative;
   display: inline-block;
   background-color: #333;
@@ -235,23 +294,7 @@ font-size:11px;
     width: calc(100% + 30px);
   }
 `;
-const LoginModalDialog = styled(Modal.Dialog)`
-  animation: ${fadeIn} 0.3s ease-out;
-  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 
-  &.fade-exit-active {
-    animation: ${fadeOut} 0.3s ease-out;
-  }
-
-  .modal-content {
-    width:100%;
-    margin: 0 auto; 
-  }
-    
-  @media (min-width: 1050px) {
-    min-width:300px;
-  }
-`;
 const LoginButton = styled.a`
   position: relative;
   color: #333;
@@ -270,7 +313,7 @@ const LoginButton = styled.a`
 
 const ProjectButton = styled.a`
 white-space:nowrap;
-font-size:11px;
+font-size:16px;
   display: inline-block;
   background-color: #fff;
   color: #333 !important;
