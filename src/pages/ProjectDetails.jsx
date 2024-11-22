@@ -90,6 +90,9 @@ const ProjectDetail = () => {
           {!isFirst && (
             <ChevronButton onClick={() => navigateToProject(currentIndex - 1)}>&lt;</ChevronButton>
           )}
+          <ChevronContent>
+
+          </ChevronContent>
           {!isLast && (
             <ChevronButton onClick={() => navigateToProject(currentIndex + 1)}>&gt;</ChevronButton>
           )}
@@ -181,6 +184,22 @@ const BackButton = styled.a`
   cursor: pointer;
 `;
 
+const ChevronContent = styled.div`
+  flex: 1;
+  text-align: center;
+
+  h3 {
+    font-size: 1.5em;
+    margin: 0.5em 0;
+  }
+
+  img {
+    max-width: 300px;
+    margin: 1em 0;
+  }
+`;
+
+
 const ProjectDetailsContainer = styled.div`
 padding:1em;
 background-color:white; 
@@ -199,7 +218,6 @@ position:relative;
  img{max-width:300px;} 
   
    @media (min-width: 1000px) {
-   align-items:flex-start;
 
    padding:5em;
    img{max-width:400px;} 
