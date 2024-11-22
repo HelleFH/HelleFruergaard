@@ -182,6 +182,7 @@ const ChevronButton = styled.button`
 
 const BackButton = styled.a`
   cursor: pointer;
+  place-self:flex-start;
 `;
 
 const ChevronContent = styled.div`

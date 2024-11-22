@@ -27,7 +27,7 @@ const projects = [
     adminPassword: "Demopassword123"
   },
   {
-    id: 4,
+    id:2 ,
     name: "React Snippets",
     technologies: "React, JavaScript",
     images: ["/images/snippets-screen.png"],
@@ -40,7 +40,7 @@ const projects = [
     technologiesMore: ["JavaScript"]
   },
   {
-    id: 6,
+    id: 3,
     name: "A Product Portfolio",
     technologies: "React",
     images: ["/images/portfolio-screen.png"],
@@ -58,7 +58,7 @@ const projects = [
     ]
   },
   {
-    id: 2,
+    id: 4,
     name: "MERN Listings",
     technologies: "MongoDB, Express, React, Node.js",
     images: ["/images/listing-screen.png"],
@@ -80,7 +80,7 @@ const projects = [
     ]
   },
   {
-    id: 3,
+    id: 5,
     name: "Cloudinary Upload/Delete",
     technologies: "MongoDB, Express, Vue, Node.js",
     images: ["/images/aiimages-screen.png"],
@@ -102,7 +102,7 @@ const projects = [
   },
 
   {
-    id: 5,
+    id: 6,
     name: "The Monty Hall Problem",
     technologies: "JQuery, Python, Chart.js",
     images: ["/images/montyhall-screen.png"],
