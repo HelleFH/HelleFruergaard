@@ -1,12 +1,12 @@
-// ProjectModal.js
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import styled, { keyframes } from 'styled-components';
-import { Modal, Button } from 'react-bootstrap';
 import { useSwipeable } from 'react-swipeable';
 
-// Define fade-in and fade-out animations
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { Modal, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom'; // Import Link from react-router
+import styled, { keyframes } from 'styled-components';
+
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -29,6 +29,8 @@ const fadeOut = keyframes`
   }
 `;
 
+// Your other code remains the same
+
 const ProjectModal = ({
   show,
   handleClose,
@@ -39,11 +41,8 @@ const ProjectModal = ({
   handleNext,
   handleShowLoginDetails
 }) => {
-  // Make sure selectedProjectIndex is valid and projects are available
-  if (selectedProjectIndex === null || !projects[selectedProjectIndex]) {
-    return null; // Early return if the project index is invalid
-  }
-// eslint-disable-next-line react-hooks/rules-of-hooks
+  
+  // Call useSwipeable outside of conditionals
   const swipeHandlers = useSwipeable({
     onSwipedLeft: handleNext,  // When swiped left, go to next project
     onSwipedRight: handlePrev, // When swiped right, go to previous project
@@ -51,13 +50,18 @@ const ProjectModal = ({
     trackMouse: true
   });
 
+  // Make sure selectedProjectIndex is valid and projects are available
+  if (selectedProjectIndex === null || !projects[selectedProjectIndex]) {
+    return null; // Early return if the project index is invalid
+  }
+
+
   const project = projects[selectedProjectIndex];
 
-  // Ensure technologiesMore is a string, if not, fallback to an empty string
-  const technologiesMore = project.technologiesMore || ''; // Default to empty string
+  const technologiesMore = project.technologiesMore || '';
   const technologies = typeof technologiesMore === 'string'
     ? technologiesMore.split(',').map(tech => tech.trim())
-    : []; // Split only if it's a string
+    : [];
 
   return (
     <CustomModal show={show} onHide={handleClose} centered overlayColor={overlayColor}>
@@ -80,16 +84,16 @@ const ProjectModal = ({
           <div className="d-flex flex-column justify-content-between gap-2">
             <ModalContent>
               <ModalTitle className="mb-0">{project.name}</ModalTitle>
-              <ProjectDescription>{project.description}</ProjectDescription>
+              <ProjectDescription>{project.descriptionHeader}</ProjectDescription>
 
               {/* Render technologies as an actual list */}
               <TechnologiesList>
-                {technologiesMore.length > 0 ? (
-                  technologiesMore.map((tech, index) => (
+                {technologies.length > 0 ? (
+                  technologies.map((tech, index) => (
                     <TechItem key={index}>{tech}</TechItem>
                   ))
                 ) : (
-                  <span>No additional technologies listed</span>
+                  <span></span>
                 )}
               </TechnologiesList>
             </ModalContent>
@@ -113,13 +117,33 @@ const ProjectModal = ({
               >
                 {project.githubButtonText}
               </GithubButton>
+              {/* Add "Read More" button */}
+          
             </ButtonsContainer>
+            <ReadMore to={`/project/${project.id}`}>
+              Read More
+              </ReadMore>
           </div>
         </ModalBody>
       </LoginModalDialog>
     </CustomModal>
   );
 };
+
+// Add styling for the button (if needed)
+const ReadMore = styled(Link)`
+ color: #007BFF;
+  text-decoration: underline;
+  font-weight: bold;
+  padding: 5px 10px;
+  transition: background-color 0.3s, color 0.3s;
+place-self:flex-end;
+padding:0 2em 2em 0;
+  
+  &:hover {
+    color: black;
+  }
+`;
 
 export default ProjectModal;
 // Styled components
@@ -201,9 +225,11 @@ const ModalContent = styled.div`
   max-height: 100vh; 
 
 
+
     @media (min-width: 800px) {
-      max-width: 450px;
+      width: 450px;
   padding:4em 2.5em 1em 1em;
+  min-width:450px;
 
     position: relative;
     bottom: 0;
@@ -361,7 +387,7 @@ const CustomModal = styled(Modal)`
     padding: 0em;
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1000px) {
     margin-top:0em;
 
 
@@ -383,6 +409,8 @@ const ModalBody = styled(Modal.Body)`
     display: flex;
     flex-direction: row;
     width: 100% !important;
+        height:400px;
+
   }
 `;
 
@@ -428,13 +456,14 @@ const ProjectDescription = styled.p`
   }
 `;
 
+
 const ButtonsContainer = styled.div`
 margin-top:1em;
   display: flex;
   gap: 0.5em;
   align-self:center;
-  padding-bottom:2em;
-    @media (min-width: 1050px) {
+  padding-bottom:1em;
+    @media (min-width: 1000px) {
     height: fit-content;
     align-self:flex-end;
     padding-right:2em;

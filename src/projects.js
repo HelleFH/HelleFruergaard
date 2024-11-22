@@ -2,7 +2,7 @@ import { isStyledComponent } from "styled-components";
 
 const projects = [
   {
-    id: 3,
+    id: 1,
     name: "React Store",
     technologies: "Firebase, React",
     images: ["/images/clothes-store-screen.png"],
@@ -27,7 +27,7 @@ const projects = [
     adminPassword: "Demopassword123"
   },
   {
-    id: 3,
+    id: 2,
     name: "MERN Listings",
     technologies: "MongoDB, Express, React, Node.js",
     images: ["/images/listing-screen.png"],
@@ -49,7 +49,7 @@ const projects = [
     ]
   },
   {
-    id: 4,
+    id: 3,
     name: "Cloudinary Upload/Delete",
     technologies: "MongoDB, Express, Vue, Node.js",
     images: ["/images/aiimages-screen.png"],
@@ -70,7 +70,7 @@ const projects = [
     ]
   },
   {
-    id: 13,
+    id: 4,
     name: "React Snippets",
     technologies: "React, JavaScript",
     images: ["/images/snippets-screen.png"],
@@ -119,7 +119,7 @@ const projects = [
     ]
   },
   {
-    id: 2,
+    id: 7,
     name: "MERN Plant Calendar",
     technologies: "MongoDB, Express, React, Node.js",
     images: ["/images/calendar-screen.png"],
@@ -146,7 +146,7 @@ const projects = [
     ]
   },
   {
-    id: 10,
+    id: 8,
     name: "MEVN Cart",
     technologies: "MongoDB, Express, Vue, Node.js",
     images: ["/images/mevncart-screen.png"],
@@ -174,7 +174,7 @@ const projects = [
   },
  
   {
-    id: 8,
+    id: 9,
     name: "React Dating App",
     technologies: "React, JavaScript",
     images: ["/images/datingapp-screen.png"],
@@ -196,7 +196,7 @@ const projects = [
   },
   
   {
-    id: 14,
+    id: 10,
     name: "News Site",
     technologies: "HTML, CSS, JS",
     images: ["/images/news-screen.png"],
@@ -209,7 +209,7 @@ const projects = [
     technologiesMore: ["JavaScript"]
   },
   {
-    id: 9,
+    id: 11,
     name: "Netflix Clone",
     technologies: "JavaScript",
     images: ["/images/netflix-screen.png"],
@@ -222,7 +222,7 @@ const projects = [
     technologiesMore: ["JavaScript"]
   },
   {
-    id: 11,
+    id: 12,
     name: "Lightbox Gallery",
     technologies: "JQuery",
     images: ["/images/dinosaurs-screen.png"],
@@ -235,7 +235,7 @@ const projects = [
     technologiesMore: ["JQuery"]
   },
   {
-    id: 12,
+    id: 13,
     name: "Front Page",
     technologies: "HTML, CSS",
     images: ["/images/legekrogen-screen.png"],

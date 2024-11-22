@@ -6,6 +6,7 @@ import './index.css';
 import Navbar from './components/Navbar';
 import AboutMe from './components/AboutMe';
 import Projects from './pages/Projects';
+import ProjectDetail from './components/ProjectDetails';
 
 const App = () => {
   return (
@@ -16,6 +17,8 @@ const App = () => {
           <Route path="/" element={<Projects />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/aboutme" element={<AboutMe />} />
+          <Route path="/project/:id" element={<ProjectDetail />} />
+
 
         </Routes>
       </div>
