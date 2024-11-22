@@ -112,7 +112,7 @@ const ProjectDetail = () => {
 export default ProjectDetail;
 
 const ProductDetailsContainer = styled.div`
-padding:5em;
+padding:1em;
 background-color:white; 
 width:100%;
 max-width:1000px;
@@ -128,6 +128,7 @@ position:relative;
  img{max-width:300px;} 
   
    @media (min-width: 1000px) {
+   padding:5em;
    img{max-width:600px;} 
   }
   }
@@ -253,10 +254,11 @@ const LoginButton = styled.a`
 
 
 const ProjectButton = styled.a`
+white-space:nowrap;
   display: inline-block;
   background-color: #fff;
   color: #333 !important;
-  padding: 7px 15px;
+  padding: 10px;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
