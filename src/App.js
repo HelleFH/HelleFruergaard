@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import AboutMe from './components/AboutMe';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetails';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -22,6 +23,8 @@ const App = () => {
 
         </Routes>
       </div>
+      <Footer />
+
     </Router>
   );
 };

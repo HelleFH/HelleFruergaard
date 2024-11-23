@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom"; // Add useNavigate for navigation
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import projects from "../projects";
 import styled, { keyframes } from "styled-components";
 import LoginModal from "../components/LoginModal";
 import Footer from "../components/Footer";
+import { useSwipeable } from "react-swipeable"; // Import the useSwipeable hook
 
 // Keyframe animations for modal transitions
 const fadeIn = keyframes`
@@ -29,19 +30,31 @@ const fadeOut = keyframes`
 `;
 
 const ProjectDetail = () => {
-  const { id } = useParams(); // Get the project ID from the URL
+
+  const handleShowLoginDetails = () => setShowLoginDetails(true);
+  const handleCloseLoginModal = () => setShowLoginDetails(false);
+  const handleCopyToClipboard = (text) => {
+    navigator.clipboard.writeText(text);
+    alert(`${text} copied to clipboard!`);
+  };
+
+  // Swipeable handlers
+  const handlers = useSwipeable({
+    onSwipedLeft: () => !isLast && navigateToProject(currentIndex + 1), // Navigate to next project
+    onSwipedRight: () => !isFirst && navigateToProject(currentIndex - 1), // Navigate to previous project
+    trackMouse: true, // Track mouse events for testing swipe on desktop
+  });
+  const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
 
   const [project, setProject] = useState(null);
-  const [showLoginDetails, setShowLoginDetails] = useState(false); // Login Modal state
+  const [showLoginDetails, setShowLoginDetails] = useState(false);
 
   useEffect(() => {
-    // Find the project based on the ID from the URL
     const selectedProject = projects.find((proj) => proj.id === parseInt(id, 10));
     setProject(selectedProject);
 
-    // Check navigation state to determine modal state
     const navState = location.state || {};
     if (navState.showLoginModal) {
       setShowLoginDetails(true);
@@ -49,7 +62,7 @@ const ProjectDetail = () => {
   }, [id, location.state]);
 
   if (!project) {
-    return <p>Loading...</p>; // Fallback for when the project is not yet loaded
+    return <p>Loading...</p>;
   }
 
   const currentIndex = projects.findIndex((proj) => proj.id === parseInt(id, 10));
@@ -67,36 +80,34 @@ const ProjectDetail = () => {
 
   const navigateBackToProjects = () => {
     navigate("/projects", {
-      state: { showModal: true, selectedProjectIndex: currentIndex }, // Ensure modal opens
+      state: { showModal: true, selectedProjectIndex: currentIndex },
     });
   };
 
-  const handleShowLoginDetails = () => setShowLoginDetails(true);
-  const handleCloseLoginModal = () => setShowLoginDetails(false);
-  const handleCopyToClipboard = (text) => {
-    navigator.clipboard.writeText(text);
-    alert(`${text} copied to clipboard!`);
-  };
+
 
   return (
-    <div>
-      
+    <div {...handlers}>
       <ProjectDetailsContainer>
-      <BackButton onClick={navigateBackToProjects}>Back to Projects</BackButton>
+        <BackButton onClick={navigateBackToProjects}>Back to Projects</BackButton>
 
-        
         {/* Chevron Navigation */}
         <ChevronContainer>
           {!isFirst && (
-            <ChevronButton onClick={() => navigateToProject(currentIndex - 1)}>&lt;</ChevronButton>
+            <ChevronButton onClick={() => navigateToProject(currentIndex - 1)}>
+              &lt;
+            </ChevronButton>
           )}
           <ChevronContent>
-
+            {/* Additional content can go here */}
           </ChevronContent>
           {!isLast && (
-            <ChevronButton onClick={() => navigateToProject(currentIndex + 1)}>&gt;</ChevronButton>
+            <ChevronButton onClick={() => navigateToProject(currentIndex + 1)}>
+              &gt;
+            </ChevronButton>
           )}
         </ChevronContainer>
+
         <h3>{project.name}</h3>
         <img src={project.images[0]} alt={project.name} />
         <h5>{project.descriptionHeader}</h5>
@@ -111,12 +122,13 @@ const ProjectDetail = () => {
               <TechItem key={index}>{tech}</TechItem>
             ))}
         </TechnologiesList>
+
         <ButtonsContainer>
-        {project.username && (
-              <LoginButton onClick={handleShowLoginDetails}>
-                Show Login Details
-              </LoginButton>
-            )}
+          {project.username && (
+            <LoginButton onClick={handleShowLoginDetails}>
+              Show Login Details
+            </LoginButton>
+          )}
           <ProjectButton href={project.projectLink} target="_blank" rel="noopener noreferrer">
             {project.buttonText || "Visit Project"}
           </ProjectButton>
@@ -124,7 +136,6 @@ const ProjectDetail = () => {
             {project.githubButtonText || "View on GitHub"}
           </GithubButton>
         </ButtonsContainer>
-
       </ProjectDetailsContainer>
 
       {/* Login Modal */}
@@ -134,11 +145,11 @@ const ProjectDetail = () => {
         project={project}
         handleCopyToClipboard={handleCopyToClipboard}
       />
+
       <Footer />
     </div>
   );
 };
-
 
 export default ProjectDetail;
 

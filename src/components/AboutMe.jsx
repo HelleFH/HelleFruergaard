@@ -96,7 +96,7 @@ const PersonalInfo = styled.div`
 margin-top:4em;
 background-color:#d9d9d9;
 padding:2em;
-border-radius:10px;
+border-radius:2px;
 align-items:center;
   
   @media (min-width: 1000px) {

@@ -6,19 +6,17 @@ const ProjectsContent = styled.section`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 100%;
   max-width: 1000px;
   justify-content: flex-start;
   position: relative;
 
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: repeat(2, 110px);
-    gap: 1em;
-    grid-template-columns: repeat(4, 110px);
+    gap: 0.5em;
+    grid-template-columns: repeat(4, 120px);
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1175px) {
     grid-template-columns: repeat(6, 120px);
   }
 `;
@@ -34,7 +32,6 @@ const ProjectWrapper = styled.div`
     props.firstRow && props.index < 2 ? 'span 3' : 'auto'};
 
   @media (min-width: 768px) {
-    margin: 0.5em 1em;
     margin-bottom: 0em;
     grid-column: ${(props) =>
       props.index >= 2
@@ -48,7 +45,7 @@ const ProjectWrapper = styled.div`
     transform: scale(1.1);
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 1175px) {
     grid-column: ${(props) =>
       props.index >= 2
         ? 'span 2'
@@ -68,7 +65,7 @@ const Image = styled.img`
   width: 100%;
   object-fit: cover;
   transition: transform 0.8s ease;
-  border-radius: 3px;
+  border-radius: 2px;
   min-width:230px;
 
   &:hover {
@@ -77,7 +74,7 @@ const Image = styled.img`
 `;
 
 const Overlay = styled.div`
-  border-radius: 3px;
+  border-radius: 2px;
   position: absolute;
   top: 0;
   left: 0;

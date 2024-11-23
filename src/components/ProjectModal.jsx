@@ -58,10 +58,8 @@ const ProjectModal = ({
 
   const project = projects[selectedProjectIndex];
 
-  const technologiesMore = project.technologiesMore || '';
-  const technologies = typeof technologiesMore === 'string'
-    ? technologiesMore.split(',').map(tech => tech.trim())
-    : [];
+  const technologies = project.technologies || '';
+
 
   return (
     <CustomModal show={show} onHide={handleClose} centered overlayColor={overlayColor}>
@@ -88,20 +86,13 @@ const ProjectModal = ({
 
               {/* Render technologies as an actual list */}
               <TechnologiesList>
-                {technologies.length > 0 ? (
-                  technologies.map((tech, index) => (
-                    <TechItem key={index}>{tech}</TechItem>
-                  ))
-                ) : (
-                  <span></span>
-                )}
+              {project.technologies.split(",").map((tech, index) => (
+            <TechItem key={index}>{tech.trim()}</TechItem>
+          ))}
+ 
               </TechnologiesList>
             </ModalContent>
-            {project.username && (
-              <LoginButton onClick={handleShowLoginDetails}>
-                Show Login Details
-              </LoginButton>
-            )}
+    
             <ButtonsContainer>
               <ProjectButton
                 href={project.projectLink}
@@ -120,9 +111,16 @@ const ProjectModal = ({
               {/* Add "Read More" button */}
           
             </ButtonsContainer>
-            <ReadMore to={`/project/${project.id}`}>
+            <LinksContainer>
+            <Link to={`/project/${project.id}`}>
               Read More
-              </ReadMore>
+              </Link>
+              {project.username && (
+              <a onClick={handleShowLoginDetails}>
+                Show Login Details
+              </a>
+            )}
+          </LinksContainer>
           </div>
         </ModalBody>
       </LoginModalDialog>
@@ -130,20 +128,6 @@ const ProjectModal = ({
   );
 };
 
-// Add styling for the button (if needed)
-const ReadMore = styled(Link)`
- color: #007BFF;
-  text-decoration: underline;
-  font-weight: bold;
-  padding: 5px 10px;
-  transition: background-color 0.3s, color 0.3s;
-place-self:flex-end;
-padding:0 2em 2em 0;
-  
-  &:hover {
-    color: black;
-  }
-`;
 
 export default ProjectModal;
 // Styled components
@@ -291,8 +275,8 @@ const CloseButton = styled(Button)`
   cursor: pointer;
   padding: 0;
   line-height: 1;
-  right: 5px;
-  margin-top:-5px;
+  right: 15px;
+  margin-top:-6px;
    z-index: 9999;
 
    @media (min-width: 1050px) {
@@ -344,6 +328,7 @@ const LoginModalDialog = styled(Modal.Dialog)`
   animation: ${fadeIn} 0.3s ease-out;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 
+
   &.fade-exit-active {
     animation: ${fadeOut} 0.3s ease-out;
   }
@@ -353,24 +338,7 @@ const LoginModalDialog = styled(Modal.Dialog)`
     margin: 0 auto; 
   }
 `;
-const LoginButton = styled.a`
-  position: relative;
-  color: #333;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 14px;
-  padding-left:2em;
 
-  &:hover {
-    transform: scale(1.02);
-  }
-
-  @media (min-width: 1050px) {
-    position: relative;
-    bottom: 0;
-  }
-`;
 
 const CustomModal = styled(Modal)`
   transition: transform 0.3s ease-out;
@@ -386,12 +354,17 @@ const CustomModal = styled(Modal)`
   p {
     padding: 0em;
   }
+      &.fade {
+  padding:1rem !important;
+  }
+
 
   @media (min-width: 1000px) {
     margin-top:0em;
 
 
     .modal-dialog {
+    
       p {
         padding-right: 3em;
       }
@@ -457,18 +430,48 @@ const ProjectDescription = styled.p`
 `;
 
 
+const LinksContainer = styled.div`
+display:flex;
+justify-content:flex-end;
+padding:1em;
+
+ a { color: #222524;
+  text-decoration: underline !important;
+  font-weight: bold;
+  padding: 5px 10px;
+  transition: background-color 0.3s, color 0.3s;
+place-self:flex-end;
+  
+  &:hover {
+    color: black;
+  }
+    
+  &:first-child {color:#222524;}}
+  
+  @media (min-width: 800px) and (max-width: 1000px) {
+    align-self: flex-start;
+ 
+  }
+`;
+
 const ButtonsContainer = styled.div`
-margin-top:1em;
+  margin-top: 1em;
   display: flex;
   gap: 0.5em;
-  align-self:center;
-  place-self:flex-end;
-  padding-right:1em;
-  padding-bottom:1em;
-    @media (min-width: 1000px) {
+  align-self: center;
+  place-self: flex-end;
+  padding-right: 1em;
+  padding-bottom: 1em;
+
+  @media (min-width: 1000px) {
     height: fit-content;
-    align-self:flex-end;
-    padding-right:2em;
-    padding-top:1em;
+    align-self: flex-end;
+    padding-right: 2em;
+    padding-top: 1em;
+  }
+
+  @media (min-width: 800px) and (max-width: 1000px) {
+    align-self: flex-start;
+ 
   }
 `;
