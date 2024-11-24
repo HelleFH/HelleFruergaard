@@ -82,7 +82,6 @@ const SkillsSectionContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  max-width: 96vw;
   margin: 0 auto;
 width:100%;
   @media (min-width: 768px) {
@@ -109,14 +108,11 @@ const Section = styled.div`
   background-color: #fff;
   color: #000;
   padding: 1em;
-  border: 2px solid #d9d9d9;
+
   border-radius:2px;
   margin-bottom: 5em;
   text-align:left;
 
-  @media (min-width: 768px) {
-    margin-bottom: 2em;
-  }
 `;
 
 const SectionHeader = styled.h3`
@@ -139,7 +135,6 @@ const ListHeader = styled.h5`
   font-size: 1.2rem;
   font-weight: 600;
   text-align:center;
-  text-decoration:underline;
   white-space:nowrap;
 `;
 
