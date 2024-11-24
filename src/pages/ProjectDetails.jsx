@@ -3,31 +3,10 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import projects from "../projects";
 import styled, { keyframes } from "styled-components";
 import LoginModal from "../components/LoginModal";
-import Footer from "../components/Footer";
+import Frame from "../assets/frame.png";
+import Topframe from "../assets/topframe.png"
 import { useSwipeable } from "react-swipeable"; // Import the useSwipeable hook
 
-// Keyframe animations for modal transitions
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const fadeOut = keyframes`
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-`;
 
 const ProjectDetail = () => {
 
@@ -99,7 +78,6 @@ const ProjectDetail = () => {
             </ChevronButton>
           )}
           <ChevronContent>
-            {/* Additional content can go here */}
           </ChevronContent>
           {!isLast && (
             <ChevronButton onClick={() => navigateToProject(currentIndex + 1)}>
@@ -108,21 +86,22 @@ const ProjectDetail = () => {
           )}
         </ChevronContainer>
 
-        <h3>{project.name}</h3>
-        <img src={project.images[0]} alt={project.name} />
-        <h5>{project.descriptionHeader}</h5>
-        <p>{project.description}</p>
-        <h4>Technologies Used</h4>
-        <TechnologiesList>
-          {project.technologies.split(",").map((tech, index) => (
-            <TechItem key={index}>{tech.trim()}</TechItem>
-          ))}
-          {project.technologiesMore &&
-            project.technologiesMore.map((tech, index) => (
-              <TechItem key={index}>{tech}</TechItem>
-            ))}
-        </TechnologiesList>
-
+        <h1>{project.name}</h1>
+        <ImageWrapper >
+          <ProjectImage src={project.images[0]} alt={project.name} />
+        </ImageWrapper>
+        <ProjectText>
+          <h4>{project.descriptionHeader}</h4>
+          <p>{project.description}</p>
+          <h5>Technologies Used</h5>
+          <TechnologiesList>
+            
+            {project.technologiesMore &&
+              project.technologiesMore.map((tech, index) => (
+                <TechItem key={index}>{tech}</TechItem>
+              ))}
+          </TechnologiesList>
+        </ProjectText>
         <ButtonsContainer>
           {project.username && (
             <LoginButton onClick={handleShowLoginDetails}>
@@ -146,12 +125,65 @@ const ProjectDetail = () => {
         handleCopyToClipboard={handleCopyToClipboard}
       />
 
-      <Footer />
     </div>
   );
 };
 
 export default ProjectDetail;
+
+
+const ImageWrapper = styled.div`
+  width: 95vw;
+  background-image: url(${Frame}); /* Main background image */
+  background-position: bottom left;
+  background-size: 60px;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  position: relative; /* Make this the reference point for the ::after pseudo-element */
+  margin-bottom:3em;
+
+
+  &::after {
+    content: ''; /* Required for pseudo-elements */
+    background-image: url(${Topframe}); /* Second background image */
+    background-position: top right;
+    background-size: 60px;
+    background-repeat: no-repeat;
+    width: 100%; /* Ensure the ::after element takes up the full width */
+    z-index: 1; /* Make sure it's above the background image */
+    position:absolute;
+    height:100%;
+}
+  
+`;
+
+const ProjectText = styled.div`
+background-color:white;
+display:flex;
+flex-direction:column;
+padding:1em;
+justify-content:center;
+align-items:center;
+gap:1em;
+    @media (min-width: 1000px) {
+padding:3em;
+
+  }
+`;
+
+
+const ProjectImage = styled.img`
+grid-row:1;
+width:100%;
+max-width:500px;
+position:relative;
+padding:0.7em;
+
+
+`;
+
 
 const ChevronContainer = styled.div`
   display: flex;
@@ -212,9 +244,9 @@ const ChevronContent = styled.div`
 `;
 
 
+
 const ProjectDetailsContainer = styled.div`
 padding:1em;
-background-color:white; 
 width:100%;
 max-width:1000px;
 margin:0 auto;
@@ -227,16 +259,17 @@ gap:1em;
 top:7em;
 margin-bottom:10em;
 position:relative;
- img{max-width:300px;} 
+
+
   
    @media (min-width: 1000px) {
 
    padding:5em;
-   img{max-width:400px;} 
-  }
+
   }
 `;
 const TechnologiesList = styled.ul`
+
 
 line-height:1em;
  list-style-type: none;

@@ -121,7 +121,6 @@ const ProjectsButton = styled.a`
 
 const Heading1 = styled.h1`
   font-size: 2.5rem;
-  font-weight:500 !important;
   margin:0;
 word-spacing:-0.2em !important; 
   span {
