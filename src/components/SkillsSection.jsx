@@ -92,6 +92,8 @@ width:100%;
 const AboutHeader = styled.h3`
   font-size: 2rem;
   font-family: 'Istok Web', sans-serif;
+    width:90%;
+  place-self:center;
 `;
 
 const AboutSubHeader = styled.h5`
@@ -99,6 +101,8 @@ const AboutSubHeader = styled.h5`
   font-weight: 600;
   margin-bottom: 1em;
   border-bottom: 1px solid gray;
+  width:90%;
+  place-self:center;
 `;
 
 const Section = styled.div`

@@ -98,7 +98,7 @@ const Projects = () => {
         <MainContent>
           <ContentContainer>
             <ProjectsHeader>Projects</ProjectsHeader>
-            <ProjectsSubheader>Check out some of my recent work</ProjectsSubheader>
+            <ProjectsSubheader>Check out some of my work</ProjectsSubheader>
             <ProjectsContentComponent
               overlayColors={overlayColors}
               handleImageClick={handleImageClick}
@@ -156,7 +156,6 @@ const ContentContainer = styled.div`
   height: 100%;
   justify-content: flex-start;
   padding: 0 1em;
-  max-width: 96vw;
 
   @media (min-width: 768px) and (max-width: 1024px) {
     max-width: 90vw;
