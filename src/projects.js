@@ -100,23 +100,31 @@ const projects = [
 
     ]
   },
-
   {
     id: 6,
-    name: "The Monty Hall Problem",
-    technologies: "JQuery, Python, Chart.js",
-    images: ["/images/montyhall-screen.png"],
-    projectLink: "https://monty-hall-explained.onrender.com/",
-    githubLink: "https://github.com/HelleFH/product-page",
+    name: "MEVN Cart",
+    technologies: "MongoDB, Express, Vue, Node.js",
+    images: ["/images/mevncart-screen.png"],
+    projectLink: "https://shopping-cart-master-1-5ylu.onrender.com/",
+    githubLink: "https://github.com/hellefh/shopping-cart",
     buttonText: "View Project",
     githubButtonText: "GitHub",
-    descriptionHeader: "A site where users can read about and play the Monty Hall Game",
-    description: `The Monty Hall Problem is a famous counterintuitive statistics problem. This site has a simulator where users can input an amount of games to simulate using Python with Flask, and a manual Monty Hall Game made with JQuery.`,
+    descriptionHeader: "MEVN Stack Shopping Cart with User Authentication",
+    description: "This cart includes user authentication functionality to secure user accounts and ensure that shopping carts are saved between sessions. User and cart information are saved in MongoDB.",
+    username: "hellefruergaard@mevn-shop.com",
+    password: "password123",
     technologiesMore: [
-      "Flask",
-      "JQuery",
-      "Python",
-      "Chart.js"
+       "MongoDB",
+       "Express",
+       "Vue",
+       "Node.js",
+       "RESTful API",
+      "Multer",
+      "Zustand",
+      "Formik",
+      "Yup",
+      "Bcrypt",
+      "Jsonwebtoken"
     ]
   },
 
@@ -147,36 +155,10 @@ const projects = [
       "Moment"
     ]
   },
-  {
-    id: 8,
-    name: "MEVN Cart",
-    technologies: "MongoDB, Express, Vue, Node.js",
-    images: ["/images/mevncart-screen.png"],
-    projectLink: "https://shopping-cart-master-1-5ylu.onrender.com/",
-    githubLink: "https://github.com/hellefh/shopping-cart",
-    buttonText: "View Project",
-    githubButtonText: "GitHub",
-    descriptionHeader: "MEVN Stack Shopping Cart with User Authentication",
-    description: "This cart includes user authentication functionality to secure user accounts and ensure that shopping carts are saved between sessions.",
-    username: "hellefruergaard@mevn-shop.com",
-    password: "password123",
-    technologiesMore: [
-       "MongoDB",
-       "Express",
-       "Vue",
-       "Node.js",
-       "RESTful API",
-      "Multer",
-      "Zustand",
-      "Formik",
-      "Yup",
-      "Bcrypt",
-      "Jsonwebtoken"
-    ]
-  },
+
  
   {
-    id: 9,
+    id: 8,
     name: "React Dating App",
     technologies: "React, JavaScript",
     images: ["/images/datingapp-screen.png"],
@@ -196,6 +178,26 @@ const projects = [
       "Babel"
     ]
   },
+  
+  {
+    id: 9,
+    name: "The Monty Hall Problem",
+    technologies: "JQuery, Python, Chart.js",
+    images: ["/images/montyhall-screen.png"],
+    projectLink: "https://monty-hall-explained.onrender.com/",
+    githubLink: "https://github.com/HelleFH/product-page",
+    buttonText: "View Project",
+    githubButtonText: "GitHub",
+    descriptionHeader: "A site where users can read about and play the Monty Hall Game",
+    description: `The Monty Hall Problem is a famous counterintuitive statistics problem. This site has a simulator where users can input an amount of games to simulate using Python with Flask, and a manual Monty Hall Game made with JQuery.`,
+    technologiesMore: [
+      "Flask",
+      "JQuery",
+      "Python",
+      "Chart.js"
+    ]
+  },
+
   
   {
     id: 10,
