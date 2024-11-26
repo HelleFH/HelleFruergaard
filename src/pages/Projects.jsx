@@ -97,15 +97,19 @@ const Projects = () => {
       <div id="container">
         <MainContent>
           <ContentContainer>
+          <SkillsSection />
+          <div>
+
             <ProjectsHeader>Projects</ProjectsHeader>
             <ProjectsSubheader>Check out some of my work</ProjectsSubheader>
             <ProjectsContentComponent
               overlayColors={overlayColors}
               handleImageClick={handleImageClick}
             />
-            <AboutMe />
+            </div>
           </ContentContainer>
-          <SkillsSection />
+          <AboutMe />
+
         </MainContent>
 
         <LoginModal
@@ -124,12 +128,15 @@ export default Projects;
 
 const MainContent = styled.div`
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   width: 100%;
   margin: 0 auto;
-  gap: 2em;
+  gap: 6em;
   justify-content: center;
   align-items: center;
+  padding-top:5em;
+      margin-bottom:5em;
+
 
   @media (min-width: 850px) and (max-width: 1175px) {
     padding: 2em;
@@ -141,12 +148,15 @@ const MainContent = styled.div`
   }
 
   @media (min-width: 1175px) {
-    gap: 3em;
+    gap: 5em;
     padding: 4em;
+  padding-top:8em;
     display: grid;
     grid-template-columns: 2fr 1fr;
     max-width: 1200px;
     align-items: flex-start;
+    
+
   }
 `;
 
@@ -154,8 +164,10 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   padding: 0 1em;
+  gap:7em;
+
 
   @media (min-width: 768px) and (max-width: 1024px) {
     max-width: 90vw;
@@ -165,6 +177,8 @@ const ContentContainer = styled.div`
   @media (min-width: 1024px) {
     max-width: 85vw;
     padding: 0;
+      gap:10em;
+
   }
 `;
 
@@ -172,10 +186,14 @@ const ProjectsSubheader = styled.h5`
   text-align: left;
   font-weight: 600 !important;
   margin-bottom: 1em;
-  border-bottom: 1px solid gray;
-`;
+&::after {
+  content: "";
+  display: block;
+  width: 32px;
+  padding-top: 3px;
+  border-bottom: 2px solid #757576;
+}`;
 
 const ProjectsHeader = styled.h3`
   font-size: 2rem;
-  font-family: 'Istok Web' !important;
 `;

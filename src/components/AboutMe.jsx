@@ -8,28 +8,7 @@ const AboutMe = () => {
   return (
     <AboutMeWrapper >
       <AboutMeContent  id="about-me">
-        <PersonalInfo className="d-flex flex-column align-items-center gap-3 justify-content-center">
-          <ProfileImage src={`/images/helle.jpg`} alt="Profile" />
-          <div className="d-flex flex-row justify-content-center gap-3">
-            <a className="nav-link" href="https://www.linkedin.com/in/helle-fruergaard-577763112/" >
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-            <a className="nav-link" href="https://github.com/HelleFH/" >
-              <i className="fab fa-github"></i>
-            </a>
-          </div>
-          <ContactInfo className="d-flex flex-direction-row gap-2">
-            <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
-            <h6 className="font-weight-bold">Hellefruergaardh@gmail.com</h6>
-          </ContactInfo>
-          <ContactInfo className="d-flex flex-direction-row gap-2">
-            <FontAwesomeIcon icon={faPhone} className="mr-2" />
-            <h6 className="font-weight-bold">+45 29664077</h6>
-          </ContactInfo>
-          <DownloadSection ></DownloadSection>
-
-          
-        </PersonalInfo>
+ 
 
         <AboutInfo>
           <h3>About Me</h3>
@@ -57,6 +36,28 @@ const AboutMe = () => {
 
          
         </AboutInfo>
+        <PersonalInfo className="d-flex flex-column align-items-center gap-3 justify-content-center">
+          <ProfileImage src={`/images/helle.jpg`} alt="Profile" />
+          <div className="d-flex flex-row justify-content-center gap-3">
+            <a className="nav-link" href="https://www.linkedin.com/in/helle-fruergaard-577763112/" >
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+            <a className="nav-link" href="https://github.com/HelleFH/" >
+              <i className="fab fa-github"></i>
+            </a>
+          </div>
+          <ContactInfo className="d-flex flex-direction-row gap-2">
+            <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
+            <h6 className="font-weight-bold">Hellefruergaardh@gmail.com</h6>
+          </ContactInfo>
+          <ContactInfo className="d-flex flex-direction-row gap-2">
+            <FontAwesomeIcon icon={faPhone} className="mr-2" />
+            <h6 className="font-weight-bold">+45 29664077</h6>
+          </ContactInfo>
+          <DownloadSection ></DownloadSection>
+
+          
+        </PersonalInfo>
       </AboutMeContent>
     </AboutMeWrapper>
   );
@@ -71,37 +72,50 @@ font-weight:500;
   margin: 4em 0 4em auto;
   padding: 0 0.5em;
   font-family:'Gelasio';
-  margin-top:4em;
 
   @media (min-width: 768px) {
     flex-direction: row;
     padding: 0em;
-    margin-top:5em;
   }
 `;
 
 const AboutMeContent = styled.div`
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
+flex-direction:column-reverse;
   gap: 2em;
 
   @media (min-width: 1000px) {
     flex-direction: row;
-    gap: 2em;
+    gap: 3em;
   }
 `;
 
 const PersonalInfo = styled.div`
-margin-top:4em;
 background-color:#d9d9d9;
 padding:2em;
 border-radius:2px;
 align-items:center;
+position: relative; /* Ensure the overlay can position itself relative to this container */
+  overflow: hidden; /* Prevent overlay from spilling outside the rounded corners */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1; 
+
+  }
+      * {
+    position: relative;
+    z-index: 2;
+  }
   
   @media (min-width: 1000px) {
     flex-direction: row;
-    margin-top:0em !important;
 
     gap: 2em;
   }
@@ -109,12 +123,13 @@ align-items:center;
 
 
 const ProfileImage = styled.img`
- width: 200px;  /* Adjust the size */
+ width: 200px;  
   height: 200px;  /* Make it a square */
   border-radius: 50%;  /* This makes the image round */
-  object-fit: cover;  /* Ensures the image covers the entire area without distortion */
-  border: 4px solid #fff;  /* Optional: Adds a white border around the image */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);  /* Optional: Adds a subtle shadow for depth */
+  object-fit: cover; 
+  border: 3px solid #fff; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); 
+  z-index:0;
 `;
 
 const ContactInfo = styled.div`
@@ -128,18 +143,6 @@ font-family:'Roboto';
 
 const AboutInfo = styled.div`
   flex: 1;
-  margin-bottom:4em;
-  h3 {
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-  }
 
-  p {
-    margin-bottom: 20px;
-  }
-      @media (min-width: 1000px) {
-    margin-bottom:0em;
-
-  }
 `;
 

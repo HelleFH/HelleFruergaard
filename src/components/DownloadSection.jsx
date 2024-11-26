@@ -24,7 +24,7 @@ display: inline-block;
   text-align: center;
   overflow: hidden;
   border: solid 1px #333;
-  border-radius: 20px;
+
   transition: background-color 0.4s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     font-family:'montserrat';

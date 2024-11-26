@@ -86,11 +86,12 @@ const ProjectDetail = () => {
           )}
         </ChevronContainer>
 
-        <h1>{project.name}</h1>
+        <ProjectHeader>{project.name}</ProjectHeader>
         <ImageWrapper >
           <ProjectImage src={project.images[0]} alt={project.name} />
         </ImageWrapper>
         <ProjectText>
+
           <h4>{project.descriptionHeader}</h4>
           <p>{project.description}</p>
           <h5>Technologies Used</h5>
@@ -134,29 +135,11 @@ export default ProjectDetail;
 
 const ImageWrapper = styled.div`
   width: 95vw;
-  background-image: url(${Frame}); /* Main background image */
-  background-position: bottom left;
-  background-size: 60px;
-  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   max-width: 500px;
-  position: relative; /* Make this the reference point for the ::after pseudo-element */
   margin-bottom:3em;
-
-
-  &::after {
-    content: ''; /* Required for pseudo-elements */
-    background-image: url(${Topframe}); /* Second background image */
-    background-position: top right;
-    background-size: 60px;
-    background-repeat: no-repeat;
-    width: 100%; /* Ensure the ::after element takes up the full width */
-    z-index: 1; /* Make sure it's above the background image */
-    position:absolute;
-    height:100%;
-}
-  
+  background-color:#fdfdfd;
 `;
 
 const ProjectText = styled.div`
@@ -167,6 +150,7 @@ padding:1em;
 justify-content:center;
 align-items:center;
 gap:1em;
+background-color:#f4f4f4;
     @media (min-width: 1000px) {
 padding:3em;
 
@@ -179,12 +163,27 @@ grid-row:1;
 width:100%;
 max-width:500px;
 position:relative;
-padding:0.7em;
+padding:0.5em;
 
 
 `;
 
 
+
+const ProjectHeader = styled.h1`
+ 
+text-align: left;
+font-weight: 600 !important;
+margin-bottom: 1em;
+&::after {
+content: "";
+display: block;
+width: 32px;
+padding-top: 3px;
+border-bottom: 2px solid #757576;
+}
+
+`;
 const ChevronContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -259,9 +258,7 @@ gap:1em;
 top:7em;
 margin-bottom:10em;
 position:relative;
-
-
-  
+background-color:#f4f4f4;
    @media (min-width: 1000px) {
 
    padding:5em;
@@ -330,7 +327,7 @@ font-size:16px;
   text-align: center;
   overflow: hidden;
   border: solid 1px #333;
-  border-radius: 20px;
+
   transition: background-color 0.4s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
@@ -386,7 +383,7 @@ font-size:16px;
   text-align: center;
   overflow: hidden;
   border: solid 1px #333;
-  border-radius: 20px;
+
   transition: background-color 0.4s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 

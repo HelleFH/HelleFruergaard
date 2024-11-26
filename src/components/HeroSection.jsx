@@ -40,14 +40,26 @@ const HeroSection = styled.div`
   background-color: white;
   z-index: 1;
   position: relative;
-  padding: 5em;
   padding-top:8em;
-  margin-bottom:4em;
   width:100vw;
-    @media (min-width: 768px) {
-  padding: 12em;
+
+    &::after {
+content: "";
+display: block;
+width: 64px;
+padding-top: 5em;
+border-bottom: 2px solid #757576;
+}
+
+@media (min-width: 768px) {
   padding-top:8em;
 
+  &::after {
+padding-top: 12em;
+width: 128px;
+
+
+}
   }
 `;
 
@@ -133,4 +145,3 @@ word-spacing:-0.2em !important;
 
   }
 `;
-

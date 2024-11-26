@@ -6,8 +6,8 @@ const SkillsSection = () => {
     <SkillsSectionContainer>
       <AboutHeader>Skills</AboutHeader>
       <AboutSubHeader>The things that I do</AboutSubHeader>
+      <ContentContainer>
 
-      {/* Web Development Section */}
       <Section>
         <SectionHeader>Web Development</SectionHeader>
         <SectionImage src="images/coding.png" alt="Frontend Development" />
@@ -23,14 +23,7 @@ const SkillsSection = () => {
             <ListItem>Sass</ListItem>
             <ListItem>PHP</ListItem>
           </List>
-          <ListHeader>Frameworks, Tools, and Libraries</ListHeader>
-          <List>
-            <ListItem>React</ListItem>
-            <ListItem>Vue</ListItem>
-            <ListItem>Bootstrap</ListItem>
-            <ListItem>Tailwind CSS</ListItem>
-            <ListItem>JQuery</ListItem>
-          </List>
+      
         </SectionContent>
       </Section>
 
@@ -54,7 +47,7 @@ const SkillsSection = () => {
 
       {/* IT Support Section */}
       <Section>
-        <SectionHeader>Webmaster and IT Support</SectionHeader>
+        <SectionHeader>IT Services</SectionHeader>
         <SectionImage src="images/IT.png" alt="IT Support" />
         <SectionContent>
           <p>
@@ -67,10 +60,10 @@ const SkillsSection = () => {
             <ListItem>Salesforce</ListItem>
             <ListItem>Docker</ListItem>
             <ListItem>SQL Server</ListItem>
-            <ListItem>Oracle</ListItem>
           </List>
         </SectionContent>
       </Section>
+      </ContentContainer>
     </SkillsSectionContainer>
   );
 };
@@ -80,42 +73,53 @@ export default SkillsSection;
 const SkillsSectionContainer = styled.div`
   align-self: flex-start;
   display: flex;
-  flex-direction: column;
-
+  flex-direction:column;
+  width:100%;
   margin: 0 auto;
-width:100%;
   @media (min-width: 768px) {
-    margin-bottom: 4em;
   }
 `;
-
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  width:100%;
+  gap:1em;
+  margin: 0 auto;
+  @media (min-width: 768px) {
+  }
+`;
 const AboutHeader = styled.h3`
   font-size: 2rem;
-  font-family: 'Istok Web', sans-serif;
-    width:90%;
-  place-self:center;
 `;
 
 const AboutSubHeader = styled.h5`
+
   text-align: left;
   font-weight: 600;
   margin-bottom: 1em;
-  border-bottom: 1px solid gray;
-  width:90%;
-  place-self:center;
-`;
+&::after {
+  content: "";
+  display: block;
+  width: 32px;
+  padding-top: 3px;
+  border-bottom: 2px solid #757576;
+}`;
 
 const Section = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  background-color: #fff;
-  color: #000;
-  padding: 1em;
-
-  border-radius:2px;
-  margin-bottom: 5em;
-  text-align:left;
+    display: flex;
+    width:max-content;
+    max-width:96vw;
+    flex-direction: column;
+    gap: 1em;
+    background-color: #f4f4f4;
+    color: #000;
+    padding: 2em 1em;
+    border-radius: 2px;
+    text-align: left;
+      @media (min-width: 768px) {
+         width:min-content;
+  }
 
 `;
 
@@ -132,10 +136,13 @@ const SectionImage = styled.img`
 
 const SectionContent = styled.div`
   text-align: left;
+   display: grid;
+    width:min-content;
+    grid-template-rows:120px 40px 60px;
+    width:100%;
 `;
 
 const ListHeader = styled.h5`
-  margin-top: 1em;
   font-size: 1.2rem;
   font-weight: 600;
   text-align:center;
@@ -152,6 +159,7 @@ const List = styled.ul`
   justify-content:center;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
+  font-size:0.9em; 
 `;
 
 const ListItem = styled.li`
