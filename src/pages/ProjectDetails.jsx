@@ -66,25 +66,27 @@ const ProjectDetail = () => {
 
 
   return (
+    <ProjectContainer>
     <div {...handlers}>
-      <ProjectDetailsContainer>
-        <BackButton onClick={navigateBackToProjects}>Back to Projects</BackButton>
+    <BackButton onClick={navigateBackToProjects}>Back to Projects</BackButton>
 
-        {/* Chevron Navigation */}
-        <ChevronContainer>
-          {!isFirst && (
-            <ChevronButton onClick={() => navigateToProject(currentIndex - 1)}>
-              &lt;
-            </ChevronButton>
-          )}
-          <ChevronContent>
-          </ChevronContent>
-          {!isLast && (
-            <ChevronButton onClick={() => navigateToProject(currentIndex + 1)}>
-              &gt;
-            </ChevronButton>
-          )}
-        </ChevronContainer>
+{/* Chevron Navigation */}
+<ChevronContainer>
+  {!isFirst && (
+    <ChevronButton onClick={() => navigateToProject(currentIndex - 1)}>
+      &lt;
+    </ChevronButton>
+  )}
+  <ChevronContent>
+  </ChevronContent>
+  {!isLast && (
+    <ChevronButton onClick={() => navigateToProject(currentIndex + 1)}>
+      &gt;
+    </ChevronButton>
+  )}
+</ChevronContainer>
+      <ProjectDetailsContainer>
+      
 
         <ProjectHeader>{project.name}</ProjectHeader>
         <ImageWrapper >
@@ -103,7 +105,9 @@ const ProjectDetail = () => {
               ))}
           </TechnologiesList>
         </ProjectText>
-        <ButtonsContainer>
+
+      </ProjectDetailsContainer>
+      <ButtonsContainer>
           {project.username && (
             <LoginButton onClick={handleShowLoginDetails}>
               Show Login Details
@@ -116,8 +120,6 @@ const ProjectDetail = () => {
             {project.githubButtonText || "View on GitHub"}
           </GithubButton>
         </ButtonsContainer>
-      </ProjectDetailsContainer>
-
       {/* Login Modal */}
       <LoginModal
         show={showLoginDetails}
@@ -127,6 +129,7 @@ const ProjectDetail = () => {
       />
 
     </div>
+    </ProjectContainer>
   );
 };
 
@@ -138,7 +141,6 @@ const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   max-width: 500px;
-  margin-bottom:3em;
   background-color:#fdfdfd;
 `;
 
@@ -164,11 +166,7 @@ width:100%;
 max-width:500px;
 position:relative;
 padding:0.5em;
-
-
 `;
-
-
 
 const ProjectHeader = styled.h1`
  
@@ -197,10 +195,6 @@ const ChevronContainer = styled.div`
   place-self:center;
   align-self:center;
     
-   @media (min-width: 1000px) {
-  position:absolute;
-
-  }
 
 `;
 
@@ -243,12 +237,23 @@ const ChevronContent = styled.div`
 `;
 
 
+const ProjectContainer = styled.div`
+padding:5em 1em;
 
-const ProjectDetailsContainer = styled.div`
-padding:1em;
 width:100%;
 max-width:1000px;
 margin:0 auto;
+
+position:relative;
+   @media (min-width: 1000px) {
+
+   padding:5em;
+
+  }
+`;
+const ProjectDetailsContainer = styled.div`
+padding:1em;
+width:100%;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -256,8 +261,6 @@ align-items:center;
 text-align:left;
 gap:1em;
 top:7em;
-margin-bottom:10em;
-position:relative;
 background-color:#f4f4f4;
    @media (min-width: 1000px) {
 
@@ -305,8 +308,8 @@ margin-top:1em;
   gap: 1em;
   align-self:center;
   align-items:center;
-
-  padding-bottom:2em;
+  padding-bottom:6em;
+  float:right;
     @media (min-width: 1050px) {
     height: fit-content;
     align-self:flex-end;

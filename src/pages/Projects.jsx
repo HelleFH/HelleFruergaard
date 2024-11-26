@@ -150,7 +150,7 @@ const MainContent = styled.div`
   @media (min-width: 1175px) {
     gap: 5em;
     padding: 4em;
-  padding-top:8em;
+  padding-top:6em;
     display: grid;
     grid-template-columns: 2fr 1fr;
     max-width: 1200px;
