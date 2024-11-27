@@ -80,6 +80,7 @@ const Heading3 = styled.h3`
   margin:0;
     padding-top:0.5em;
 
+word-spacing:-0.2em !important; 
 
   span {
   padding-right:0.2em;
@@ -131,6 +132,7 @@ const ProjectsButton = styled.a`
 
 
 const Heading1 = styled.h1`
+
   font-size: 2.5rem;
   margin:0;
 word-spacing:-0.2em !important; 

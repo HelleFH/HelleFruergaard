@@ -84,6 +84,7 @@ const ContentContainer = styled.div`
   flex-direction:row;
   flex-wrap:wrap;
   width:100%;
+  justify-content:center;
   gap:1em;
   margin: 0 auto;
   @media (min-width: 768px) {
@@ -91,19 +92,23 @@ const ContentContainer = styled.div`
 `;
 const AboutHeader = styled.h3`
   font-size: 2rem;
+  padding-left:1rem;
 `;
 
 const AboutSubHeader = styled.h5`
-
+color:#62645c;
   text-align: left;
   font-weight: 600;
   margin-bottom: 1em;
+      padding-left:1rem;
+
 &::after {
   content: "";
   display: block;
   width: 32px;
   padding-top: 3px;
   border-bottom: 2px solid #757576;
+
 }`;
 
 const Section = styled.div`

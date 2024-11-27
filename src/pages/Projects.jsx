@@ -165,7 +165,6 @@ const ContentContainer = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: space-evenly;
-  padding: 0 1em;
   gap:7em;
 
 
@@ -186,6 +185,8 @@ const ProjectsSubheader = styled.h5`
   text-align: left;
   font-weight: 600 !important;
   margin-bottom: 1em;
+  padding-left:1rem;
+  color:#62645c;
 &::after {
   content: "";
   display: block;
@@ -196,4 +197,6 @@ const ProjectsSubheader = styled.h5`
 
 const ProjectsHeader = styled.h3`
   font-size: 2rem;
+      padding-left:1rem;
+
 `;

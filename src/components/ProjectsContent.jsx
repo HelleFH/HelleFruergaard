@@ -9,6 +9,7 @@ const ProjectsContent = styled.section`
   max-width: 1000px;
   justify-content: flex-start;
   position: relative;
+  align-items:center;
 
   @media (min-width: 768px) {
     display: grid;
