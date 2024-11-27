@@ -222,6 +222,7 @@ const BackButton = styled.a`
   font-size:0.9em;
   padding-left:1em;
   color:inherit;
+  font-weight:500;
 `;
 
 const ChevronContent = styled.div`
@@ -358,9 +359,10 @@ const LoginButton = styled.a`
   color: #333;
   border: none;
   cursor: pointer;
-  font-weight: 500;
   font-size: 14px;
   padding-left:2em;
+    font-weight: 600;
+
 
   &:hover {
     transform: scale(1.02);

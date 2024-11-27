@@ -83,6 +83,7 @@ const Heading3 = styled.h3`
 word-spacing:-0.2em !important; 
 
   span {
+  font-weight:400;
   padding-right:0.2em;
     color: #62645c; /* Style for the span inside h3 */
   }

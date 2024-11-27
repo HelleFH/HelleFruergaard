@@ -436,7 +436,7 @@ padding:1em;
 
  a { color: #222524;
   text-decoration: underline !important;
-  font-weight: bold;
+  font-weight: 600;
   padding: 5px 10px;
   transition: background-color 0.3s, color 0.3s;
 place-self:flex-end;
