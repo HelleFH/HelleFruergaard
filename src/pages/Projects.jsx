@@ -186,7 +186,6 @@ const ProjectsSubheader = styled.h5`
   font-weight: 600 !important;
   margin-bottom: 1em;
   padding-left:1rem;
-  color:#62645c;
 &::after {
   content: "";
   display: block;

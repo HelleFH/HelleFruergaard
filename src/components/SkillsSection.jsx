@@ -96,7 +96,6 @@ const AboutHeader = styled.h3`
 `;
 
 const AboutSubHeader = styled.h5`
-color:#62645c;
   text-align: left;
   font-weight: 600;
   margin-bottom: 1em;
@@ -153,28 +152,36 @@ const ListHeader = styled.h5`
   text-align:center;
   white-space:nowrap;
 `;
-
 const List = styled.ul`
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4em;
-  justify-content:center;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size:0.9em; 
+
+line-height:1em;
+ list-style-type: none;
+ padding-left: 0;
+ margin: 0;
+ margin-bottom:0.5em;
+ display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
+ font-family: 'Roboto', sans-serif;
+ gap: 0.4em; /* Controls the space between items */
+ font-weight:500;
 `;
 
 const ListItem = styled.li`
   font-size: 1em;
-  position: relative;
-  font-weight: 600;
+ display: inline-block;
+ position: relative;
+ font-weight:600;
 
-  &::before {
-    content: '•';
-    margin-right: 0.4em;
-    font-size: 1em;
-  }
+
+ /* Add the dot before each item */
+ &::before {
+   content: "•";
+   margin-right: 0.4em;  /* Adds space between the dot and text */
+   font-size: 1em; /* Adjusts size of the dot */
+ }
+
+ &:first-child::before {
+   content: ''; /* Remove the dot before the first item */
+ }
 `;

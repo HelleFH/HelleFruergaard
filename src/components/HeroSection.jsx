@@ -47,14 +47,14 @@ const HeroSection = styled.div`
 content: "";
 display: block;
 width: 64px;
-padding-top: 6em;
+padding-top: 8em;
 border-bottom: 2px solid #757576;
 }
 
 @media (min-width: 768px) {
 
   &::after {
-padding-top: 12em;
+padding-top: 13em;
 width: 128px;
 
 

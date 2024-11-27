@@ -108,7 +108,6 @@ const ProjectModal = ({
               >
                 {project.githubButtonText}
               </GithubButton>
-              {/* Add "Read More" button */}
           
             </ButtonsContainer>
             <LinksContainer>
