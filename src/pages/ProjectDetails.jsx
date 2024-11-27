@@ -69,6 +69,8 @@ const ProjectDetail = () => {
     <ProjectContainer>
     <div {...handlers}>
     <BackButton onClick={navigateBackToProjects}>Back to Projects</BackButton>
+    <ProjectHeader>{project.name}</ProjectHeader>
+
 
 {/* Chevron Navigation */}
 <ChevronContainer>
@@ -88,7 +90,6 @@ const ProjectDetail = () => {
       <ProjectDetailsContainer>
       
 
-        <ProjectHeader>{project.name}</ProjectHeader>
         <ImageWrapper >
           <ProjectImage src={project.images[0]} alt={project.name} />
         </ImageWrapper>
@@ -172,7 +173,9 @@ const ProjectHeader = styled.h1`
  
 text-align: left;
 font-weight: 600 !important;
-margin-bottom: 1em;
+place-self:center;
+padding-top:1em;
+
 &::after {
 content: "";
 display: block;
@@ -185,17 +188,14 @@ border-bottom: 2px solid #757576;
 const ChevronContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
   width:100%;
-    position:relative;
-
+  position:relative;
   justify-content:space-between;
   align-items:center;
   margin:0 auto;
   place-self:center;
   align-self:center;
-    
-
+  
 `;
 
 const ChevronButton = styled.button`
@@ -219,6 +219,9 @@ const ChevronButton = styled.button`
 const BackButton = styled.a`
   cursor: pointer;
   place-self:flex-start;
+  font-size:0.9em;
+  padding-left:1em;
+  color:inherit;
 `;
 
 const ChevronContent = styled.div`
@@ -230,24 +233,16 @@ const ChevronContent = styled.div`
     margin: 0.5em 0;
   }
 
-  img {
-    max-width: 300px;
-    margin: 1em 0;
-  }
 `;
 
 
 const ProjectContainer = styled.div`
-padding:5em 1em;
-
 width:100%;
 max-width:1000px;
 margin:0 auto;
-
+padding-top:5em;
 position:relative;
    @media (min-width: 1000px) {
-
-   padding:5em;
 
   }
 `;
@@ -264,12 +259,11 @@ top:7em;
 background-color:#f4f4f4;
    @media (min-width: 1000px) {
 
-   padding:5em;
+   padding:4em;
 
   }
 `;
 const TechnologiesList = styled.ul`
-
 
 line-height:1em;
  list-style-type: none;
@@ -306,6 +300,8 @@ const ButtonsContainer = styled.div`
 margin-top:1em;
   display: flex;
   gap: 1em;
+  padding-right:1em;
+
   align-self:center;
   align-items:center;
   padding-bottom:6em;
@@ -313,7 +309,6 @@ margin-top:1em;
     @media (min-width: 1050px) {
     height: fit-content;
     align-self:flex-end;
-    padding-right:2em;
     padding-top:1em;
   }
 `;
@@ -372,7 +367,6 @@ const LoginButton = styled.a`
   }
 
 `;
-
 
 const ProjectButton = styled.a`
 white-space:nowrap;

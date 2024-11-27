@@ -48,7 +48,7 @@ const projects = [
     githubLink: "https://github.com/HelleFH/Monty-Hall-Explained",
     buttonText: "View Project",
     githubButtonText: "GitHub",
-    descriptionHeader: "A site where users can read about and play the Monty Hall Game",
+    descriptionHeader: "React Product Grid with Modal",
     description: "A dynamic React portfolio page showcasing a visually appealing image grid with a sleek overlay. When an image is clicked, a modal window opens, providing detailed information about the corresponding project",
     technologiesMore: [
       "React",
