@@ -79,7 +79,7 @@ const ProjectModal = ({
           <ChevronRight onClick={handleNext}>
             <FontAwesomeIcon icon={faChevronRight} size="sm" />
           </ChevronRight>
-          <div className="d-flex flex-column justify-content-between gap-2">
+          <div className="d-flex flex-column justify-content-around gap-2">
             <ModalContent>
               <ModalTitle className="mb-0">{project.name}</ModalTitle>
               <ProjectDescription>{project.descriptionHeader}</ProjectDescription>
@@ -170,32 +170,33 @@ const Chevron = styled.div`
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  width: 20px;
+
+    svg {
+   width: 20px;
   height: 20px;
+    }
+
 
   @media (min-width: 1050px) {
-    width: 40px;
-    height: 40px;
+
+  svg {
+    width: 30px;
+    height: 30px;
+    }
   }
 
-  img {
-    max-width: 100%;
-  }
 `;
 const ChevronLeft = styled(Chevron)`
-  left: 10px;
-  img {
-    transform: rotate(-90deg);
-    float: left;
-  }
+    display:flex;
+    justify-content:flex-start;
+
 `;
 
 const ChevronRight = styled(Chevron)`
   right: 10px;
-  img {
-    transform: rotate(90deg);
-    float: right;
-  }
+  display:flex;
+    justify-content:flex-end;
+
 `;
 
 const ModalContent = styled.div`
@@ -220,9 +221,15 @@ const ModalContent = styled.div`
 `;
 
 const ModalTitle = styled.h2`
-  font-size: 31px;
+  font-size: 28px;
   margin-bottom: 1rem;
   font-weight: 600;
+  white-space:nowrap;
+  
+    @media (min-width: 800px) {
+  font-size: 32px;
+
+  }
 `;
 
 
@@ -351,6 +358,7 @@ const CustomModal = styled(Modal)`
   }
 
   p {
+  min-height:50px;
     padding: 0em;
   }
       &.fade {
@@ -432,11 +440,12 @@ const ProjectDescription = styled.p`
 const LinksContainer = styled.div`
 display:flex;
 justify-content:flex-end;
-padding:1em;
+padding:0 1em 1em;
+margin-top:1em;
 
  a { color: #222524;
   text-decoration: underline !important;
-  font-weight: 600;
+  font-weight: bold;
   padding: 5px 10px;
   transition: background-color 0.3s, color 0.3s;
 place-self:flex-end;
@@ -449,23 +458,25 @@ place-self:flex-end;
   
   @media (min-width: 800px) and (max-width: 1000px) {
     align-self: flex-start;
+    margin-top:0em;
+
  
   }
 `;
 
 const ButtonsContainer = styled.div`
-  margin-top: 1em;
+  margin-top: 2em;
   display: flex;
   gap: 0.5em;
   align-self: center;
   place-self: flex-end;
-  padding-right: 1em;
-  padding-bottom: 1em;
+  padding-right: 2em;
 
   @media (min-width: 1000px) {
+    margin-top: 0em;
     height: fit-content;
     align-self: flex-end;
-    padding-right: 2em;
+    padding-right: 1em;
     padding-top: 1em;
   }
 
