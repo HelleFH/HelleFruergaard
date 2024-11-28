@@ -217,12 +217,22 @@ const ChevronButton = styled.button`
 `;
 
 const BackButton = styled.a`
-  cursor: pointer;
-  place-self:flex-start;
-  font-size:0.9em;
-  padding-left:1em;
-  color:inherit;
-  font-weight:500;
+
+color: #222524;
+text-decoration: underline !important;
+font-weight: 400;
+padding: 5px 10px;
+transition: all 0.3s ease-in-out;
+place-self: flex-end;
+
+&:hover {
+  transform: scale(1.05);
+      font-weight: 600;
+
+}
+
+}
+
 `;
 
 const ChevronContent = styled.div`
@@ -355,18 +365,23 @@ font-size:16px;
 `;
 
 const LoginButton = styled.a`
-  position: relative;
-  color: #333;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  padding-left:2em;
-    font-weight: 600;
+  
 
+    color: #222524;
+    text-decoration: underline !important;
+    font-weight: 400;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+    place-self: flex-end;
 
-  &:hover {
-    transform: scale(1.02);
+    &:hover {
+      transform: scale(1.05);
+          font-weight: 600;
+
+    }
+
   }
+
 
 `;
 

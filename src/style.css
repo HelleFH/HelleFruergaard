@@ -41,9 +41,6 @@ h1 {
   background-color: black;
 }
 
-a:hover {
-  scale: 0.99;
-}
 
 .btn:active {
   scale: 0.99;

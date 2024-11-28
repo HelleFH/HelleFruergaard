@@ -436,31 +436,35 @@ const ProjectDescription = styled.p`
   }
 `;
 
-
 const LinksContainer = styled.div`
-display:flex;
-justify-content:flex-end;
-padding:0 1em 1em;
-margin-top:1em;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 1em 1em;
+  margin-top: 1em;
 
- a { color: #222524;
-  text-decoration: underline !important;
-  font-weight: bold;
-  padding: 5px 10px;
-  transition: background-color 0.3s, color 0.3s;
-place-self:flex-end;
-  
-  &:hover {
-    color: black;
+  a {
+    color: #222524;
+    text-decoration: underline !important;
+    font-weight: 400;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+    place-self: flex-end;
+
+    &:hover {
+      color: blue; 
+      transform: scale(1.05);
+          font-weight: 600;
+
+    }
+
+    &:first-child {
+      color:#343434;
+    }
   }
-    
-  &:first-child {color:#222524;}}
-  
+
   @media (min-width: 800px) and (max-width: 1000px) {
     align-self: flex-start;
-    margin-top:0em;
-
- 
+    margin-top: 0;
   }
 `;
 

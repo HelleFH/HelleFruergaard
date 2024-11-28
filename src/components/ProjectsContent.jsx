@@ -116,23 +116,22 @@ const Technologies = styled.span`
   color: #ddd;
 `;
 
-const ReadMoreButton = styled.button`
-  margin-top: 2em;
-  background-color:transparent;
-  color: white;
-  border: none;
-  outline:none;
-  color:black;
-  font-weight:500;
-  text-decoration:underline;
-  border-radius: 5px;
-  cursor: pointer;
-      position: absolute;
-    bottom: 0;
-    margin-bottom: -2em;
-      font-family:'montserrat';
-
-
+const ReadMoreButton = styled.a`
+color: #222524;
+text-decoration: underline !important;
+font-weight: 400;
+padding: 5px 10px;
+transition: all 0.3s ease-in-out;
+place-self: flex-start;
+margin-top: 2em;
+position: absolute;
+bottom: 0;
+margin-bottom: -2em;
+&:hover {
+  transform: scale(1.05);
+      font-weight: 600;
+}
+}
 
 `;
 

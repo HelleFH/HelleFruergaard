@@ -41,7 +41,7 @@ const NavLinksContainer = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  min-width:400px;
+  min-width:200px;
   height: 100%;
   background-color: #333;
   color: white !important;
