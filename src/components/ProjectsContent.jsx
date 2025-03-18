@@ -118,7 +118,7 @@ const Technologies = styled.span`
 
 const ReadMoreButton = styled.a`
 color: #222524;
-text-decoration: underline !important;
+text-decoration: none !important;
 font-weight: 400;
 padding: 5px 10px;
 transition: all 0.3s ease-in-out;
@@ -128,7 +128,7 @@ position: absolute;
 bottom: 0;
 margin-bottom: -2em;
 &:hover {
-  transform: scale(1.05);
+background-color:#f3f3f3;
       font-weight: 600;
 }
 }

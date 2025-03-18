@@ -444,16 +444,14 @@ const LinksContainer = styled.div`
 
   a {
     color: #222524;
-    text-decoration: underline !important;
+
     font-weight: 400;
     padding: 5px 10px;
     transition: all 0.3s ease-in-out;
     place-self: flex-end;
 
     &:hover {
-      color: blue; 
-      transform: scale(1.05);
-          font-weight: 600;
+      background-color:#f3f3f3;
 
     }
 

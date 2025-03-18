@@ -368,15 +368,15 @@ const LoginButton = styled.a`
   
 
     color: #222524;
-    text-decoration: underline !important;
+    text-decoration: none !important;
     font-weight: 400;
     padding: 5px 10px;
     transition: all 0.3s ease-in-out;
     place-self: flex-end;
 
     &:hover {
-      transform: scale(1.05);
-          font-weight: 600;
+
+         background-color:#f3f3f3;
 
     }
 

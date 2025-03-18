@@ -12,10 +12,7 @@ const AboutMe = () => {
 
         <AboutInfo>
           <h3>About Me</h3>
-          <p>
-            I was born in the United States but have lived in Denmark and Singapore for most of my life.
-            Currently, I live in Bjerringbro with my husband, our two young children, a cat, and a dog.
-          </p>
+   
           <br></br>
 
           <p>
