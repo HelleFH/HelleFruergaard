@@ -44,6 +44,7 @@ const ProjectWrapper = styled.div`
 
   &:hover {
     transform: scale(1.1);
+    z-index:9999 !important;
   }
 
   @media (min-width: 1175px) {
