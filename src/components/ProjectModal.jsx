@@ -197,7 +197,6 @@ const ChevronRight = styled(Chevron)`
   display: flex;
   justify-content: flex-end;
 `;
-
 const ModalContent = styled.div`
   position: relative;
   display:flex;
@@ -206,6 +205,7 @@ const ModalContent = styled.div`
   padding:0em 2em;
   max-width: 600px;
   max-height: 100vh; 
+
 
 
     @media (min-width: 800px) {
@@ -346,8 +346,6 @@ const LoginModalDialog = styled(Modal.Dialog)`
 
 const CustomModal = styled(Modal)`
   transition: transform 0.3s ease-out;
-  z-index:9999;
-
 
   .modal-content {
     border: none !important;
@@ -424,7 +422,6 @@ const ModalImage = styled.img`
     width: 100%;
     height: 100%;
     background-color: ${(props) => props.backdropColor};
-    z-index: 9999;
     opacity: 0.1;
   }
 `;

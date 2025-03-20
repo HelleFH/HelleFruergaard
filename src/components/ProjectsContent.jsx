@@ -44,7 +44,7 @@ const ProjectWrapper = styled.div`
   }
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     z-index:9998;
   }
 
@@ -72,7 +72,7 @@ const Image = styled.img`
   min-width:230px;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 `;
 
