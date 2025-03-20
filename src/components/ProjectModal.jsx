@@ -187,16 +187,15 @@ const Chevron = styled.div`
 
 `;
 const ChevronLeft = styled(Chevron)`
-    display:flex;
-    justify-content:flex-start;
-
+  left: 10px;  /* Ensure it's aligned symmetrically */
+  display: flex;
+  justify-content: flex-start;
 `;
 
 const ChevronRight = styled(Chevron)`
-  right: 10px;
-  display:flex;
-    justify-content:flex-end;
-
+  right: 10px; /* Already set, ensuring consistency */
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const ModalContent = styled.div`
