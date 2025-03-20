@@ -332,7 +332,7 @@ const LoginModalDialog = styled(Modal.Dialog)`
   animation: ${fadeIn} 0.3s ease-out;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 
-
+z-index:9999;
   &.fade-exit-active {
     animation: ${fadeOut} 0.3s ease-out;
   }
