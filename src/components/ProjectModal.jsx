@@ -209,7 +209,6 @@ const ModalContent = styled.div`
   max-height: 100vh; 
 
 
-
     @media (min-width: 800px) {
       width: 450px;
   padding:4em 2.5em 1em 1em;
@@ -348,6 +347,8 @@ const LoginModalDialog = styled(Modal.Dialog)`
 
 const CustomModal = styled(Modal)`
   transition: transform 0.3s ease-out;
+  z-index:9999;
+
 
   .modal-content {
     border: none !important;

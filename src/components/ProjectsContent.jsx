@@ -28,6 +28,7 @@ const ProjectWrapper = styled.div`
   transition: transform 0.3s ease-in-out;
   margin-bottom: 2em;
   max-width: 96vw;
+  
 
   grid-column: ${(props) =>
     props.firstRow && props.index < 2 ? 'span 3' : 'auto'};
@@ -44,7 +45,7 @@ const ProjectWrapper = styled.div`
 
   &:hover {
     transform: scale(1.1);
-    z-index:9999 !important;
+    z-index:9998;
   }
 
   @media (min-width: 1175px) {
