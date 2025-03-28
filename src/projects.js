@@ -2,52 +2,50 @@ import { isStyledComponent } from "styled-components";
 
 const projects = [
 
-
-  
   {
-    id: 1,
-    name: "React Site",
-    technologies: "React",
-    images: ["/images/sentispec-screen.png"],
-    projectLink: "https://sentispec.ai/",
-    githubLink: "https://github.com/HelleFH/sentispec",
-    buttonText: "View Project",
-    githubButtonText: "GitHub",
-    descriptionHeader: "A Company Website",
-    description: "A static React site",
-    technologiesMore: [
+    "id": 1,
+    "name": "React Site",
+    "technologies": "React",
+    "images": ["/images/sentispec-screen.png"],
+    "projectLink": "https://sentispec.ai/",
+    "githubLink": "https://github.com/HelleFH/sentispec",
+    "buttonText": "View Project",
+    "githubButtonText": "GitHub",
+    "descriptionHeader": "A Company Website",
+    "description": "This is a React-based static website for a company. The website is designed to allow seamless interactions with HubSpot's marketing and CRM tools, embedded YouTube videos for content sharing, and Outlook for email management and scheduling. The site serves as a professional online presence with interactive elements that enhance user engagement and communication.",
+    "technologiesMore": [
       "React",
-  
-
-    ],
-
-  },
-
+      "HubSpot API",
+      "YouTube API",
+      "Outlook API"
+    ]
+  }
+,  
   {
-    id: 2,
-    name: "React Store",
-    technologies: "Firebase, React",
-    images: ["/images/clothes-store-screen.png"],
-    projectLink: "https://react-clothes-store.onrender.com/",
-    githubLink: "https://github.com/HelleFH/react-clothes-store",
-    buttonText: "View Project",
-    githubButtonText: "GitHub",
-    descriptionHeader: "A React shop with a Firebase backend",
-    description: "A React-based e-commerce store integrated with Firebase for database, storage, and authentication. Features include product size and color selection, a shopping basket, and a signup-required checkout. The admin panel allows for full CRUD operations, as well as account creation and editing.",
-    technologiesMore: [
+    "id": 2,
+    "name": "React Store",
+    "technologies": "Firebase, React",
+    "images": ["/images/clothes-store-screen.png"],
+    "projectLink": "https://react-clothes-store.onrender.com/",
+    "githubLink": "https://github.com/HelleFH/react-clothes-store",
+    "buttonText": "View Project",
+    "githubButtonText": "GitHub",
+    "descriptionHeader": "A React Shop with a Firebase Backend and Admin Panel",
+    "description": "This is an e-commerce store built with React and integrated with Firebase for authentication and database management. The app features a user login system, shopping cart with persistent data, and profile creation. Users can view products, select sizes and colors, and complete checkout after signing up. The admin panel allows for full CRUD operations, including adding, editing, and removing products and users, as well as managing customer accounts.",
+    "technologiesMore": [
       "Vite",
       "Formik",
       "Moment",
-       "Yup",
-       "Redux",
-       "Enzyme"
-
+      "Yup",
+      "Redux",
+      "Enzyme"
     ],
-    username: "duser7707@gmail.com",
-    password: "Demopassword123",
-    adminUsername: "dmndmuser@gmail.com",
-    adminPassword: "Demopassword123"
-  },
+    "username": "duser7707@gmail.com",
+    "password": "Demopassword123",
+    "adminUsername": "dmndmuser@gmail.com",
+    "adminPassword": "Demopassword123"
+  }
+,  
   {
     id:3 ,
     name: "React Snippets",
@@ -122,34 +120,35 @@ const projects = [
 
     ]
   },
-  {
-    id: 7,
-    name: "MEVN Cart",
-    technologies: "MongoDB, Express, Vue, Node.js",
-    images: ["/images/mevncart-screen.png"],
-    projectLink: "https://shopping-cart-master-1-5ylu.onrender.com/",
-    githubLink: "https://github.com/hellefh/shopping-cart",
-    buttonText: "View Project",
-    githubButtonText: "GitHub",
-    descriptionHeader: "MEVN Stack Shopping Cart with User Authentication",
-    description: "This cart includes user authentication functionality to secure user accounts and ensure that shopping carts are saved between sessions. User and cart information are saved in MongoDB.",
-    username: "hellefruergaard@mevn-shop.com",
-    password: "password123",
-    technologiesMore: [
-       "MongoDB",
-       "Express",
-       "Vue",
-       "Node.js",
-       "RESTful API",
-      "Multer",
-      "Zustand",
-      "Formik",
-      "Yup",
-      "Bcrypt",
-      "Jsonwebtoken"
-    ]
-  },
-
+  
+    {
+      "id": 7,
+      "name": "MEVN Cart",
+      "technologies": "MongoDB, Express, Vue, Node.js",
+      "images": ["/images/mevncart-screen.png"],
+      "projectLink": "https://shopping-cart-master-1-5ylu.onrender.com/",
+      "githubLink": "https://github.com/hellefh/shopping-cart",
+      "buttonText": "View Project",
+      "githubButtonText": "GitHub",
+      "descriptionHeader": "MEVN Stack Shopping Cart with Cart Storage and User Authentication",
+      "description": "This shopping cart application, built with the MEVN stack (MongoDB, Express, Vue, Node.js), allows users to securely log in and manage their shopping cart. The cart updates in real-time, with changes (add, remove, update items) immediately reflected in the MongoDB database, ensuring data is always synchronized across sessions.",
+      "username": "hellefruergaard@mevn-shop.com",
+      "password": "password123",
+      "technologiesMore": [
+        "MongoDB",
+        "Express",
+        "Vue",
+        "Node.js",
+        "RESTful API",
+        "Multer",
+        "Zustand",
+        "Formik",
+        "Yup",
+        "Bcrypt",
+        "Jsonwebtoken"
+      ]
+    }
+,    
   {
     id: 8,
     name: "MERN Plant Calendar",

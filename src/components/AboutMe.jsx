@@ -14,14 +14,21 @@ const AboutMe = () => {
         <h3>About Me</h3>
 
 
-<p> I’m a full-stack developer who loves working with React, MERN, and MEVN stacks. 
-  I’m all about building solid, well-structured applications, whether it’s designing APIs, managing databases, 
-  or making sure everything runs smoothly on the backend. I enjoy tackling complex problems and finding efficient solutions. </p> 
-  <p> Beyond coding, I have lots of experience in project management and acting as the bridge between tech and non-tech teams. 
-    I’m great at breaking down technical concepts for non-developers and making sure everyone’s on the same page. Whether it's working with stakeholders, 
-    leading teams, or keeping projects on track, I know how to get things done. </p> 
-    <p> My background in tech support, IT, and customer success means I’ve spent a lot of time solving problems and making things work for users. 
-      At the end of the day, I love building great products, collaborating with teams, and making technology more accessible for everyone. </p>
+        <p>
+I am a full-stack developer with strong expertise in both front-end and back-end technologies. On the front-end, I specialize in creating dynamic and efficient user interfaces, mostly with React. 
+On the back-end, I have a solid understanding of technologies like Express, various databases, and building robust APIs. 
+
+</p>
+
+<p>I have a huge interest in AI systems and their role and applications in businesses, and am currently employed at a company that uses AI to optimize transport network utilization.</p>
+
+<p>
+
+Alongside my tech skills, I hold a degree in Biology and Chemistry, which has given me a strong foundation in working with data. I’m particularly passionate about the environment and enjoy exploring how technology can be used to address environmental challenges and create sustainable solutions.
+</p>
+
+
+
 
 
 
