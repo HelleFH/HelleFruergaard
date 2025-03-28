@@ -11,24 +11,25 @@ const AboutMe = () => {
  
 
         <AboutInfo>
-          <h3>About Me</h3>
-   
-          <br></br>
+        <h3>About Me</h3>
 
-          <p>
-            I hold a bachelor's degree in Biology and Chemistry from the University of Southern Denmark, and have recently completed a short course in web development to expand my skill set.
-          </p>
-          <br></br>
+<br></br>
 
-          <p>
-            My professional background is diverse, with experience in HR, IT support, and copywriting/translation. This has provided me with a unique combination of strong customer service expertise and technical know-how.
-          </p>
-          <br></br>
+<p>
+  I have a degree in Biology and Chemistry and have completed a web development course to expand my skills. 
+  
+</p>
+<p>  I enjoy working with Vue and React and have strong experience in backend development, including working with Express, building APIs, and handling databases. I’m comfortable working across the full stack and enjoy creating efficient, well-structured solutions.
+</p><br></br>
 
-          <p>
-            In recent years, I’ve worked as a temporary staff member across various industries, which has helped me stay adaptable and continue growing both professionally and personally.
-          </p>
-          <br></br>
+
+<p>
+  I currently work with technical support and customer success, combining problem-solving with technical expertise. My background also includes roles in HR, IT support, and copywriting/translation, giving me a broad skill set that bridges technology and customer interaction.
+</p>
+<br></br>
+
+
+
 
 
          
