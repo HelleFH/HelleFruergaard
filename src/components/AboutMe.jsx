@@ -13,21 +13,15 @@ const AboutMe = () => {
         <AboutInfo>
         <h3>About Me</h3>
 
-<br></br>
 
-<p>
-  I have a degree in Biology and Chemistry and have completed a web development course to expand my skills. 
-  
-</p>
-<p>  I enjoy working with Vue and React and have strong experience in backend development, including working with Express, building APIs, and handling databases. I’m comfortable working across the full stack and enjoy creating efficient, well-structured solutions.
-</p><br></br>
-
-
-<p>
-  I currently work with technical support and customer success, combining problem-solving with technical expertise. My background also includes roles in HR, IT support, and copywriting/translation, giving me a broad skill set that bridges technology and customer interaction.
-</p>
-<br></br>
-
+<p> I’m a full-stack developer who loves working with React, MERN, and MEVN stacks. 
+  I’m all about building solid, well-structured applications, whether it’s designing APIs, managing databases, 
+  or making sure everything runs smoothly on the backend. I enjoy tackling complex problems and finding efficient solutions. </p> 
+  <p> Beyond coding, I have lots of experience in project management and acting as the bridge between tech and non-tech teams. 
+    I’m great at breaking down technical concepts for non-developers and making sure everyone’s on the same page. Whether it's working with stakeholders, 
+    leading teams, or keeping projects on track, I know how to get things done. </p> 
+    <p> My background in tech support, IT, and customer success means I’ve spent a lot of time solving problems and making things work for users. 
+      At the end of the day, I love building great products, collaborating with teams, and making technology more accessible for everyone. </p>
 
 
 
@@ -141,6 +135,8 @@ font-family:'Roboto';
 
 const AboutInfo = styled.div`
   flex: 1;
-
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
 `;
 

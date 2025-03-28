@@ -10,13 +10,14 @@ const StyledNavbar = styled.nav`
   background-color: ${(props) => (props.isScrolled ? '#757576' : '#fff')};
   color: ${(props) => (props.isScrolled ? 'black' : 'white')} !important;
   padding-bottom: 1em;
-  display: flex;
+  display: ${(props) => (props.isHidden ? 'none' : 'flex')};
   align-items: flex-start;
   position: fixed;
   width: 100vw;
   z-index: 998;
   padding-top: 1em;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  opacity: ${(props) => (props.isHidden ? 0 : 1)};
+  transition: opacity 1s ease, background-color 0.3s ease, color 0.3s ease;
 
   @media (min-width: 1200px) {
     margin: 0 auto;
@@ -41,7 +42,7 @@ const NavLinksContainer = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  min-width:200px;
+  min-width: 200px;
   height: 100%;
   background-color: #333;
   color: white !important;
@@ -52,7 +53,8 @@ const NavLinksContainer = styled.div`
   padding-top: 2em;
   z-index: 100;
   transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
+  opacity: ${(props) => (props.isNavOpen ? 1 : 0)};
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
   &.open {
     transform: translateX(0);
@@ -91,7 +93,10 @@ const Navbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const navigate = useNavigate();
+
+  let timeout = null;
 
   const toggleNav = () => {
     if (isNavOpen) {
@@ -119,31 +124,41 @@ const Navbar = () => {
 
   useEffect(() => {
     const onScroll = () => {
-      setIsScrolled(window.scrollY > 50); // Change to your desired threshold
+      setIsScrolled(window.scrollY > 50);
+      setIsHidden(false); // Show navbar on scroll
+
+      // Clear previous timeout and set a new one to hide navbar after inactivity
+      if (timeout) clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        if (window.scrollY > 50) setIsHidden(true);
+      }, 3000); // Adjust time (in milliseconds) for how long before it hides
     };
 
     window.addEventListener('scroll', onScroll);
+
     return () => {
       window.removeEventListener('scroll', onScroll);
+      if (timeout) clearTimeout(timeout);
     };
   }, []);
 
   return (
-    <StyledNavbar isScrolled={isScrolled} className="navbar navbar-light">
+    <StyledNavbar isScrolled={isScrolled} isHidden={isHidden} className="navbar navbar-light">
       <ToggleButton onClick={toggleNav}>
         <img
-         src={
-          isNavOpen || isAnimating
-            ? `images/x_icon.svg`
-            : isScrolled
-            ? `/images/nav_icon_white.svg`
-            : `/images/nav_icon.svg`
-        }
+          src={
+            isNavOpen || isAnimating
+              ? `images/x_icon.svg`
+              : isScrolled
+              ? `/images/nav_icon_white.svg`
+              : `/images/nav_icon.svg`
+          }
         />
       </ToggleButton>
 
       <NavLinksContainer
         className={`${isNavOpen ? 'open' : ''} ${isAnimating ? 'close' : ''}`}
+        isNavOpen={isNavOpen}
       >
         <MenuHeader className="mt-4 mb-4">Menu</MenuHeader>
         {isNavOpen && <CloseButton onClick={toggleNav}>&times;</CloseButton>}
