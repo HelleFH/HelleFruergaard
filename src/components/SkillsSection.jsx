@@ -53,7 +53,7 @@ const SkillsSection = () => {
           <p>
             I have lots of experience with IT support, database management, and various tools.
           </p>
-          <ListHeader>Software</ListHeader>
+          <ListHeader>Tools</ListHeader>
           <List>
             <ListItem>Azure</ListItem>
             <ListItem>AWS</ListItem>

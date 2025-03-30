@@ -7,8 +7,33 @@ import DownloadSection from './DownloadSection';
 const AboutMe = () => {
   return (
     <AboutMeWrapper >
+      
       <AboutMeContent  id="about-me">
- 
+      <PersonalInfo className="d-flex flex-column align-items-center gap-3 justify-content-center">
+        <ContactInfo className="d-flex flex-direction-row gap-2">
+            <h5 className="font-weight-bold">Helle Fruergaard</h5>
+          </ContactInfo>
+          <div className="d-flex flex-row justify-content-center gap-3">
+            <a className="nav-link" href="https://www.linkedin.com/in/helle-fruergaard-577763112/" >
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+            <a className="nav-link" href="https://github.com/HelleFH/" >
+              <i className="fab fa-github"></i>
+            </a>
+          </div>
+       
+          <ContactInfo className="d-flex flex-direction-row gap-2">
+            <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
+            <h6 className="font-weight-bold">Hellefruergaardh@gmail.com</h6>
+          </ContactInfo>
+          <ContactInfo className="d-flex flex-direction-row gap-2">
+            <FontAwesomeIcon icon={faPhone} className="mr-2" />
+            <h6 className="font-weight-bold">+45 29664077</h6>
+          </ContactInfo>
+          <DownloadSection ></DownloadSection>
+
+          
+        </PersonalInfo>
 
         <AboutInfo>
         <h3>About Me</h3>
@@ -35,28 +60,7 @@ Alongside my tech skills, I hold a degree in Biology and Chemistry, which has gi
 
          
         </AboutInfo>
-        <PersonalInfo className="d-flex flex-column align-items-center gap-3 justify-content-center">
-          <ProfileImage src={`/images/helle.jpg`} alt="Profile" />
-          <div className="d-flex flex-row justify-content-center gap-3">
-            <a className="nav-link" href="https://www.linkedin.com/in/helle-fruergaard-577763112/" >
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-            <a className="nav-link" href="https://github.com/HelleFH/" >
-              <i className="fab fa-github"></i>
-            </a>
-          </div>
-          <ContactInfo className="d-flex flex-direction-row gap-2">
-            <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
-            <h6 className="font-weight-bold">Hellefruergaardh@gmail.com</h6>
-          </ContactInfo>
-          <ContactInfo className="d-flex flex-direction-row gap-2">
-            <FontAwesomeIcon icon={faPhone} className="mr-2" />
-            <h6 className="font-weight-bold">+45 29664077</h6>
-          </ContactInfo>
-          <DownloadSection ></DownloadSection>
-
-          
-        </PersonalInfo>
+       
       </AboutMeContent>
     </AboutMeWrapper>
   );
