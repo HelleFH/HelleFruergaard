@@ -140,11 +140,17 @@ export default ProjectModal;
   margin: 0;
   margin-bottom:0.5em;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   font-family: 'Roboto', sans-serif;
   gap: 0.4em; /* Controls the space between items */
   font-weight:500;
+  width:100%;
+
+    @media (min-width: 1050px) {
+  justify-content: flex-start;
+
+  }
 `;
 
 const TechItem = styled.li`
@@ -167,7 +173,7 @@ const TechItem = styled.li`
 const Chevron = styled.div`
   position: absolute;
   z-index: 9999;
-  top: 50%;
+  top: 60%;
   transform: translateY(-50%);
   cursor: pointer;
 
@@ -202,13 +208,15 @@ const ModalContent = styled.div`
   display:flex;
   flex-direction:column;
   gap:1.5em;
-  padding:0em 2em;
+  text-align:center;
   max-width: 600px;
   max-height: 100vh; 
 
 
 
     @media (min-width: 800px) {
+      text-align:left;
+
       width: 450px;
   padding:4em 2.5em 1em 1em;
   min-width:450px;
@@ -360,7 +368,7 @@ const CustomModal = styled(Modal)`
     padding: 0em;
   }
       &.fade {
-  padding:1rem !important;
+  padding:0.3rem !important;
   }
 
 
@@ -426,8 +434,10 @@ const ModalImage = styled.img`
 `;
 
 const ProjectDescription = styled.p`
+display:none;
 
   @media (min-width: 1050px) {
+  display:flex;
     height: fit-content;
   }
 `;

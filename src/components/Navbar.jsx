@@ -7,11 +7,12 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const StyledNavbar = styled.nav`
-  background-color: ${(props) => (props.isScrolled ? '#757576' : '#fff')};
+  border: 1px ${(props) => (props.isScrolled ? 'transparent' : '#f4f4f4')};
   color: ${(props) => (props.isScrolled ? 'black' : 'white')} !important;
   padding-bottom: 1em;
   display: ${(props) => (props.isHidden ? 'none' : 'flex')};
   align-items: flex-start;
+  background-color:white;
   position: fixed;
   width: 100vw;
   z-index: 998;
@@ -28,7 +29,7 @@ const ToggleButton = styled.a`
   margin-left: auto;
   cursor: pointer;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.02);
   }
 
   img {
@@ -149,8 +150,7 @@ const Navbar = () => {
           src={
             isNavOpen || isAnimating
               ? `images/x_icon.svg`
-              : isScrolled
-              ? `/images/nav_icon_white.svg`
+      
               : `/images/nav_icon.svg`
           }
         />

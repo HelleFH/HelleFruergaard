@@ -21,14 +21,12 @@ const ProjectsContent = styled.section`
     grid-template-columns: repeat(6, 120px);
   }
 `;
-
 const ProjectWrapper = styled.div`
   position: relative;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
   margin-bottom: 2em;
   max-width: 96vw;
-  
 
   grid-column: ${(props) =>
     props.firstRow && props.index < 2 ? 'span 3' : 'auto'};
@@ -47,6 +45,12 @@ const ProjectWrapper = styled.div`
     transform: scale(1.05);
   }
 
+  @media (max-width: 767px) {
+    &:hover {
+      transform: none;  /* Disable the hover effect on mobile */
+    }
+  }
+
   @media (min-width: 1175px) {
     grid-column: ${(props) =>
       props.index >= 2
@@ -57,23 +61,32 @@ const ProjectWrapper = styled.div`
   }
 `;
 
+const Image = styled.img`
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+  border-radius: 2px;
+  min-width: 230px;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 767px) {
+    &:hover {
+      transform: none;  /* Disable the hover effect on mobile */
+    }
+  }
+`;
+
+
 const ImageWrapper = styled.div`
   position: relative;
   cursor: pointer;
   overflow: hidden;
 `;
 
-const Image = styled.img`
-  width: 100%;
-  object-fit: cover;
-  transition: transform 0.8s ease;
-  border-radius: 2px;
-  min-width:230px;
 
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
 
 const Overlay = styled.div`
   border-radius: 2px;

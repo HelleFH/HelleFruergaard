@@ -224,7 +224,6 @@ font-weight: 400;
 padding: 5px 10px;
 transition: all 0.3s ease-in-out;
 place-self: flex-end;
-
 &:hover {
   transform: scale(1.05);
       font-weight: 600;
@@ -317,8 +316,8 @@ margin-top:1em;
   align-items:center;
   padding-bottom:6em;
   float:right;
+  
     @media (min-width: 1050px) {
-    height: fit-content;
     align-self:flex-end;
     padding-top:1em;
   }
@@ -421,6 +420,6 @@ font-size:16px;
   }
 
   &:hover::after {
-    width: calc(100% + 30px);
+    width: calc(30px);
   }
 `;
