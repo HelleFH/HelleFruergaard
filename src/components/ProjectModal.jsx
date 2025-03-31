@@ -184,6 +184,7 @@ const Chevron = styled.div`
 
 
   @media (min-width: 1050px) {
+  top: 50%;
 
   svg {
     width: 30px;
@@ -340,7 +341,7 @@ const LoginModalDialog = styled(Modal.Dialog)`
   animation: ${fadeIn} 0.3s ease-out;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 
-z-index:9999;
+z-index:9998;
   &.fade-exit-active {
     animation: ${fadeOut} 0.3s ease-out;
   }
