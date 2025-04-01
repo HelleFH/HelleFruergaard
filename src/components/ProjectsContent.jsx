@@ -14,7 +14,6 @@ const ProjectsContent = styled.section`
   @media (min-width: 768px) {
     display: grid;
     gap: 0.5em;
-    grid-template-columns: repeat(4, 120px);
   }
 
   @media (min-width: 1175px) {

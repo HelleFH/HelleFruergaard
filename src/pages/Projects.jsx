@@ -153,7 +153,7 @@ const MainContent = styled.div`
   padding-top:6em;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    max-width: 1200px;
+    max-width: 1400px;
     align-items: flex-start;
     
 
@@ -176,7 +176,7 @@ const ContentContainer = styled.div`
   @media (min-width: 1024px) {
     max-width: 85vw;
     padding: 0;
-      gap:10em;
+      gap:5em;
 
   }
 `;

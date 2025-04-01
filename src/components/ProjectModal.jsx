@@ -241,6 +241,7 @@ const ModalTitle = styled.h2`
 
 
 const ProjectButton = styled.a`
+border-radius:2px;
   display: inline-block;
   background-color: #fff;
   color: #333 !important;
@@ -299,6 +300,8 @@ const CloseButton = styled(Button)`
 `;
 
 const GithubButton = styled.a`
+border-radius:2px;
+
   position: relative;
   display: inline-block;
   background-color: #333;

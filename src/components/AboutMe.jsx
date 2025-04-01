@@ -7,10 +7,10 @@ import DownloadSection from './DownloadSection';
 const AboutMe = () => {
   return (
     <AboutMeWrapper >
-      
-      <AboutMeContent  id="about-me">
-      <PersonalInfo className="d-flex flex-column align-items-center gap-3 justify-content-center">
-        <ContactInfo className="d-flex flex-direction-row gap-2">
+
+      <AboutMeContent id="about-me">
+        <PersonalInfo className="d-flex flex-column align-items-center gap-3 justify-content-center">
+          <ContactInfo className="d-flex flex-direction-row gap-2">
             <h5 className="font-weight-bold">Helle Fruergaard</h5>
           </ContactInfo>
           <div className="d-flex flex-row justify-content-center gap-3">
@@ -21,7 +21,7 @@ const AboutMe = () => {
               <i className="fab fa-github"></i>
             </a>
           </div>
-       
+
           <ContactInfo className="d-flex flex-direction-row gap-2">
             <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
             <h6 className="font-weight-bold">Hellefruergaardh@gmail.com</h6>
@@ -32,35 +32,35 @@ const AboutMe = () => {
           </ContactInfo>
           <DownloadSection ></DownloadSection>
 
-          
+
         </PersonalInfo>
 
         <AboutInfo>
-        <h3>About Me</h3>
+          <h3>About Me</h3>
 
 
-        <p>
-I am a full-stack developer with strong expertise in both front-end and back-end technologies. On the front-end, I specialize in creating dynamic and efficient user interfaces, mostly with React. 
-On the back-end, I have a solid understanding of technologies like Express, various databases, and building robust APIs. 
+          <p>
+            I am a full-stack developer with strong expertise in both front-end and back-end technologies. On the front-end, I specialize in creating dynamic and efficient user interfaces, mostly with React.
+            On the back-end, I have a solid understanding of technologies like Express, various databases, and building robust APIs.
 
-</p>
+          </p>
 
-<p>I have a huge interest in AI systems and their role and applications in businesses, and am currently employed at a company that uses AI to optimize transport network utilization.</p>
+          <p>I have a huge interest in AI systems and their role and applications in businesses, and am currently employed at a company that uses AI to optimize transport network utilization.</p>
 
-<p>
+          <p>
 
-Alongside my tech skills, I hold a degree in Biology and Chemistry, which has given me a strong foundation in working with data. I’m particularly passionate about the environment and enjoy exploring how technology can be used to address environmental challenges and create sustainable solutions.
-</p>
-
-
-
+            Alongside my tech skills, I hold a degree in Biology and Chemistry, which has given me a strong foundation in working with data. I’m particularly passionate about the environment and enjoy exploring how technology can be used to address environmental challenges and create sustainable solutions.
+          </p>
 
 
 
 
-         
+
+
+
+
         </AboutInfo>
-       
+
       </AboutMeContent>
     </AboutMeWrapper>
   );
@@ -75,6 +75,8 @@ font-weight:500;
   margin: 4em 0 4em auto;
   padding: 0 0.5em;
   font-family:'Gelasio';
+  max-width:500px;
+  margin:0 auto;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -85,12 +87,13 @@ font-weight:500;
 const AboutMeContent = styled.div`
   display: flex;
   flex-wrap: wrap;
-flex-direction:column-reverse;
+flex-direction:column;
   gap: 2em;
 
   @media (min-width: 1000px) {
     flex-direction: row;
     gap: 3em;
+    margin-top:8rem;
   }
 `;
 
@@ -108,7 +111,7 @@ position: relative; /* Ensure the overlay can position itself relative to this c
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.05);
     z-index: 1; 
 
   }
@@ -122,17 +125,6 @@ position: relative; /* Ensure the overlay can position itself relative to this c
 
     gap: 2em;
   }
-`;
-
-
-const ProfileImage = styled.img`
- width: 200px;  
-  height: 200px;  /* Make it a square */
-  border-radius: 50%;  /* This makes the image round */
-  object-fit: cover; 
-  border: 3px solid #fff; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); 
-  z-index:0;
 `;
 
 const ContactInfo = styled.div`

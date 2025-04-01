@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import projects from "../projects";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import LoginModal from "../components/LoginModal";
-import Frame from "../assets/frame.png";
-import Topframe from "../assets/topframe.png"
 import { useSwipeable } from "react-swipeable"; // Import the useSwipeable hook
 
-
 const ProjectDetail = () => {
-
   const handleShowLoginDetails = () => setShowLoginDetails(true);
   const handleCloseLoginModal = () => setShowLoginDetails(false);
   const handleCopyToClipboard = (text) => {
@@ -23,6 +19,7 @@ const ProjectDetail = () => {
     onSwipedRight: () => !isFirst && navigateToProject(currentIndex - 1), // Navigate to previous project
     trackMouse: true, // Track mouse events for testing swipe on desktop
   });
+
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -63,279 +60,221 @@ const ProjectDetail = () => {
     });
   };
 
-
-
   return (
     <ProjectContainer>
-    <div {...handlers}>
-    <BackButton onClick={navigateBackToProjects}>Back to Projects</BackButton>
-    <ProjectHeader>{project.name}</ProjectHeader>
+      <div {...handlers}>
+        <BackButton onClick={navigateBackToProjects}>Back to Projects</BackButton>
+        <ProjectHeader>{project.name}</ProjectHeader>
 
+        {/* Chevron Navigation */}
+        <ChevronContainer>
+          {!isFirst && (
+            <ChevronButton onClick={() => navigateToProject(currentIndex - 1)}>
+              &lt;
+            </ChevronButton>
+          )}
+          <ChevronContent></ChevronContent>
+          {!isLast && (
+            <ChevronButton onClick={() => navigateToProject(currentIndex + 1)}>
+              &gt;
+            </ChevronButton>
+          )}
+        </ChevronContainer>
 
-{/* Chevron Navigation */}
-<ChevronContainer>
-  {!isFirst && (
-    <ChevronButton onClick={() => navigateToProject(currentIndex - 1)}>
-      &lt;
-    </ChevronButton>
-  )}
-  <ChevronContent>
-  </ChevronContent>
-  {!isLast && (
-    <ChevronButton onClick={() => navigateToProject(currentIndex + 1)}>
-      &gt;
-    </ChevronButton>
-  )}
-</ChevronContainer>
-      <ProjectDetailsContainer>
-      
+        <ProjectDetailsContainer>
+          <ImageWrapper>
+            <ProjectImage src={project.images[0]} alt={project.name} />
+          </ImageWrapper>
+          <ProjectText>
+            <h4>{project.descriptionHeader}</h4>
+            <p>{project.description}</p>
+            <h5>Technologies Used</h5>
+            <TechnologiesList>
+              {project.technologiesMore &&
+                project.technologiesMore.map((tech, index) => (
+                  <TechItem key={index}>{tech}</TechItem>
+                ))}
+            </TechnologiesList>
+          </ProjectText>
+        </ProjectDetailsContainer>
 
-        <ImageWrapper >
-          <ProjectImage src={project.images[0]} alt={project.name} />
-        </ImageWrapper>
-        <ProjectText>
-
-          <h4>{project.descriptionHeader}</h4>
-          <p>{project.description}</p>
-          <h5>Technologies Used</h5>
-          <TechnologiesList>
-            
-            {project.technologiesMore &&
-              project.technologiesMore.map((tech, index) => (
-                <TechItem key={index}>{tech}</TechItem>
-              ))}
-          </TechnologiesList>
-        </ProjectText>
-
-      </ProjectDetailsContainer>
-      <ButtonsContainer>
+        <ButtonsContainer>
           {project.username && (
             <LoginButton onClick={handleShowLoginDetails}>
               Show Login Details
             </LoginButton>
           )}
-          <ProjectButton href={project.projectLink} target="_blank" rel="noopener noreferrer">
+          <ProjectButton
+            href={project.projectLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {project.buttonText || "Visit Project"}
           </ProjectButton>
-          <GithubButton href={project.githubLink} target="_blank" rel="noopener noreferrer">
+          <GithubButton
+            href={project.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {project.githubButtonText || "View on GitHub"}
           </GithubButton>
         </ButtonsContainer>
-      {/* Login Modal */}
-      <LoginModal
-        show={showLoginDetails}
-        onHide={handleCloseLoginModal}
-        project={project}
-        handleCopyToClipboard={handleCopyToClipboard}
-      />
 
-    </div>
+        {/* Login Modal */}
+        <LoginModal
+          show={showLoginDetails}
+          onHide={handleCloseLoginModal}
+          project={project}
+          handleCopyToClipboard={handleCopyToClipboard}
+        />
+      </div>
     </ProjectContainer>
   );
 };
 
 export default ProjectDetail;
 
-
-const ImageWrapper = styled.div`
-  width: 95vw;
-  display: flex;
-  justify-content: center;
-  max-width: 500px;
-  background-color:#fdfdfd;
-`;
-
-const ProjectText = styled.div`
-background-color:white;
-display:flex;
-flex-direction:column;
-padding:1em;
-justify-content:center;
-align-items:center;
-gap:1em;
-background-color:#f4f4f4;
-    @media (min-width: 1000px) {
-padding:3em;
-
-  }
-`;
-
-
-const ProjectImage = styled.img`
-grid-row:1;
-width:100%;
-max-width:500px;
-position:relative;
-padding:0.5em;
+const ProjectContainer = styled.div`
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  padding: 4rem 2rem;
 `;
 
 const ProjectHeader = styled.h1`
- 
-text-align: left;
-font-weight: 600 !important;
-place-self:center;
-padding-top:1em;
-
-&::after {
-content: "";
-display: block;
-width: 32px;
-padding-top: 3px;
-border-bottom: 2px solid #757576;
-}
-
-`;
-const ChevronContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width:100%;
-  position:relative;
-  justify-content:space-between;
-  align-items:center;
-  margin:0 auto;
-  place-self:center;
-  align-self:center;
-  
-`;
-
-const ChevronButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 3rem;
-  cursor: pointer;
+  font-size: 2.5rem;
+  font-weight: 700;
   color: #333;
-  transition: color 0.2s;
+  text-align: left;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+  width: fit-content;
+    &::after {
+    content: "";
+    display: block;
+    width: 32px;
+    padding-top: 3px;
+    border-bottom: 2px solid #757576;
+  }
+`;
+
+const ProjectDetailsContainer = styled.div`
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin: 1em auto;
+  max-width: 900px;
+  width: 100%;
+  transition: box-shadow 0.3s ease-in-out;
 
   &:hover {
-    color: #555;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
   }
 
-  &:disabled {
-    color: #ccc;
-    cursor: not-allowed;
+  @media (min-width: 1000px) {
+    gap: 3em;
   }
 `;
 
-const BackButton = styled.a`
-
-color: #222524;
-text-decoration: underline !important;
-font-weight: 400;
-padding: 5px 10px;
-transition: all 0.3s ease-in-out;
-place-self: flex-end;
-&:hover {
-  transform: scale(1.05);
-      font-weight: 600;
-
-}
-
-}
-
+const ImageWrapper = styled.div`
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 `;
 
-const ChevronContent = styled.div`
-  flex: 1;
-  text-align: center;
+const ProjectImage = styled.img`
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+`;
 
-  h3 {
-    font-size: 1.5em;
-    margin: 0.5em 0;
+const ProjectText = styled.div`
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 1em;
+  color: #444;
+
+  h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5em;
   }
 
-`;
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
 
-
-const ProjectContainer = styled.div`
-width:100%;
-max-width:1000px;
-margin:0 auto;
-padding-top:5em;
-position:relative;
-   @media (min-width: 1000px) {
-
+  h5 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.5em;
   }
 `;
-const ProjectDetailsContainer = styled.div`
-padding:1em;
-width:100%;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:left;
-gap:1em;
-top:7em;
-background-color:#f4f4f4;
-   @media (min-width: 1000px) {
 
-   padding:4em;
-
-  }
-`;
 const TechnologiesList = styled.ul`
-
-line-height:1em;
- list-style-type: none;
- padding-left: 0;
- margin: 0;
- margin-bottom:0.5em;
- display: flex;
- justify-content: flex-start;
- flex-wrap: wrap;
- font-family: 'Roboto', sans-serif;
- gap: 0.4em; /* Controls the space between items */
- font-weight:500;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em;
+  font-weight: 500;
+  font-size: 1rem;
 `;
 
 const TechItem = styled.li`
-  font-size: 1em;
- display: inline-block;
- position: relative;
- font-weight:600;
-
- /* Add the dot before each item */
- &::before {
-   content: "•";
-   margin-right: 0.4em;  /* Adds space between the dot and text */
-   font-size: 1em; /* Adjusts size of the dot */
- }
-
- &:first-child::before {
-   content: ''; /* Remove the dot before the first item */
- }
+  display: inline-block;
+  background-color: #eef1f3;
+  color: #333;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 600;
 `;
 
 const ButtonsContainer = styled.div`
-margin-top:1em;
   display: flex;
   gap: 1em;
-  padding-right:1em;
-
-  align-self:center;
-  align-items:center;
-  padding-bottom:6em;
-  float:right;
-  
-    @media (min-width: 1050px) {
-    align-self:flex-end;
-    padding-top:1em;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content:flex-end;
+  margin-top: 2em;
+  width: 100%;
+padding:1rem 3rem;
+  @media (min-width: 700px) {
+    flex-direction: row;
   }
 `;
 
 const GithubButton = styled.a`
-font-size:16px;
+border-radius:2px;
+  font-size: 1.rem;
   position: relative;
   display: inline-block;
   background-color: #333;
   color: #fff !important;
-  padding: 10px;
+  padding: .7rem 2.5rem;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
   overflow: hidden;
   border: solid 1px #333;
-
   transition: background-color 0.4s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
@@ -363,30 +302,78 @@ font-size:16px;
   }
 `;
 
-const LoginButton = styled.a`
-  
 
-    color: #222524;
-    text-decoration: none !important;
-    font-weight: 400;
-    padding: 5px 10px;
-    transition: all 0.3s ease-in-out;
-    place-self: flex-end;
 
-    &:hover {
+const BackButton = styled.a`
+  font-size: 1.2rem;
+  color: #333333 !important;
+  text-decoration: underline;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
 
-         background-color:#f3f3f3;
+  &:hover {
+    font-weight: 600;
+    color: #004f73;
+  }
+`;
 
-    }
+const ChevronContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-top: 1.5em;
+  width: 100%;
+`;
 
+const ChevronButton = styled.button`
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #555;
   }
 
+  &:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+  }
+`;
 
+const ChevronContent = styled.div`
+  flex: 1;
+  text-align: center;
+
+  h3 {
+    font-size: 1.5rem;
+    margin: 0.5em 0;
+  }
+`;
+
+
+
+const LoginButton = styled.a`
+  color: #222524;
+  text-decoration: none !important;
+  font-weight: 400;
+  padding: 5px 10px;
+  transition: all 0.3s ease-in-out;
+  place-self: flex-end;
+
+  &:hover {
+    background-color: #f3f3f3;
+  }
 `;
 
 const ProjectButton = styled.a`
-white-space:nowrap;
-font-size:16px;
+border-radius:2px;
+  white-space: nowrap;
+  font-size: 16px;
   display: inline-block;
   background-color: #fff;
   color: #333 !important;
@@ -406,7 +393,7 @@ font-size:16px;
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 50%;

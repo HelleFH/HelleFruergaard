@@ -89,6 +89,7 @@ word-spacing:-0.2em !important;
   }
 `;
 const ProjectsButton = styled.a`
+border-radius:2px;
  position: relative;
   display: inline-block;
   background-color: white;
