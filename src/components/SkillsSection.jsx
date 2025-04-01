@@ -149,8 +149,8 @@ const SectionHeader = styled.h3`
 const SectionImage = styled.img`
   max-width: 100%;
   margin: 0 auto 1em;
-  height:100%;
-`;
+object-fit:contain;
+height:100%;`;
 
 const SectionContent = styled.div`
   text-align: left;
